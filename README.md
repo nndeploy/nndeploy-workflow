@@ -12,7 +12,7 @@
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="detect/yolo.png" width=50%>
+    <img alt="nndeploy" src="detect/yolo.png" width=75%>
   </picture>
 </p>
 
@@ -48,7 +48,7 @@
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="track/track.png" width=50%>
+    <img alt="nndeploy" src="track/track.png" width=75%>
   </picture>
 </p>
 
@@ -84,7 +84,7 @@
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="segment/rmbg.png" width=50%>
+    <img alt="nndeploy" src="segment/rmbg.png" width=75%>
   </picture>
 </p>
 
@@ -120,7 +120,7 @@
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="stable_diffusion/stable_diffusion_1.5.png" width=50%>
+    <img alt="nndeploy" src="stable_diffusion/stable-diffusion-1.5.png" width=75%>
   </picture>
 </p>
 
@@ -192,7 +192,7 @@
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="qwen/qwen-0.5B.png" width=50%>
+    <img alt="nndeploy" src="qwen/qwen-0.5B.png" width=75%>
   </picture>
 </p>
 
@@ -272,7 +272,7 @@ pip install -r requirements.txt
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="face_swap/face_swap.png" width=50%>
+    <img alt="nndeploy" src="face_swap/face_swap.png" width=75%>
   </picture>
 </p>
 
