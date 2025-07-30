@@ -197,6 +197,9 @@
                 "model_value_": [
                     "/home/lds/stable-diffusion.onnx/fp16/text_encoder/model.onnx"
                 ],
+                "external_model_data_": [
+                    ""
+                ],
                 "input_num_": 1,
                 "input_name_": [
                     ""
@@ -280,6 +283,9 @@
                 "is_path_": true,
                 "model_value_": [
                     "/home/lds/stable-diffusion.onnx/fp16/text_encoder/model.onnx"
+                ],
+                "external_model_data_": [
+                    ""
                 ],
                 "input_num_": 1,
                 "input_name_": [
@@ -473,6 +479,9 @@
                         "model_value_": [
                             "/home/lds/stable-diffusion.onnx/fp16/unet/model.onnx"
                         ],
+                        "external_model_data_": [
+                            ""
+                        ],
                         "input_num_": 3,
                         "input_name_": [
                             "embeddings",
@@ -642,6 +651,9 @@
                 "is_path_": true,
                 "model_value_": [
                     "/home/lds/stable-diffusion.onnx/fp16/vae_decoder/model.onnx"
+                ],
+                "external_model_data_": [
+                    ""
                 ],
                 "input_num_": 1,
                 "input_name_": [
