@@ -222,8 +222,6 @@ Download the [qwen/qwen-0.5B.json](qwen/qwen-0.5B.json) workflow file. After upl
 
 ### llm_config.json
 
-我来将选中的内容翻译为英文：
-
 ```markdown
 ```
 {
