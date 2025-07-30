@@ -10,6 +10,12 @@
 
 下载[detect/yolo.json](detect/yolo.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
 
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="detect/yolo.png" width=50%>
+  </picture>
+</p>
+
 ### 参数配置
 
 参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
@@ -39,6 +45,12 @@
 ### 工作流
 
 下载[track/track.json](track/track.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="track/track.png" width=50%>
+  </picture>
+</p>
 
 ### 参数配置
 
@@ -70,6 +82,12 @@
 
 下载[segment/rmbg.json](segment/rmbg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
 
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="segment/rmbg.png" width=50%>
+  </picture>
+</p>
+
 ### 参数配置
 
 参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
@@ -99,6 +117,12 @@
 ### 工作流
 
 下载[stable_diffusion/stable_diffusion_1.5.json](stable_diffusion/stable_diffusion_1.5.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="stable_diffusion/stable_diffusion_1.5.png" width=50%>
+  </picture>
+</p>
 
 ### 参数配置
 
@@ -166,6 +190,12 @@
 
 下载[qwen/qwen-0.5B.json](qwen/qwen-0.5B.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
 
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="qwen/qwen-0.5B.png" width=50%>
+  </picture>
+</p>
+
 ### 参数配置
 
 #### PromptNode
@@ -222,3 +252,47 @@
 `tokenizer_json`：tokenizer文件路径
 
 `tokenizer_txt`：tokenizer文件路径
+
+## 换脸算法
+
+### 模型准备
+
+前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/face_swap目录下。
+
+### 安装python依赖
+
+```bash
+cd path/nndeploy-workflow/face_swap
+pip install -r requirements.txt
+```
+
+### 工作流
+
+下载[face_swap/face_swap.json](face_swap/face_swap.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="face_swap/face_swap.png" width=50%>
+  </picture>
+</p>
+
+### 参数配置
+
+参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
+
+#### OpenCvImageDecode
+
+`path_`：输入图片的路径
+
+#### OpenCvImageEncode
+
+`path_`：输出图片的路径
+
+#### InsightFaceSwapper
+
+`model_path_`：换脸模型文件
+
+#### GFPGAN
+
+`model_path_`：人脸清晰模型文件
+
