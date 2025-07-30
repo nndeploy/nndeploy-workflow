@@ -94,7 +94,7 @@
 
 ### 模型准备
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/stable_diffusion/fp16目录下。
+前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/stable_diffusion/目录下。
 
 ### 工作流
 
@@ -124,7 +124,7 @@
 
 `param_/model_value_`：clip模型文件的路径
 
-`param_/device_type_`：设备类型（fp16需要设置类型为kDeviceTypeCodeCuda:0）
+`param_/device_type_`：设备类型
 
 ### Infer_8
 
@@ -132,21 +132,23 @@
 
 `param_/model_value_`：clip模型文件的路径
 
-`param_/device_type_`：设备类型（fp16需要设置类型为kDeviceTypeCodeCuda:0）
+`param_/device_type_`：设备类型
 
 ### Denoise_11/unet_infer
 
 `param_/model_type_`：模型文件的类型
 
-`param_/model_value_`：unet模型文件的路径（fp16需要设置类型为kDeviceTypeCodeCuda:0）
+`param_/model_value_`：unet模型文件的路径
 
-`param_/device_type_`：设备类型
+`param_/external_model_data_`：fp32格式下权重文件的路径，fp16格式无需设置
+
+`param_/device_type_`：设备类型（fp16需要设置类型为kDeviceTypeCodeCuda:0）
 
 ### Infer_13
 
 `param_/model_type_`：模型文件的类型
 
-`param_/model_value_`：vae decoder模型文件的路径（fp16需要设置类型为kDeviceTypeCodeCuda:0）
+`param_/model_value_`：vae decoder模型文件的路径
 
 `param_/device_type_`：设备类型
 
