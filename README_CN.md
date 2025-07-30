@@ -239,7 +239,7 @@
         2,
         64
     ],
-    "prompt_template": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
+    "prompt_template": "<|im_start|>user/n%s<|im_end|>/n<|im_start|>assistant/n",
     "prompt": "请介绍一下李白？",
     "is_visual": false
 }
@@ -306,11 +306,11 @@ pip install -r requirements.txt
 
 ### 工作流
 
-下载[creative\face_swap_seg.json](creative\face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
-creative\face_swap_seg.json
+下载[creative/face_swap_seg.json](creative/face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+creative/face_swap_seg.json
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="creative\face_swap_seg.png" width=75%>
+    <img alt="nndeploy" src="creative/face_swap_seg.png" width=75%>
   </picture>
 </p>
 
@@ -322,11 +322,11 @@ creative\face_swap_seg.json
 
 ### 工作流
 
-下载[creative\face_swap_seg.json](creative\face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
-creative\face_swap_seg.json
+下载[creative/face_swap_seg.json](creative/face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="creative\face_swap_seg.png" width=75%>
+    <img alt="nndeploy" src="creative/face_swap_seg.png" width=75%>
   </picture>
 </p>
 
@@ -338,10 +338,10 @@ creative\face_swap_seg.json
 
 ### 工作流
 
-下载[creative\face_swap_seg.json]creative\rmbg_yolo_resnet.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
-creative\face_swap_seg.json
+下载[creative/rmbg_yolo_resnet.jso](creative/rmbg_yolo_resnet.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="creative\rmbg_yolo_resnet.png" width=75%>
+    <img alt="nndeploy" src="creative/rmbg_yolo_resnet.png" width=75%>
   </picture>
 </p>
