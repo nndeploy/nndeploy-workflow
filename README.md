@@ -1,14 +1,16 @@
-# nndeploy工作流
+[简体中文](README_CN.md) | English
 
-## 目标检测
+# nndeploy Workflow
 
-### 模型准备
+## Object Detection
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/detect目录下。
+### Model Preparation
 
-### 工作流
+Go to the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to pull the model files. The models are located in the `nndeploy/detect` directory.
 
-下载[detect/yolo.json](detect/yolo.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+### Workflow
+
+Download the [detect/yolo.json](detect/yolo.json) workflow file. After uploading the file through the front - end workflow upload function, you can view the workflow.
 
 <p align="left">
   <picture>
@@ -16,35 +18,35 @@
   </picture>
 </p>
 
-### 参数配置
+### Parameter Configuration
 
-参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
+Parameter configuration mainly includes: input and output node file path configuration, parameter configuration of front - and back - nodes, and parameter configuration of inference nodes. Most of the parameters have been configured in the workflow file. Users only need to modify the following parameters:
 
 #### OpenCvImageDecode
 
-`path_`：输入图片的路径
+`path_`: Path of the input image
 
 #### OpenCvImageEncode
 
-`path_`：输出图片的路径
+`path_`: Path of the output image
 
 #### Infer
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：模型文件的路径
+`param_/model_value_`: Path of the model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
-## 目标追踪
+## Object Tracking
 
-### 模型准备
+### Model Preparation
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/track目录下。
+Go to the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to pull the model files. The models are located in the `nndeploy/track` directory.
 
-### 工作流
+### Workflow
 
-下载[track/track.json](track/track.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+Download the [track/track.json](track/track.json) workflow file. After uploading the file through the front - end workflow upload function, you can view the workflow.
 
 <p align="left">
   <picture>
@@ -52,35 +54,35 @@
   </picture>
 </p>
 
-### 参数配置
+### Parameter Configuration
 
-参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件(yolov5n/s/m/l)已经对大部分参数进行配置，用户仅需要修改以下参数：
+Parameter configuration mainly includes: input and output node file path configuration, parameter configuration of front - and back - nodes, and parameter configuration of inference nodes. Most of the parameters have been configured in the workflow files (yolov5n/s/m/l). Users only need to modify the following parameters:
 
 #### OpenCvVideoDecode
 
-`path_`：输入视频的路径
+`path_`: Path of the input video
 
 #### OpenCvVideoEncode
 
-`path_`：输出视频的路径
+`path_`: Path of the output video
 
 #### Infer
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：模型文件的路径
+`param_/model_value_`: Path of the model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
-## 目标分割
+## Object Segmentation
 
-### 模型准备
+### Model Preparation
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/segment目录下。
+Go to the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to pull the model files. The models are located in the `nndeploy/segment` directory.
 
-### 工作流
+### Workflow
 
-下载[segment/rmbg.json](segment/rmbg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+Download the [segment/rmbg.json](segment/rmbg.json) workflow file. After uploading the file through the front - end workflow upload function, you can view the workflow.
 
 <p align="left">
   <picture>
@@ -88,35 +90,35 @@
   </picture>
 </p>
 
-### 参数配置
+### Parameter Configuration
 
-参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
+Parameter configuration mainly includes: input and output node file path configuration, parameter configuration of front - and back - nodes, and parameter configuration of inference nodes. Most of the parameters have been configured in the workflow file. Users only need to modify the following parameters:
 
 #### OpenCvImageDecode
 
-`path_`：输入图片的路径
+`path_`: Path of the input image
 
 #### OpenCvImageEncode
 
-`path_`：输出图片的路径
+`path_`: Path of the output image
 
 #### Infer
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：模型文件的路径
+`param_/model_value_`: Path of the model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
-## 文生图
+## Text-to-Image
 
-### 模型准备
+### Model Preparation
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/stable_diffusion/目录下。
+Go to the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to pull the model files. The models are located in the `nndeploy/stable_diffusion/` directory.
 
-### 工作流
+### Workflow
 
-下载[stable_diffusion/stable_diffusion_1.5.json](stable_diffusion/stable_diffusion_1.5.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+Download the [stable_diffusion/stable_diffusion_1.5.json](stable_diffusion/stable_diffusion_1.5.json) workflow file. After uploading the file through the front - end workflow upload function, you can view the workflow.
 
 <p align="left">
   <picture>
@@ -124,71 +126,71 @@
   </picture>
 </p>
 
-### 参数配置
+### Parameter Configuration
 
 ### InitTokenText_0
 
-`prompt_`：正向提示词（token长度限制为77）
+`prompt_`: Positive prompt (token length limit is 77)
 
 ### InitTokenText_1
 
-`prompt_`：逆向提示词（token长度限制为77）
+`prompt_`: Negative prompt (token length limit is 77)
 
 ### TokenizerEncodeCpp_3
 
-`param_/json_blob_`：tokenizer.json文件的路径
+`param_/json_blob_`: Path of the `tokenizer.json` file
 
 ### TokenizerEncodeCpp_4
 
-`param_/json_blob_`：tokenizer.json文件的路径
+`param_/json_blob_`: Path of the `tokenizer.json` file
 
 ### Infer_7
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：clip模型文件的路径
+`param_/model_value_`: Path of the CLIP model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
 ### Infer_8
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：clip模型文件的路径
+`param_/model_value_`: Path of the CLIP model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
 ### Denoise_11/unet_infer
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：unet模型文件的路径
+`param_/model_value_`: Path of the UNet model file
 
-`param_/external_model_data_`：fp32格式下权重文件的路径，fp16格式无需设置
+`param_/external_model_data_`: Path of the weight file in FP32 format. No need to set for FP16 format.
 
-`param_/device_type_`：设备类型（fp16需要设置类型为kDeviceTypeCodeCuda:0）
+`param_/device_type_`: Device type (For FP16, set the type to `kDeviceTypeCodeCuda:0`)
 
 ### Infer_13
 
-`param_/model_type_`：模型文件的类型
+`param_/model_type_`: Type of the model file
 
-`param_/model_value_`：vae decoder模型文件的路径
+`param_/model_value_`: Path of the VAE decoder model file
 
-`param_/device_type_`：设备类型
+`param_/device_type_`: Device type
 
 ### OpenCvImageEncode_1
 
-`path_`：输出图片的路径
+`path_`: Path of the output image
 
-## 大语言模型
+## Large Language Model
 
-### 模型准备
+### Model Preparation
 
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/qwen目录下。
+Go to the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to pull the model files. The models are located in the `nndeploy/qwen` directory.
 
-### 工作流
+### Workflow
 
-下载[qwen/qwen-0.5B.json](qwen/qwen-0.5B.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+Download the [qwen/qwen-0.5B.json](qwen/qwen-0.5B.json) workflow file. After uploading the file through the front - end workflow upload function, you can view the workflow.
 
 <p align="left">
   <picture>
@@ -196,103 +198,26 @@
   </picture>
 </p>
 
-### 参数配置
+### Parameter Configuration
 
 #### PromptNode
 
-`user_content_`：提示词
+`user_content_`: Prompt
 
 #### QwenPrefill
 
-`config_path_`：配置文件路径
+`config_path_`: Path of the configuration file
 
 #### QwenDecode
 
-`config_path_`：llm_config.json配置文件路径
+`config_path_`: Path of the `llm_config.json` configuration file
 
 #### QwenPrefill/prefill_infer
 
-`external_model_data_`：onnx模型文件超过2GB时，权重和模型结构会分开存储，如llm.onnx和llm.onnx.data，该参数为权重文件路径。
+`external_model_data_`: When the ONNX model file exceeds 2GB, the weights and model structure will be stored separately, such as `llm.onnx` and `llm.onnx.data`. This parameter is the path of the weight file.
 
 #### QwenDecode/decode_infer
 
-`external_model_data_`：onnx模型文件超过2GB时，权重和模型结构会分开存储，如llm.onnx和llm.onnx.data，该参数为权重文件路径。
+`external_model_data_`: When the ONNX model file exceeds 2GB, the weights and model structure will be stored separately, such as `llm.onnx` and `llm.onnx.data`. This parameter is the path of the weight file.
 
 ### llm_config.json
-
-```
-{
-    "hidden_size": 896,
-    "layer_nums": 24,
-    "max_seq_len": 250,
-    "attention_mask": "float",
-    "model_path": "/home/lds/model/onnx/llm.onnx",
-    "embedding_file": "/home/lds/model/embeddings_bf16.bin",
-    "tokenizer_json": "/home/lds/Qwen2-0.5B-Instruct/tokenizer.json",
-    "tokenizer_txt": "/home/lds/model/tokenizer.txt",
-    "key_value_shape": [
-        2,
-        1,
-        0,
-        2,
-        64
-    ],
-    "prompt_template": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
-    "prompt": "请介绍一下李白？",
-    "is_visual": false
-}
-```
-
-根据模型文件路径修改以下参数：
-
-`model_path`：qwen模型文件路径
-
-`embedding_file`：embedding模型文件路径
-
-`tokenizer_json`：tokenizer文件路径
-
-`tokenizer_txt`：tokenizer文件路径
-
-## 换脸算法
-
-### 模型准备
-
-前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/face_swap目录下。
-
-### 安装python依赖
-
-```bash
-cd path/nndeploy-workflow/face_swap
-pip install -r requirements.txt
-```
-
-### 工作流
-
-下载[face_swap/face_swap.json](face_swap/face_swap.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
-
-<p align="left">
-  <picture>
-    <img alt="nndeploy" src="face_swap/face_swap.png" width=75%>
-  </picture>
-</p>
-
-### 参数配置
-
-参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
-
-#### OpenCvImageDecode
-
-`path_`：输入图片的路径
-
-#### OpenCvImageEncode
-
-`path_`：输出图片的路径
-
-#### InsightFaceSwapper
-
-`model_path_`：换脸模型文件
-
-#### GFPGAN
-
-`model_path_`：人脸清晰模型文件
-
