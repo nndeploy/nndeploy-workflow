@@ -1,7 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
     "name_": "yolo.json",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "developer_": "Always",
+    "source_": "https://github.com/solveditnpc/deep-live-cam",
+    "desc_": "YOLO Object Detection: Real-time object detection using YOLO (You Only Look Once) algorithm for identifying and localizing objects in images",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -18,6 +20,21 @@
     "queue_max_size_": 16,
     "is_loop_max_flag_": true,
     "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
