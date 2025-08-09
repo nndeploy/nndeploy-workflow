@@ -1,0 +1,303 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Classification ResNet",
+    "developer_": "Always",
+    "source_": "https://github.com/KaimingHe/deep-residual-networks",
+    "desc_": "Image classification workflow based on ResNet deep residual network",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:classification/resnet50-v1-7.slim.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_11",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_11@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "path_": "resources/template/nndeploy-workflow/classification/input.resnet.png",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::preprocess::CvtResizeNormTrans",
+            "name_": "CvtResizeNormTrans_22",
+            "desc_": "cv::Mat to device::Tensor[cvtcolor->resize->normalize->transpose]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_11@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "CvtResizeNormTrans_22@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeRGB",
+                "interp_type_": "kInterpTypeLinear",
+                "h_": 224,
+                "w_": 224,
+                "data_type_": "kDataTypeCodeFp32",
+                "data_format_": "kDataFormatNCHW",
+                "normalize_": true,
+                "scale_": [
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563
+                ],
+                "mean_": [
+                    0.485,
+                    0.456,
+                    0.406,
+                    0.5
+                ],
+                "std_": [
+                    0.229,
+                    0.224,
+                    0.225,
+                    1
+                ]
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_23",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "CvtResizeNormTrans_22@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_23@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/classification/resnet50-v1-7.slim.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeCpu:0",
+                "num_thread_": 8,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::classification::ClassificationPostProcess",
+            "name_": "ClassificationPostProcess_24",
+            "desc_": "Classification postprocess[device::Tensor->ClassificationResult]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_23@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ClassificationResult",
+                    "name_": "ClassificationPostProcess_24@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "topk": 1,
+                "is_softmax": true,
+                "version": -1
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::classification::DrawLable",
+            "name_": "DrawLable_25",
+            "desc_": "Draw classification labels on input cv::Mat image based on classification results[cv::Mat->cv::Mat]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_11@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "ClassificationResult",
+                    "name_": "ClassificationPostProcess_24@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "DrawLable_25@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_26",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "DrawLable_25@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "path_": "resources/images/result.resnet.jpg",
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "OpenCvImageDecode_11": {
+                "x": 100,
+                "y": -1.4210854715202004e-14
+            },
+            "CvtResizeNormTrans_22": {
+                "x": 400,
+                "y": 112.79999999999998
+            },
+            "Infer_23": {
+                "x": 700,
+                "y": 112.79999999999998
+            },
+            "ClassificationPostProcess_24": {
+                "x": 1000,
+                "y": 112.79999999999998
+            },
+            "DrawLable_25": {
+                "x": 1300,
+                "y": 7.59999999999998
+            },
+            "OpenCvImageEncode_26": {
+                "x": 1602.8670864975843,
+                "y": 7.59999999999998
+            }
+        },
+        "groups": []
+    }
+}

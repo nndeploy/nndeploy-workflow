@@ -1,7 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "qwen2.json",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "name_": "LLM Qwen",
+    "developer_": "zuiren",
+    "source_": "https://github.com/QwenLM/Qwen2.5",
+    "desc_": "LLM workflow that uses Qwen2.5 model",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -15,8 +17,28 @@
     "is_debug_": false,
     "is_external_stream_": false,
     "is_graph_node_share_stream_": true,
-    "queue_max_size_": 18,
+    "queue_max_size_": 16,
     "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx.data",
+        "modelscope@nndeploy/nndeploy:qwen/llm_config.json",
+        "modelscope@nndeploy/nndeploy:qwen/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/embeddings_bf16.bin"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::qwen::PromptNode",
@@ -72,7 +94,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "/home/lds/models/llama/llm_config.json",
+            "config_path_": "resources/models/qwen/llm_config.json",
             "node_repository_": [
                 {
                     "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -216,7 +238,7 @@
                             ""
                         ],
                         "external_model_data_": [
-                            "/home/lds/models/llama/onnx/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCuda:0",
                         "num_thread_": 1,
@@ -338,7 +360,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "/home/lds/models/llama/llm_config.json",
+            "config_path_": "resources/models/qwen/llm_config.jsonn",
             "node_repository_": [
                 {
                     "key_": "nndeploy::qwen::DecodeEmbeddingNode",
@@ -458,7 +480,7 @@
                             ""
                         ],
                         "external_model_data_": [
-                            "/home/lds/models/llama/onnx/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCuda:0",
                         "num_thread_": 1,
@@ -599,21 +621,24 @@
         }
     ],
     "nndeploy_ui_layout": {
-        "PromptNode_1": {
-            "x": -580,
-            "y": -234
+        "layout": {
+            "PromptNode_1": {
+                "x": -760.5529479980469,
+                "y": -354.9906799316406
+            },
+            "QwenPrefill_2": {
+                "x": -449.5529479980469,
+                "y": -354.9906799316406
+            },
+            "QwenDecode_3": {
+                "x": -149.55294799804688,
+                "y": -354.9906799316406
+            },
+            "PrintNode_4": {
+                "x": 150.44705200195312,
+                "y": -354.9906799316406
+            }
         },
-        "QwenPrefill_2": {
-            "x": -446,
-            "y": -61
-        },
-        "QwenDecode_3": {
-            "x": -147,
-            "y": -306
-        },
-        "PrintNode_4": {
-            "x": 26,
-            "y": -105
-        }
+        "groups": []
     }
 }

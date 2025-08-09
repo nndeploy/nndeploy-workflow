@@ -1,15 +1,40 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "track",
+    "name_": "Track",
+    "developer_": "zuiren",
+    "source_": "https://github.com/ifzhang/FairMOT",
+    "desc_": "Track workflow that tracks objects in videos using fairmot models",
     "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
     "inputs_": [],
+    "is_dynamic_output_": false,
     "outputs_": [],
-    "is_external_stream_": false,
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
     "is_inner_": false,
+    "node_type_": "Intermediate",
     "is_time_profile_": false,
     "is_debug_": false,
+    "is_external_stream_": false,
     "is_graph_node_share_stream_": true,
     "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:track/fairmot.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::track::FairMotPreProcess",
@@ -19,26 +44,26 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvVideoDecode_5@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "output_0",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_1",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_1"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_2",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_2"
                 }
             ],
@@ -81,21 +106,21 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "input_0",
+                    "type_": "Tensor",
                     "name_": "Infer_4@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "input_1",
+                    "type_": "Tensor",
                     "name_": "Infer_4@output_1"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "MOTResult",
                     "desc_": "output_0",
+                    "type_": "MOTResult",
                     "name_": "FairMotPostProcess_2@output_0"
                 }
             ],
@@ -115,21 +140,21 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvVideoDecode_5@output_0"
                 },
                 {
-                    "type_": "MOTResult",
                     "desc_": "input_1",
+                    "type_": "MOTResult",
                     "name_": "FairMotPostProcess_2@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "VisMOT_3@output_0"
                 }
             ],
@@ -144,31 +169,31 @@
             "is_dynamic_input_": true,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "input_0",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "input_1",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_1"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "input_2",
+                    "type_": "Tensor",
                     "name_": "FairMotPreProcess_1@output_2"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "output_0",
+                    "type_": "Tensor",
                     "name_": "Infer_4@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_1",
+                    "type_": "Tensor",
                     "name_": "Infer_4@output_1"
                 }
             ],
@@ -178,7 +203,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/for_all_users/model/track/fairmot/fairmot.onnx"
+                    "resources/models/track/fairmot/fairmot.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -247,13 +272,13 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvVideoDecode_5@output_0"
                 }
             ],
             "node_type_": "Input",
-            "path_": "/home/lds/nndeploy/resources/videos/person.mp4",
+            "path_": "resources/template/nndeploy-workflow/track/person.mp4",
             "node_repository_": []
         },
         {
@@ -264,44 +289,47 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "VisMOT_3@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/lds/nndeploy/resources/videos/output.mp4",
-            "ref_path_": "/home/lds/nndeploy/resources/videos/person.mp4",
+            "path_": "resources/video/result.track.mp4",
+            "ref_path_": "resources/template/nndeploy-workflow/track/person.mp4",
             "fourcc_": "AVC1",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
-        "FairMotPreProcess_1": {
-            "x": -830.311209024335,
-            "y": -297.1442332361799
+        "layout": {
+            "FairMotPreProcess_1": {
+                "x": -672.0529479980469,
+                "y": -189.44067993164063
+            },
+            "FairMotPostProcess_2": {
+                "x": -72.05294799804688,
+                "y": -176.44067993164063
+            },
+            "VisMOT_3": {
+                "x": 227.94705200195312,
+                "y": -249.24067993164064
+            },
+            "Infer_4": {
+                "x": -372.0529479980469,
+                "y": -189.44067993164063
+            },
+            "OpenCvVideoDecode_5": {
+                "x": -972.0529479980469,
+                "y": -291.34067993164064
+            },
+            "OpenCvVideoEncode_6": {
+                "x": 527.9470520019531,
+                "y": -236.24067993164064
+            }
         },
-        "FairMotPostProcess_2": {
-            "x": -223.6843910846166,
-            "y": -260.3789715428636
-        },
-        "VisMOT_3": {
-            "x": -215.20009992462056,
-            "y": -11.506430849645866
-        },
-        "Infer_4": {
-            "x": -507.9081449444846,
-            "y": -271.14423323617984
-        },
-        "OpenCvVideoDecode_5": {
-            "x": -1086.2539923508828,
-            "y": -309.870669976174
-        },
-        "OpenCvVideoEncode_6": {
-            "x": 60.53936277525139,
-            "y": -174.12201141623703
-        }
+        "groups": []
     }
 }

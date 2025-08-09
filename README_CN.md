@@ -38,6 +38,43 @@
 
 `param_/device_type_`：设备类型
 
+
+## 分类
+
+### 模型准备
+
+前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/classification目录下。
+
+### 工作流
+
+下载[classification/resnet.json](classification/resnet.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="classification/resnet.png" width=75%>
+  </picture>
+</p>
+
+### 参数配置
+
+参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
+
+#### OpenCvImageDecode
+
+`path_`：输入图片的路径
+
+#### OpenCvImageEncode
+
+`path_`：输出图片的路径
+
+#### Infer
+
+`param_/model_type_`：模型文件的类型
+
+`param_/model_value_`：模型文件的路径
+
+`param_/device_type_`：设备类型
+
 ## 目标追踪
 
 ### 模型准备
@@ -255,7 +292,7 @@
 
 `tokenizer_txt`：tokenizer文件路径
 
-## 换脸算法
+## 换脸
 
 ### 模型准备
 
@@ -264,7 +301,7 @@
 ### 安装python依赖
 
 ```bash
-cd path/nndeploy-workflow/face_swap
+cd path/nndeploy-workflow/face_swap_gan
 pip install -r requirements.txt
 ```
 
@@ -294,11 +331,77 @@ pip install -r requirements.txt
 
 `model_path_`：换脸模型文件
 
+## 换脸+清晰化算法
+
+### 模型准备
+
+前往[模型仓库](https://modelscope.cn/models/nndeploy/nndeploy/summary)拉取模型文件，模型位于nndeploy/face_swap目录下。
+
+### 安装python依赖
+
+```bash
+cd path/nndeploy-workflow/face_swap_gan
+pip install -r requirements.txt
+
+uninstall the current version of basicsr:
+pip uninstall basicsr -y
+
+install basicsr directly from its GitHub repository:
+pip install git+https://github.com/xinntao/BasicSR.git@master
+
+After installation is complete, also reinstall gfpgan:
+pip uninstall gfpgan -y
+pip install git+https://github.com/TencentARC/GFPGAN.git@master
+```
+
+### 工作流
+
+下载[face_swap/face_swap_gan.json](face_swap/face_swap_gan.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+
+<p align="left">
+  <picture>
+    <img alt="nndeploy" src="face_swap/face_swap_gan.png" width=75%>
+  </picture>
+</p>
+
+### 参数配置
+
+参数配置主要包括：输入、输出节点文件路径配置，前后节点的参数配置，推理节点的参数配置。工作流文件已经对大部分参数进行配置，用户仅需要修改以下参数：
+
+#### OpenCvImageDecode
+
+`path_`：输入图片的路径
+
+#### OpenCvImageEncode
+
+`path_`：输出图片的路径
+
+#### InsightFaceSwapper
+
+`model_path_`：换脸模型文件
+
 #### GFPGAN
 
 `model_path_`：人脸清晰模型文件
 
 ## 换脸+分割
+
+### 安装python依赖
+
+```bash
+cd path/nndeploy-workflow/face_swap_gan
+pip install -r requirements.txt
+
+uninstall the current version of basicsr:
+pip uninstall basicsr -y
+
+install basicsr directly from its GitHub repository:
+pip install git+https://github.com/xinntao/BasicSR.git@master
+
+After installation is complete, also reinstall gfpgan:
+pip uninstall gfpgan -y
+pip install git+https://github.com/TencentARC/GFPGAN.git@master
+```
 
 ### 模型准备
 
@@ -306,11 +409,11 @@ pip install -r requirements.txt
 
 ### 工作流
 
-下载[creative/face_swap_seg.json](creative/face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
-creative/face_swap_seg.json
+下载[creative/face_swap_gan_seg.json](creative/face_swap_gan_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+creative/face_swap_gan_seg.json
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="creative/face_swap_seg.png" width=75%>
+    <img alt="nndeploy" src="creative/face_swap_gan_seg.png" width=75%>
   </picture>
 </p>
 
@@ -322,11 +425,11 @@ creative/face_swap_seg.json
 
 ### 工作流
 
-下载[creative/face_swap_seg.json](creative/face_swap_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
+下载[creative/face_swap_gan_seg.json](creative/face_swap_gan_seg.json)工作流文件，通过前端工作流的上传功能上传文件后，即可看见工作流。
 
 <p align="left">
   <picture>
-    <img alt="nndeploy" src="creative/face_swap_seg.png" width=75%>
+    <img alt="nndeploy" src="creative/face_swap_gan_seg.png" width=75%>
   </picture>
 </p>
 

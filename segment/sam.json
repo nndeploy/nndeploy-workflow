@@ -1,7 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "sam.json",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "name_": "Segment Anything",
+    "developer_": "acsars520",
+    "source_": "https://github.com/facebookresearch/segment-anything",
+    "desc_": "Segment Anything workflow that segments images using Segment Anything model",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -18,6 +20,22 @@
     "queue_max_size_": 16,
     "is_loop_max_flag_": true,
     "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:segment/sam_vit_b_01ec64_encoder_name.onnx",
+        "modelscope@nndeploy/nndeploy:segment/sam_vit_b_01ec64_decoder.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -29,13 +47,13 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_1@output_0"
                 }
             ],
             "node_type_": "Input",
-            "path_": "D:\\Program\\mgtv\\temp\\nndeploy\\server\\resources\\images\\sample.jpg",
+            "path_": "resources/template/nndeploy-workflow/segment/sample.jpg",
             "node_repository_": []
         },
         {
@@ -46,16 +64,16 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_1@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "output_0",
+                    "type_": "Tensor",
                     "name_": "CvtResizePadNormTrans_2@output_0"
                 }
             ],
@@ -109,16 +127,16 @@
             "is_dynamic_input_": true,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "input",
+                    "type_": "Tensor",
                     "name_": "CvtResizePadNormTrans_2@output_0"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "image_embeddings",
+                    "type_": "Tensor",
                     "name_": "Infer_3@image_embeddings"
                 }
             ],
@@ -128,7 +146,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "D:\\Program\\mgtv\\temp\\nndeploy\\server\\resources\\models\\sam_vit_b_01ec64_encoder_name.onnx"
+                    "resources/models/segment/sam_vit_b_01ec64_encoder_name.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -195,16 +213,16 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_1@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "SAMPointsParam",
                     "desc_": "output_0",
+                    "type_": "SAMPointsParam",
                     "name_": "SelectPointNode_5@output_0"
                 }
             ],
@@ -231,26 +249,26 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "SAMPointsParam",
                     "desc_": "input_0",
+                    "type_": "SAMPointsParam",
                     "name_": "SelectPointNode_5@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "output_0",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_1",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_1"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_2",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_2"
                 }
             ],
@@ -265,26 +283,26 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "input_0",
+                    "type_": "Tensor",
                     "name_": "Infer_4@masks"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "input_1",
+                    "type_": "Tensor",
                     "name_": "Infer_4@iou_predictions"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "input_2",
+                    "type_": "Tensor",
                     "name_": "Infer_4@low_res_masks"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "SAMPostProcess_7@output_0"
                 }
             ],
@@ -301,13 +319,13 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "output_0",
+                    "type_": "Tensor",
                     "name_": "SAMMaskNode_8@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "output_1",
+                    "type_": "Tensor",
                     "name_": "SAMMaskNode_8@output_1"
                 }
             ],
@@ -322,15 +340,15 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "SAMPostProcess_7@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "D:\\Program\\mgtv\\temp\\nndeploy\\server\\resources\\images\\sample_sam.jpg",
+            "path_": "resources/images/result.sam.jpg",
             "node_repository_": []
         },
         {
@@ -341,51 +359,51 @@
             "is_dynamic_input_": true,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "image_embeddings",
+                    "type_": "Tensor",
                     "name_": "Infer_3@image_embeddings"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "point_coords",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "point_labels",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_1"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "mask_input",
+                    "type_": "Tensor",
                     "name_": "SAMMaskNode_8@output_0"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "has_mask_input",
+                    "type_": "Tensor",
                     "name_": "SAMMaskNode_8@output_1"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "orig_im_size",
+                    "type_": "Tensor",
                     "name_": "SAMPointNode_6@output_2"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "masks",
+                    "type_": "Tensor",
                     "name_": "Infer_4@masks"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "iou_predictions",
+                    "type_": "Tensor",
                     "name_": "Infer_4@iou_predictions"
                 },
                 {
-                    "type_": "Tensor",
                     "desc_": "low_res_masks",
+                    "type_": "Tensor",
                     "name_": "Infer_4@low_res_masks"
                 }
             ],
@@ -395,7 +413,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "D:\\Program\\mgtv\\temp\\nndeploy\\server\\resources\\models\\sam_vit_b_01ec64_decoder.onnx"
+                    "resources/models/segment/sam_vit_b_01ec64_decoder.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -463,41 +481,44 @@
         }
     ],
     "nndeploy_ui_layout": {
-        "OpenCvImageDecode_1": {
-            "x": -755.0000915527344,
-            "y": -296.5000457763672
+        "layout": {
+            "OpenCvImageDecode_1": {
+                "x": -1218.0529479980469,
+                "y": -193.3906799316406
+            },
+            "CvtResizePadNormTrans_2": {
+                "x": -918.0529479980469,
+                "y": -282.3906799316406
+            },
+            "Infer_3": {
+                "x": -618.0529479980469,
+                "y": -282.3906799316406
+            },
+            "SelectPointNode_5": {
+                "x": -918.0529479980469,
+                "y": -77.1906799316406
+            },
+            "SAMPointNode_6": {
+                "x": -618.0529479980469,
+                "y": -103.1906799316406
+            },
+            "SAMPostProcess_7": {
+                "x": -18.052947998046875,
+                "y": -215.79067993164062
+            },
+            "SAMMaskNode_8": {
+                "x": -618.0529479980469,
+                "y": -487.5906799316406
+            },
+            "OpenCvImageEncode_9": {
+                "x": 281.9470520019531,
+                "y": -189.79067993164062
+            },
+            "Infer_4": {
+                "x": -318.0529479980469,
+                "y": -254.7906799316406
+            }
         },
-        "CvtResizePadNormTrans_2": {
-            "x": -411.0000915527344,
-            "y": -440.8000457763672
-        },
-        "Infer_3": {
-            "x": 223.99990844726562,
-            "y": -440.80004577636726
-        },
-        "SelectPointNode_5": {
-            "x": -411.0000915527344,
-            "y": -296.5000457763672
-        },
-        "SAMPointNode_6": {
-            "x": -77.00009155273438,
-            "y": -296.5000457763672
-        },
-        "SAMPostProcess_7": {
-            "x": 1008.9999084472656,
-            "y": -340.5000457763672
-        },
-        "SAMMaskNode_8": {
-            "x": 223.99990844726562,
-            "y": -64.50004577636719
-        },
-        "OpenCvImageEncode_9": {
-            "x": 1328.9999084472656,
-            "y": -340.5000457763672
-        },
-        "Infer_4": {
-            "x": 618.9999084472656,
-            "y": -344.2000457763672
-        }
+        "groups": []
     }
 }

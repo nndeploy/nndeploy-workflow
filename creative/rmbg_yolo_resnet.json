@@ -1,14 +1,16 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "rmbg_yolo_resnet.json",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "name_": "Segment + Detect + Classification",
+    "developer_": "Always",
+    "source_": "https://huggingface.co/briaai/RMBG-1.4,https://github.com/ultralytics/ultralytics,https://github.com/KaimingHe/deep-residual-networks",
+    "desc_": "Computer vision workflow integrating background removal, object detection and image classification",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
     "is_dynamic_output_": false,
     "outputs_": [],
     "is_graph_": true,
-    "parallel_type_": "kParallelTypeTask",
+    "parallel_type_": "kParallelTypeNone",
     "is_inner_": false,
     "node_type_": "Intermediate",
     "is_time_profile_": false,
@@ -18,6 +20,23 @@
     "queue_max_size_": 16,
     "is_loop_max_flag_": true,
     "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:classification/resnet50-v1-7.slim.onnx",
+        "modelscope@nndeploy/nndeploy:segment/RMBGV1.4.slim.onnx",
+        "modelscope@nndeploy/nndeploy:detect/yolo11s.sim.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -35,7 +54,7 @@
                 }
             ],
             "node_type_": "Input",
-            "path_": "/home/always/github/public/nndeploy/docs/image/demo/detect/sample.jpg",
+            "path_": "resources/template/nndeploy-workflow/creative/input.rmbg.png",
             "node_repository_": []
         },
         {
@@ -117,13 +136,13 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/modelscope/nndeploy/segment/RMBGV1.4.slim.onnx"
+                    "resources/models/segment/RMBGV1.4.slim.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 4,
+                "num_thread_": 8,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -253,7 +272,7 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/always/github/public/nndeploy/resources/images/sample_rmbg.jpg",
+            "path_": "resources/images/result.creative_rmbg.jpg",
             "node_repository_": []
         },
         {
@@ -294,10 +313,10 @@
                     0.003921568859368563
                 ],
                 "mean_": [
-                    0.5,
-                    0.5,
-                    0.5,
-                    0.5
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 "std_": [
                     1,
@@ -335,13 +354,13 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/modelscope/nndeploy/detect/yolo11s.sim.onnx"
+                    "resources/models/detect/yolo11s.sim.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 4,
+                "num_thread_": 8,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -471,7 +490,7 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/always/github/public/nndeploy/resources/images/sample_yolov11.jpg",
+            "path_": "resources/images/result.creative_yolo.jpg",
             "node_repository_": []
         },
         {
@@ -553,13 +572,13 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/modelscope/nndeploy/classification/resnet50-v1-7.slim.onnx"
+                    "resources/models/classification/resnet50-v1-7.slim.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 4,
+                "num_thread_": 8,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -686,74 +705,77 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/always/github/public/nndeploy/resources/images/sample_resnet.jpg",
+            "path_": "resources/images/result.creative_resnet.jpg",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
-        "OpenCvImageDecode_11": {
-            "x": -1182.0529479980469,
-            "y": -294.1906799316404
+        "layout": {
+            "OpenCvImageDecode_11": {
+                "x": 104.0899940185771,
+                "y": 186.29670454901168
+            },
+            "CvtResizeNormTrans_12": {
+                "x": 365.12260049413703,
+                "y": 105.55005981422887
+            },
+            "Infer_13": {
+                "x": 606.1950405968446,
+                "y": 105.55005981422887
+            },
+            "RMBGPostProcess_14": {
+                "x": 850.3514955865777,
+                "y": 80.91339115375457
+            },
+            "DrawMask_15": {
+                "x": 1097.0360842509324,
+                "y": 80.91339115375457
+            },
+            "OpenCvImageEncode_16": {
+                "x": 1345.9972376751912,
+                "y": 14.773367228063066
+            },
+            "CvtResizeNormTrans_17": {
+                "x": 365.12260049413703,
+                "y": 330.82336722806315
+            },
+            "Infer_18": {
+                "x": 606.1950405968446,
+                "y": 330.82336722806315
+            },
+            "YoloPostProcess_19": {
+                "x": 850.3514955865777,
+                "y": 332.18669856758885
+            },
+            "DrawBox_20": {
+                "x": 1104.0512699529909,
+                "y": 306.18669856758885
+            },
+            "OpenCvImageEncode_21": {
+                "x": 1345.9972376751912,
+                "y": 305.5209717651911
+            },
+            "CvtResizeNormTrans_22": {
+                "x": 366.48593183366273,
+                "y": 609.5733373209487
+            },
+            "Infer_23": {
+                "x": 607.5583719363703,
+                "y": 609.5733373209487
+            },
+            "ClassificationPostProcess_24": {
+                "x": 851.7148269261035,
+                "y": 610.9366686604744
+            },
+            "DrawLable_25": {
+                "x": 1098.3994155904581,
+                "y": 586.0866686604744
+            },
+            "OpenCvImageEncode_26": {
+                "x": 1347.360569014717,
+                "y": 602.4466447347828
+            }
         },
-        "CvtResizeNormTrans_12": {
-            "x": -882.0529479980469,
-            "y": -337.2906799316403
-        },
-        "Infer_13": {
-            "x": -610.7238129738894,
-            "y": -387.09067993164035
-        },
-        "RMBGPostProcess_14": {
-            "x": -296.3883804859681,
-            "y": -442.49067993164033
-        },
-        "DrawMask_15": {
-            "x": 17.947052001953125,
-            "y": -456.3906799316404
-        },
-        "OpenCvImageEncode_16": {
-            "x": 317.9470520019531,
-            "y": -456.99067993164044
-        },
-        "CvtResizeNormTrans_17": {
-            "x": -882.0529479980469,
-            "y": -128.59067993164024
-        },
-        "Infer_18": {
-            "x": -582.0529479980469,
-            "y": -128.59067993164024
-        },
-        "YoloPostProcess_19": {
-            "x": -282.0529479980469,
-            "y": -128.59067993164024
-        },
-        "DrawBox_20": {
-            "x": 25.397954074540166,
-            "y": -154.59067993164035
-        },
-        "OpenCvImageEncode_21": {
-            "x": 317.9470520019531,
-            "y": -191.59067993164024
-        },
-        "CvtResizeNormTrans_22": {
-            "x": -882.0529479980469,
-            "y": 73.6093200683597
-        },
-        "Infer_23": {
-            "x": -582.0529479980469,
-            "y": 73.6093200683597
-        },
-        "ClassificationPostProcess_24": {
-            "x": -282.0529479980469,
-            "y": 73.6093200683597
-        },
-        "DrawLable_25": {
-            "x": 17.947052001953125,
-            "y": 47.60932006835969
-        },
-        "OpenCvImageEncode_26": {
-            "x": 317.9470520019531,
-            "y": 94.20932006835938
-        }
+        "groups": []
     }
 }

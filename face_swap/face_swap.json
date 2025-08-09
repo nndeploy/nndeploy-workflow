@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "face_swap_v2.json",
+    "name_": "Face swap",
     "developer_": "Always",
-    "source_": "https://github.com/solveditnpc/deep-live-cam",
-    "desc_": "InsightFace Swapper: swap face from image",
+    "source_": "https://github.com/hacksider/Deep-Live-Cam",
+    "desc_": "Face swap workflow that swaps faces between source and target images using deep learning models",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -30,7 +30,7 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "template[http,modelscope]@https://template.cn/template.onnx"
+        "modelscope@nndeploy/nndeploy:face_swap/inswapper_128_fp16.onnx"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -52,7 +52,7 @@
                 }
             ],
             "node_type_": "Input",
-            "path_": "/home/always/github/public/nndeploy/resources/images/musk.jpg",
+            "path_": "resources/template/nndeploy-workflow/face_swap/musk.jpg",
             "node_repository_": []
         },
         {
@@ -71,7 +71,7 @@
                 }
             ],
             "node_type_": "Input",
-            "path_": "/home/always/github/public/nndeploy/resources/images/speed.png",
+            "path_": "resources/template/nndeploy-workflow/face_swap/speed.png",
             "node_repository_": []
         },
         {
@@ -171,36 +171,10 @@
             "mask_down_size_": 0.5,
             "mask_feather_ratio_": 8,
             "mask_size_": 1,
-            "model_path_": "/home/always/github/Deep-Live-Cam/models/inswapper_128_fp16.onnx",
+            "model_path_": "resources/models/face_swap/inswapper_128_fp16.onnx",
             "providers_": [
                 "CPUExecutionProvider"
             ],
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy.gan.GFPGAN",
-            "name_": "GFPGAN_20",
-            "desc_": "GFPGAN: Make faces clearer",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "InsightFaceSwapper_19@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "GFPGAN_20@output_0"
-                }
-            ],
-            "node_type_": "Intermediate",
-            "model_path_": "/home/always/github/Deep-Live-Cam/models/GFPGANv1.4.pth",
-            "upscale_": 1,
             "node_repository_": []
         },
         {
@@ -213,45 +187,41 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "GFPGAN_20@output_0"
+                    "name_": "InsightFaceSwapper_19@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/always/github/public/nndeploy/resources/images/musk_speed.png",
+            "path_": "resources/images/result.face_swap.png",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
             "OpenCvImageDecode_15": {
-                "x": -1057.0529479980469,
-                "y": -455.99067993164056
+                "x": -1101.0529479980469,
+                "y": -433.99067993164056
             },
             "OpenCvImageDecode_16": {
-                "x": -1057.0529479980469,
-                "y": -168.29067993164062
+                "x": -1101.0529479980469,
+                "y": -146.29067993164065
             },
             "InsightFaceAnalysis_17": {
-                "x": -757.0529479980469,
-                "y": -401.7406799316406
+                "x": -801.0529479980469,
+                "y": -379.74067993164067
             },
             "nndeploy.face.InsightFaceAnalysis_18": {
-                "x": -757.0529479980469,
-                "y": -165.54067993164062
+                "x": -801.0529479980469,
+                "y": -143.54067993164065
             },
             "InsightFaceSwapper_19": {
-                "x": -457.0529479980469,
-                "y": -191.54067993164062
-            },
-            "GFPGAN_20": {
-                "x": -157.05294799804688,
-                "y": -165.54067993164062
+                "x": -508.0529479980469,
+                "y": -274.74067993164067
             },
             "OpenCvImageEncode_21": {
-                "x": 142.94705200195312,
-                "y": -165.54067993164062
+                "x": -224.05294799804688,
+                "y": -274.74067993164067
             }
         },
         "groups": []

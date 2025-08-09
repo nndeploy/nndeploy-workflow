@@ -1,15 +1,43 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "stable_diffusion_1.5.json",
+    "name_": "Text 2 Image: stable_diffusion_1.5",
+    "developer_": "zuiren",
+    "source_": "https://github.com/CompVis/stable-diffusion",
+    "desc_": "Text 2 Image workflow that generates images from text using stable_diffusion_1.5 model",
     "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
     "inputs_": [],
+    "is_dynamic_output_": false,
     "outputs_": [],
-    "is_external_stream_": false,
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
     "is_inner_": false,
+    "node_type_": "Intermediate",
     "is_time_profile_": false,
     "is_debug_": false,
+    "is_external_stream_": false,
     "is_graph_node_share_stream_": true,
     "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/tokenizer/tokenizer.json",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/text_encoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/vae_decoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/unet/model.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
     "node_repository_": [
         {
             "key_": "nndeploy::stable_diffusion::InitTokenText",
@@ -76,7 +104,7 @@
             "param_": {
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "/home/lds/stable-diffusion.onnx/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
@@ -110,7 +138,7 @@
             "param_": {
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "/home/lds/stable-diffusion.onnx/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
@@ -195,7 +223,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/stable-diffusion.onnx/fp16/text_encoder/model.onnx"
+                    "resources/models/stable_diffusion/fp16/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -477,7 +505,7 @@
                         "model_type_": "kModelTypeOnnx",
                         "is_path_": true,
                         "model_value_": [
-                            "/home/lds/stable-diffusion.onnx/fp16/unet/model.onnx"
+                            "resources/models/stable_diffusion/fp16/unet/model.onnx"
                         ],
                         "external_model_data_": [
                             ""
@@ -650,7 +678,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/stable-diffusion.onnx/fp16/vae_decoder/model.onnx"
+                    "resources/models/stable_diffusion/fp16/vae_decoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -749,70 +777,73 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/lds/nndeploy/resources/images/result.jpg",
+            "path_": "resources/images/result.sd.15.jpg",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
-        "InitTokenText_0": {
-            "x": 100,
-            "y": 103
+        "layout": {
+            "InitTokenText_0": {
+                "x": 100,
+                "y": 102.6
+            },
+            "InitTokenText_1": {
+                "x": 100,
+                "y": 281.79999999999995
+            },
+            "TokenizerEncodeCpp_3": {
+                "x": 400,
+                "y": 102.6
+            },
+            "TokenizerEncodeCpp_4": {
+                "x": 400,
+                "y": 281.79999999999995
+            },
+            "CvtTokenIds2Tensor_5": {
+                "x": 700,
+                "y": 102.6
+            },
+            "CvtTokenIds2Tensor_6": {
+                "x": 700,
+                "y": 281.79999999999995
+            },
+            "Infer_7": {
+                "x": 1000,
+                "y": 102.6
+            },
+            "Infer_8": {
+                "x": 1000,
+                "y": 281.79999999999995
+            },
+            "ConcatEmbedding_9": {
+                "x": 1300,
+                "y": 179.2
+            },
+            "InitLatents_10": {
+                "x": 1300,
+                "y": -7.105427357601002e-15
+            },
+            "Denoise_11": {
+                "x": 1600,
+                "y": 83.1
+            },
+            "ScaleLatents_12": {
+                "x": 1900,
+                "y": 96.1
+            },
+            "Infer_13": {
+                "x": 2200,
+                "y": 96.1
+            },
+            "TensorToMat_0": {
+                "x": 2500,
+                "y": 96.1
+            },
+            "OpenCvImageEncode_1": {
+                "x": 2800,
+                "y": 96.1
+            }
         },
-        "InitTokenText_1": {
-            "x": 100,
-            "y": 283
-        },
-        "TokenizerEncodeCpp_3": {
-            "x": 400,
-            "y": 103
-        },
-        "TokenizerEncodeCpp_4": {
-            "x": 400,
-            "y": 283
-        },
-        "CvtTokenIds2Tensor_5": {
-            "x": 700,
-            "y": 103
-        },
-        "CvtTokenIds2Tensor_6": {
-            "x": 700,
-            "y": 283
-        },
-        "Infer_7": {
-            "x": 1000,
-            "y": 103
-        },
-        "Infer_8": {
-            "x": 1000,
-            "y": 283
-        },
-        "ConcatEmbedding_9": {
-            "x": 1300,
-            "y": 180
-        },
-        "InitLatents_10": {
-            "x": 1300,
-            "y": 0
-        },
-        "Denoise_11": {
-            "x": 1600,
-            "y": 83.5
-        },
-        "ScaleLatents_12": {
-            "x": 1900,
-            "y": 96.5
-        },
-        "Infer_13": {
-            "x": 2200,
-            "y": 96.5
-        },
-        "TensorToMat_0": {
-            "x": 2500,
-            "y": 96.5
-        },
-        "OpenCvImageEncode_1": {
-            "x": 1718.6619718309857,
-            "y": 484.73943661971833
-        }
+        "groups": []
     }
 }

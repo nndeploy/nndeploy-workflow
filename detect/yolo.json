@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "yolo.json",
+    "name_": "Detect Yolo",
     "developer_": "Always",
-    "source_": "https://github.com/solveditnpc/deep-live-cam",
-    "desc_": "YOLO Object Detection: Real-time object detection using YOLO (You Only Look Once) algorithm for identifying and localizing objects in images",
+    "source_": "https://github.com/ultralytics/ultralytics",
+    "desc_": "YOLO-based object detection workflow for identifying and locating multiple objects in images",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -30,7 +30,7 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "template[http,modelscope]@https://template.cn/template.onnx"
+        "modelscope@nndeploy/nndeploy:detect/yolo11s.sim.onnx",
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -52,7 +52,7 @@
                 }
             ],
             "node_type_": "Input",
-            "path_": "/home/always/github/public/nndeploy/docs/image/demo/detect/sample.jpg",
+            "path_": "resources/template/nndeploy-workflow/detect/input.yolo.png",
             "node_repository_": []
         },
         {
@@ -134,7 +134,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/modelscope/nndeploy/detect/yolo11s.sim.onnx"
+                    "resources/models/detect/yolo11s.sim.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -270,34 +270,37 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "/home/always/github/public/nndeploy/resources/images/sample_yolov11.jpg",
+            "path_": "resources/images/result.yolo.png",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
-        "OpenCvImageDecode_11": {
-            "x": 258.2045332225753,
-            "y": -200.54095760608138
+        "layout": {
+            "OpenCvImageDecode_11": {
+                "x": 100,
+                "y": -1.4210854715202004e-14
+            },
+            "CvtResizeNormTrans_17": {
+                "x": 400,
+                "y": 104.04999999999998
+            },
+            "Infer_18": {
+                "x": 700,
+                "y": 104.04999999999998
+            },
+            "YoloPostProcess_19": {
+                "x": 1000,
+                "y": 104.04999999999998
+            },
+            "DrawBox_20": {
+                "x": 1300,
+                "y": 41.24999999999998
+            },
+            "OpenCvImageEncode_21": {
+                "x": 1600,
+                "y": -1.4210854715202004e-14
+            }
         },
-        "CvtResizeNormTrans_17": {
-            "x": 523.6669238570836,
-            "y": -74.54095760608142
-        },
-        "Infer_18": {
-            "x": 764.6187530064041,
-            "y": -74.54095760608142
-        },
-        "YoloPostProcess_19": {
-            "x": 1036.7658422277816,
-            "y": -74.54095760608142
-        },
-        "DrawBox_20": {
-            "x": 1287.7447192574061,
-            "y": -200.54095760608138
-        },
-        "OpenCvImageEncode_21": {
-            "x": 1295.5435342754206,
-            "y": 4.659042393918588
-        }
+        "groups": []
     }
 }
