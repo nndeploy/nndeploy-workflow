@@ -33,7 +33,8 @@
         "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/tokenizer/tokenizer.json",
         "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/text_encoder/model.onnx",
         "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/vae_decoder/model.onnx",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/model.onnx"
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/weights.pb"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
