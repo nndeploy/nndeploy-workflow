@@ -34,7 +34,8 @@
         "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data",
         "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm_config.json",
         "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.txt",
-        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/embeddings_bf16.bin"
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/embeddings_bf16.bin",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.json"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
