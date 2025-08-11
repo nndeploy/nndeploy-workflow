@@ -59,7 +59,7 @@
             "node_type_": "Input",
             "param_": {
                 "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
-                "user_content_": "\u8c01\u662f\u674e\u767d"
+                "user_content_": "谁是李白"
             },
             "node_repository_": []
         },
@@ -242,7 +242,7 @@
                             "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCpu:0",
-                        "num_thread_": 1,
+                        "num_thread_": 8,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
                         "input_name_": [
@@ -484,7 +484,7 @@
                             "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCpu:0",
-                        "num_thread_": 1,
+                        "num_thread_": 8,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
                         "input_name_": [
