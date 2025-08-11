@@ -241,7 +241,7 @@
                         "external_model_data_": [
                             "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
-                        "device_type_": "kDeviceTypeCodeCuda:0",
+                        "device_type_": "kDeviceTypeCodeCpu:0",
                         "num_thread_": 1,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
@@ -483,7 +483,7 @@
                         "external_model_data_": [
                             "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
-                        "device_type_": "kDeviceTypeCodeCuda:0",
+                        "device_type_": "kDeviceTypeCodeCpu:0",
                         "num_thread_": 1,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
