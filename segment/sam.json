@@ -53,7 +53,7 @@
                 }
             ],
             "node_type_": "Input",
-            "path_": "resources/template/nndeploy-workflow/segment/sample.jpg",
+            "path_": "resources/template/nndeploy-workflow/segment/input.rmbg.png",
             "node_repository_": []
         },
         {

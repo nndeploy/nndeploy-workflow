@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Detect Yolo",
+    "name_": "Detect YOLO",
     "developer_": "Always",
     "source_": "https://github.com/ultralytics/ultralytics",
     "desc_": "YOLO-based object detection workflow for identifying and locating multiple objects in images",
@@ -30,7 +30,7 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:detect/yolo11s.sim.onnx",
+        "modelscope@nndeploy/nndeploy:detect/yolo11s.sim.onnx"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"

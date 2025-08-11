@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Face swap v4",
+    "name_": "Face Swap + GAN + Segment",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam,https://huggingface.co/briaai/RMBG-1.4",
-    "desc_": "Face swap workflow integrating face swap, GAN and segmentation",
+    "desc_": "Face swap workflow integrating face swap, GAN and Segmentation",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -452,8 +452,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "InsightFaceSwapper_19@output_0"
                 }
             ],
@@ -492,7 +492,7 @@
             },
             "OpenCvImageEncode_21": {
                 "x": -563.0529479980469,
-                "y": -498.84067993164064
+                "y": -600.8406799316406
             },
             "CvtResizeNormTrans_12": {
                 "x": -563.0529479980469,
@@ -507,16 +507,16 @@
                 "y": -275.64067993164065
             },
             "DrawMask_15": {
-                "x": 336.9470520019531,
-                "y": -163.04067993164068
+                "x": 330.9470520019531,
+                "y": -195.04067993164068
             },
             "OpenCvImageEncode_16": {
-                "x": 636.9470520019531,
-                "y": -150.04067993164068
+                "x": 585.9470520019531,
+                "y": -195.04067993164068
             },
             "OpenCvImageEncode_22": {
                 "x": -863.0529479980469,
-                "y": -343.58135986328125
+                "y": -569.2406799316407
             }
         },
         "groups": []

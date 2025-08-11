@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Face swap",
+    "name_": "Face Swap",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam",
     "desc_": "Face swap workflow that swaps faces between source and target images using deep learning models",

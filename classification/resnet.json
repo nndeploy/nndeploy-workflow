@@ -3,7 +3,7 @@
     "name_": "Classification ResNet",
     "developer_": "Always",
     "source_": "https://github.com/KaimingHe/deep-residual-networks",
-    "desc_": "Image classification workflow based on ResNet deep residual network",
+    "desc_": "Image classification workflow based on ResNet network",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],

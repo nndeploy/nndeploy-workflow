@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Track",
+    "name_": "Track FairMot",
     "developer_": "zuiren",
     "source_": "https://github.com/ifzhang/FairMOT",
     "desc_": "Track workflow that tracks objects in videos using fairmot models",
@@ -203,13 +203,13 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/track/fairmot/fairmot.onnx"
+                    "resources/models/track/fairmot.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
-                "device_type_": "kDeviceTypeCodeCuda:0",
-                "num_thread_": 1,
+                "device_type_": "kDeviceTypeCodeCpu:0",
+                "num_thread_": 8,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -297,7 +297,7 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "resources/video/result.track.mp4",
+            "path_": "resources/videos/result.track.mp4",
             "ref_path_": "resources/template/nndeploy-workflow/track/person.mp4",
             "fourcc_": "AVC1",
             "node_repository_": []
@@ -306,28 +306,28 @@
     "nndeploy_ui_layout": {
         "layout": {
             "FairMotPreProcess_1": {
-                "x": -672.0529479980469,
-                "y": -189.44067993164063
+                "x": 400,
+                "y": 101.9
             },
             "FairMotPostProcess_2": {
-                "x": -72.05294799804688,
-                "y": -176.44067993164063
+                "x": 1000,
+                "y": 114.9
             },
             "VisMOT_3": {
-                "x": 227.94705200195312,
-                "y": -249.24067993164064
+                "x": 1300,
+                "y": 42.1
             },
             "Infer_4": {
-                "x": -372.0529479980469,
-                "y": -189.44067993164063
+                "x": 700,
+                "y": 101.9
             },
             "OpenCvVideoDecode_5": {
-                "x": -972.0529479980469,
-                "y": -291.34067993164064
+                "x": 100,
+                "y": 0
             },
             "OpenCvVideoEncode_6": {
-                "x": 527.9470520019531,
-                "y": -236.24067993164064
+                "x": 1600,
+                "y": 55.1
             }
         },
         "groups": []

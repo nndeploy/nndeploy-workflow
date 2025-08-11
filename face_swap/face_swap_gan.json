@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "face_swap_gan.json",
+    "name_": "Face Swap + Gan",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam",
-    "desc_": "Face swap workflow integrating face swap and GAN",
+    "desc_": "Face swap workflow integrating face swap and GAN(Make faces clearer)",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -257,27 +257,27 @@
             },
             "InsightFaceAnalysis_17": {
                 "x": 400,
-                "y": 54.249999999999964
+                "y": -2.842170943040401e-14
             },
             "nndeploy.face.InsightFaceAnalysis_18": {
                 "x": 400,
-                "y": 297.6499999999999
+                "y": 287.69999999999993
             },
             "InsightFaceSwapper_19": {
-                "x": 700,
-                "y": 271.65
+                "x": 692,
+                "y": 0
             },
             "OpenCvImageEncode_21": {
                 "x": 1000,
-                "y": 21.62499999999997
+                "y": 0
             },
             "GFPGAN_22": {
                 "x": 1000,
-                "y": 320.32499999999993
+                "y": 287.69999999999993
             },
             "OpenCvImageEncode_23": {
-                "x": 1300,
-                "y": 260.57499999999993
+                "x": 1299,
+                "y": 287.69999999999993
             }
         },
         "groups": []

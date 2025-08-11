@@ -3,7 +3,7 @@
     "name_": "Segment RMBG",
     "developer_": "Always",
     "source_": "https://huggingface.co/briaai/RMBG-1.4",
-    "desc_": "Background removal workflow that removes background from images using RMBG-1.4 model",
+    "desc_": "Background removal workflow that removes background from images using RMBG model",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -140,7 +140,7 @@
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 4,
+                "num_thread_": 8,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -294,11 +294,11 @@
             },
             "DrawMask_15": {
                 "x": -10.052947998046875,
-                "y": -267.1906799316406
+                "y": -301.1906799316406
             },
             "OpenCvImageEncode_16": {
                 "x": 289.9470520019531,
-                "y": -254.19067993164063
+                "y": -301.1906799316406
             }
         },
         "groups": []
