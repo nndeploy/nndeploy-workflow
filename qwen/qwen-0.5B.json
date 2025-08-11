@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "LLM Qwen",
+    "name_": "LLM Qwen2_0.5B",
     "developer_": "zuiren",
-    "source_": "https://github.com/QwenLM/Qwen2.5",
-    "desc_": "LLM workflow that uses Qwen2.5 model",
+    "source_": "https://modelscope.cn/models/qwen/Qwen2-0.5B-Instruct/summary",
+    "desc_": "Qwen2/0.5B is a compact LLM with 0.5 billion parameters",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],

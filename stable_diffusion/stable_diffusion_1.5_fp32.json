@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Text 2 Image: stable_diffusion_1.5",
+    "name_": "Text 2 Image: stable_diffusion_1.5_fp32",
     "developer_": "zuiren",
     "source_": "https://github.com/CompVis/stable-diffusion",
-    "desc_": "Text 2 Image workflow that generates images from text using stable_diffusion_1.5 model",
+    "desc_": "Stable Diffusion is a text-to-image model that generates high-quality images from textual descriptions using the stable_diffusion_1.5 model.",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -30,10 +30,10 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/tokenizer/tokenizer.json",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/text_encoder/model.onnx",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/vae_decoder/model.onnx",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/unet/model.onnx"
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/tokenizer/tokenizer.json",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/text_encoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/vae_decoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/model.onnx"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -104,7 +104,7 @@
             "param_": {
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp32/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
@@ -138,7 +138,7 @@
             "param_": {
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp32/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
@@ -223,7 +223,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/stable_diffusion/fp16/text_encoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -310,7 +310,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/stable-diffusion.onnx/fp16/text_encoder/model.onnx"
+                    "/home/lds/stable-diffusion.onnx/fp32/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -505,10 +505,10 @@
                         "model_type_": "kModelTypeOnnx",
                         "is_path_": true,
                         "model_value_": [
-                            "resources/models/stable_diffusion/fp16/unet/model.onnx"
+                            "resources/models/stable_diffusion/fp32/unet/model.onnx"
                         ],
                         "external_model_data_": [
-                            ""
+                            "resources/models/stable_diffusion/fp32/unet/weights.pb"
                         ],
                         "input_num_": 3,
                         "input_name_": [
@@ -678,7 +678,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/stable_diffusion/fp16/vae_decoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/vae_decoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""

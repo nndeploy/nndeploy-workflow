@@ -1,0 +1,849 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Text 2 Image: stable_diffusion_1.5_fp16",
+    "developer_": "zuiren",
+    "source_": "https://github.com/CompVis/stable-diffusion",
+    "desc_": "Stable Diffusion is a text-to-image model that generates high-quality images from textual descriptions using the stable_diffusion_1.5 model. It requires ONNX Runtime version 1.18.0 or higher (GPU version) for optimal performance.",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/tokenizer/tokenizer.json",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/text_encoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/vae_decoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/unet/model.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::stable_diffusion::InitTokenText",
+            "name_": "InitTokenText_0",
+            "desc_": "construct tokenize text [String => TokenizerText]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Param",
+                    "name_": "InitTokenText_0@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "prompt_": "A cat holding a sign that says hello world",
+            "size_": 1,
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::InitTokenText",
+            "name_": "InitTokenText_1",
+            "desc_": "construct tokenize text [String => TokenizerText]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Param",
+                    "name_": "InitTokenText_1@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "prompt_": "",
+            "size_": 1,
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
+            "name_": "TokenizerEncodeCpp_3",
+            "desc_": "A tokenizer encode node that uses the C++ tokenizers library to encode text into token IDs. Supports HuggingFace and BPE tokenizers. Can encode single strings or batches of text. Provides vocabulary lookup and token-to-ID conversion.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Param",
+                    "name_": "InitTokenText_0@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Param",
+                    "name_": "TokenizerEncodeCpp_3@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "is_path_": true,
+                "tokenizer_type_": "kTokenizerTypeHF",
+                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "model_blob_": "",
+                "vocab_blob_": "",
+                "merges_blob_": "",
+                "added_tokens_": "",
+                "max_length_": 77
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
+            "name_": "TokenizerEncodeCpp_4",
+            "desc_": "A tokenizer encode node that uses the C++ tokenizers library to encode text into token IDs. Supports HuggingFace and BPE tokenizers. Can encode single strings or batches of text. Provides vocabulary lookup and token-to-ID conversion.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Param",
+                    "name_": "InitTokenText_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Param",
+                    "name_": "TokenizerEncodeCpp_4@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "is_path_": true,
+                "tokenizer_type_": "kTokenizerTypeHF",
+                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "model_blob_": "",
+                "vocab_blob_": "",
+                "merges_blob_": "",
+                "added_tokens_": "",
+                "max_length_": 77
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
+            "name_": "CvtTokenIds2Tensor_5",
+            "desc_": "TokenizerIds to device::Tensor",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Param",
+                    "name_": "TokenizerEncodeCpp_3@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "CvtTokenIds2Tensor_5@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
+            "name_": "CvtTokenIds2Tensor_6",
+            "desc_": "TokenizerIds to device::Tensor",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Param",
+                    "name_": "TokenizerEncodeCpp_4@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "CvtTokenIds2Tensor_6@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_7",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "CvtTokenIds2Tensor_5@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_7@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "inference_type_": "kInferenceTypeOnnxRuntime",
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/stable_diffusion/fp16/text_encoder/model.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "device_type_": "kDeviceTypeCodeCuda:0",
+                "num_thread_": 1,
+                "gpu_tune_kernel_": 1,
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_8",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "CvtTokenIds2Tensor_6@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_8@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "inference_type_": "kInferenceTypeOnnxRuntime",
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "/home/lds/stable-diffusion.onnx/fp16/text_encoder/model.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "device_type_": "kDeviceTypeCodeCuda:0",
+                "num_thread_": 1,
+                "gpu_tune_kernel_": 1,
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::ConcatEmbedding",
+            "name_": "ConcatEmbedding_9",
+            "desc_": "concat embedding",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_7@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "Infer_8@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "ConcatEmbedding_9@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "guidance_": 7.5,
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::InitLatents",
+            "name_": "InitLatents_10",
+            "desc_": "init latents [latent image]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "InitLatents_10@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "param_": {
+                "version_": "v1.5",
+                "num_train_timesteps_": 1000,
+                "clip_sample_": false,
+                "num_inference_steps_": 50,
+                "unet_channels_": 4,
+                "image_height_": 512,
+                "image_width_": 512,
+                "guidance_scale_": 7.5,
+                "vae_scale_factor_": 0.1821500062942505,
+                "init_noise_sigma_": 1,
+                "beta_start_": 0.0008500000112690032,
+                "beta_end_": 0.012000000104308128,
+                "beta_schedule_": "scaled_linear",
+                "eta_": 0,
+                "set_alpha_to_one_": false
+            },
+            "size_": 1,
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::Denoise",
+            "name_": "Denoise_11",
+            "desc_": "denoise latents composite node[cfg->unet->ddim]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "InitLatents_10@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "ConcatEmbedding_9@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Denoise_11@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [
+                {
+                    "key_": "nndeploy::infer::Infer",
+                    "name_": "unet_infer",
+                    "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": true,
+                    "inputs_": [
+                        {
+                            "name_": "embeddings",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "portyp70pdu4l"
+                        },
+                        {
+                            "name_": "cfg_latents",
+                            "type_": "Tensor",
+                            "desc_": "input_1",
+                            "id": "port9ho7niwwy"
+                        },
+                        {
+                            "name_": "timestep",
+                            "type_": "NotSet",
+                            "desc_": "input_2",
+                            "id": "porthk2solhk0"
+                        }
+                    ],
+                    "is_dynamic_output_": true,
+                    "outputs_": [
+                        {
+                            "name_": "unet_output",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "porttogre37pv"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "type_": "kInferenceTypeOnnxRuntime",
+                    "param_": {
+                        "inference_type_": "kInferenceTypeOnnxRuntime",
+                        "model_type_": "kModelTypeOnnx",
+                        "is_path_": true,
+                        "model_value_": [
+                            "resources/models/stable_diffusion/fp16/unet/model.onnx"
+                        ],
+                        "external_model_data_": [
+                            ""
+                        ],
+                        "input_num_": 3,
+                        "input_name_": [
+                            "embeddings",
+                            "cfg_latents",
+                            "timestep"
+                        ],
+                        "input_shape_": [
+                            [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        ],
+                        "output_num_": 1,
+                        "output_name_": [
+                            "unet_output"
+                        ],
+                        "encrypt_type_": "kEncryptTypeNone",
+                        "license_": "",
+                        "device_type_": "kDeviceTypeCodeCuda:0",
+                        "num_thread_": 1,
+                        "gpu_tune_kernel_": 1,
+                        "share_memory_mode_": "kShareMemoryTypeNoShare",
+                        "precision_type_": "kPrecisionTypeFp32",
+                        "power_type_": "kPowerTypeNormal",
+                        "is_dynamic_shape_": false,
+                        "min_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "opt_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "max_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "parallel_type_": "kParallelTypeNone",
+                        "worker_num_": 1
+                    },
+                    "id": "nodeonz3zf035"
+                },
+                {
+                    "key_": "nndeploy::stable_diffusion::DDIMSchedule",
+                    "name_": "ddim_schedule",
+                    "desc_": "ddim schedule [unet_output/latents/timestep -> latents]",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "unet_output",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "portuc1007ep8"
+                        },
+                        {
+                            "name_": "prev_latents",
+                            "type_": "Tensor",
+                            "desc_": "input_1",
+                            "id": "porti067ruajf"
+                        },
+                        {
+                            "name_": "timestep",
+                            "type_": "Tensor",
+                            "desc_": "input_2",
+                            "id": "port0guo3knyp"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "latents",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "port1rfdfbew1"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "version_": "v1.5",
+                        "num_train_timesteps_": 1000,
+                        "clip_sample_": false,
+                        "num_inference_steps_": 50,
+                        "unet_channels_": 4,
+                        "image_height_": 512,
+                        "image_width_": 512,
+                        "guidance_scale_": 7.5,
+                        "vae_scale_factor_": 0.1821500062942505,
+                        "init_noise_sigma_": 1,
+                        "beta_start_": 0.0008500000112690032,
+                        "beta_end_": 0.012000000104308128,
+                        "beta_schedule_": "scaled_linear",
+                        "eta_": 0,
+                        "set_alpha_to_one_": false
+                    },
+                    "id": "nodesvqihmcjd"
+                }
+            ]
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::ScaleLatents",
+            "name_": "ScaleLatents_12",
+            "desc_": "stable_diffusion scale latents [device::Tensor->device::Tensor]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Denoise_11@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "ScaleLatents_12@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "vae_scale_factor_": 0.1821500062942505
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_13",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "ScaleLatents_12@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_13@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "inference_type_": "kInferenceTypeOnnxRuntime",
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/stable_diffusion/fp16/vae_decoder/model.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "device_type_": "kDeviceTypeCodeCuda:0",
+                "num_thread_": 1,
+                "gpu_tune_kernel_": 1,
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::TensorToMat",
+            "name_": "TensorToMat_0",
+            "desc_": "save cvmat to image",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_13@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Mat",
+                    "name_": "TensorToMat_0@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_1",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Mat",
+                    "name_": "TensorToMat_0@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "path_": "resources/images/result.sd.15.jpg",
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "InitTokenText_0": {
+                "x": 100,
+                "y": 102.6
+            },
+            "InitTokenText_1": {
+                "x": 100,
+                "y": 281.79999999999995
+            },
+            "TokenizerEncodeCpp_3": {
+                "x": 400,
+                "y": 102.6
+            },
+            "TokenizerEncodeCpp_4": {
+                "x": 400,
+                "y": 281.79999999999995
+            },
+            "CvtTokenIds2Tensor_5": {
+                "x": 700,
+                "y": 102.6
+            },
+            "CvtTokenIds2Tensor_6": {
+                "x": 700,
+                "y": 281.79999999999995
+            },
+            "Infer_7": {
+                "x": 1000,
+                "y": 102.6
+            },
+            "Infer_8": {
+                "x": 1000,
+                "y": 281.79999999999995
+            },
+            "ConcatEmbedding_9": {
+                "x": 1300,
+                "y": 179.2
+            },
+            "InitLatents_10": {
+                "x": 1300,
+                "y": -7.105427357601002e-15
+            },
+            "Denoise_11": {
+                "x": 1600,
+                "y": 83.1
+            },
+            "ScaleLatents_12": {
+                "x": 1900,
+                "y": 96.1
+            },
+            "Infer_13": {
+                "x": 2200,
+                "y": 96.1
+            },
+            "TensorToMat_0": {
+                "x": 2500,
+                "y": 96.1
+            },
+            "OpenCvImageEncode_1": {
+                "x": 2800,
+                "y": 96.1
+            }
+        },
+        "groups": []
+    }
+}
