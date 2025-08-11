@@ -30,11 +30,11 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx",
-        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx.data",
-        "modelscope@nndeploy/nndeploy:qwen/llm_config.json",
-        "modelscope@nndeploy/nndeploy:qwen/tokenizer.txt",
-        "modelscope@nndeploy/nndeploy:qwen/embeddings_bf16.bin"
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm_config.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/embeddings_bf16.bin"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -94,7 +94,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "resources/models/qwen/llm_config.json",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
             "node_repository_": [
                 {
                     "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -238,7 +238,7 @@
                             ""
                         ],
                         "external_model_data_": [
-                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCuda:0",
                         "num_thread_": 1,
@@ -360,7 +360,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "resources/models/qwen/llm_config.jsonn",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
             "node_repository_": [
                 {
                     "key_": "nndeploy::qwen::DecodeEmbeddingNode",
@@ -477,10 +477,10 @@
                         "model_type_": "kModelTypeOnnx",
                         "is_path_": true,
                         "model_value_": [
-                            ""
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx"
                         ],
                         "external_model_data_": [
-                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
                         "device_type_": "kDeviceTypeCodeCuda:0",
                         "num_thread_": 1,
