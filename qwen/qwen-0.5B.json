@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "LLM Qwen",
+    "name_": "LLM Qwen2_0.5B",
     "developer_": "zuiren",
-    "source_": "https://github.com/QwenLM/Qwen2.5",
-    "desc_": "LLM workflow that uses Qwen2.5 model",
+    "source_": "https://modelscope.cn/models/qwen/Qwen2-0.5B-Instruct/summary",
+    "desc_": "Qwen2/0.5B is a compact LLM with 0.5 billion parameters",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "is_dynamic_input_": false,
     "inputs_": [],
@@ -30,11 +30,12 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx",
-        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm.onnx.data",
-        "modelscope@nndeploy/nndeploy:qwen/llm_config.json",
-        "modelscope@nndeploy/nndeploy:qwen/tokenizer.txt",
-        "modelscope@nndeploy/nndeploy:qwen/embeddings_bf16.bin"
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm_config.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/embeddings_bf16.bin",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.json"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -58,7 +59,7 @@
             "node_type_": "Input",
             "param_": {
                 "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
-                "user_content_": "\u8c01\u662f\u674e\u767d"
+                "user_content_": "谁是李白"
             },
             "node_repository_": []
         },
@@ -94,7 +95,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "resources/models/qwen/llm_config.json",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
             "node_repository_": [
                 {
                     "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -238,10 +239,10 @@
                             ""
                         ],
                         "external_model_data_": [
-                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
-                        "device_type_": "kDeviceTypeCodeCuda:0",
-                        "num_thread_": 1,
+                        "device_type_": "kDeviceTypeCodeCpu:0",
+                        "num_thread_": 8,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
                         "input_name_": [
@@ -360,7 +361,7 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "config_path_": "resources/models/qwen/llm_config.jsonn",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
             "node_repository_": [
                 {
                     "key_": "nndeploy::qwen::DecodeEmbeddingNode",
@@ -477,13 +478,13 @@
                         "model_type_": "kModelTypeOnnx",
                         "is_path_": true,
                         "model_value_": [
-                            ""
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx"
                         ],
                         "external_model_data_": [
-                            "resources/models/qwen/Qwen2-0.5B-Instruct/llm.onnx.data"
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
                         ],
-                        "device_type_": "kDeviceTypeCodeCuda:0",
-                        "num_thread_": 1,
+                        "device_type_": "kDeviceTypeCodeCpu:0",
+                        "num_thread_": 8,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
                         "input_name_": [
