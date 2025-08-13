@@ -311,7 +311,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "/home/lds/stable-diffusion.onnx/fp32/text_encoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
