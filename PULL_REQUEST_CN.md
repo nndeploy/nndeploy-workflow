@@ -9,3 +9,4 @@
 + 输入资源 - 名字没有要求，与workflow内部名字一样
 + 封面图片 - 必须是固定尺寸的图片，由于方块格子的限制 - cover.face_swap.jpg （可以从template目录下获取图片数据吗）
 + requirements - requirements.face_swap.txt (可选)（打开该workflw，是否可以启动一个新进程，启动前，先安装该requirements）
++ 操作指南[可选] - readme.face_swap.md(主要描述该工作流依赖python包)
