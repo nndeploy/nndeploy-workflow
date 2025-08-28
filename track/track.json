@@ -299,7 +299,7 @@
             "node_type_": "Output",
             "path_": "resources/videos/result.track.mp4",
             "ref_path_": "resources/template/nndeploy-workflow/track/person.mp4",
-            "fourcc_": "AVC1",
+            "fourcc_": "avc1",
             "node_repository_": []
         }
     ],
