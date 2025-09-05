@@ -33,7 +33,8 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "template[http,modelscope]@https://template.cn/template.onnx"
+        "modelscope@nndeploy/nndeploy:face_swap/inswapper_128_fp16.onnx",
+        "modelscope@nndeploy/nndeploy:face_swap/GFPGANv1.4.pth"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
