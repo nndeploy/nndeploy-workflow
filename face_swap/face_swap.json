@@ -98,7 +98,7 @@
             "node_type_": "Intermediate",
             "insightface_name_": "buffalo_l",
             "providers_": [
-                "CPUExecutionProvider"
+                "CUDAExecutionProvider"
             ],
             "is_one_face_": true,
             "ctx_id": 0,
@@ -128,7 +128,7 @@
             "node_type_": "Intermediate",
             "insightface_name_": "buffalo_l",
             "providers_": [
-                "CPUExecutionProvider"
+                "CUDAExecutionProvider"
             ],
             "is_one_face_": true,
             "ctx_id": 0,
@@ -173,7 +173,7 @@
             "mask_size_": 1,
             "model_path_": "resources/models/face_swap/inswapper_128_fp16.onnx",
             "providers_": [
-                "CPUExecutionProvider"
+                "CUDAExecutionProvider"
             ],
             "node_repository_": []
         },

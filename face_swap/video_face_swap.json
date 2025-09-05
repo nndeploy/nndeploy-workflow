@@ -1,10 +1,13 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Face Swap + Gan",
-    "developer_": "Always",
-    "source_": "https://github.com/hacksider/Deep-Live-Cam",
-    "desc_": "Face swap workflow integrating face swap and GAN(Make faces clearer)",
+    "name_": "VideoFaceSwap",
+    "developer_": "",
+    "source_": "",
+    "desc_": "Graph: Graph for nndeploy in python",
     "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
     "is_dynamic_input_": false,
     "inputs_": [],
     "is_dynamic_output_": false,
@@ -30,8 +33,7 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:face_swap/inswapper_128_fp16.onnx",
-        "modelscope@nndeploy/nndeploy:face_swap/GFPGANv1.4.pth"
+        "template[http,modelscope]@https://template.cn/template.onnx"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -54,25 +56,6 @@
             ],
             "node_type_": "Input",
             "path_": "resources/template/nndeploy-workflow/face_swap/musk.jpg",
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy::codec::OpenCvImageDecode",
-            "name_": "OpenCvImageDecode_16",
-            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_16@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "path_": "resources/template/nndeploy-workflow/face_swap/speed.png",
             "node_repository_": []
         },
         {
@@ -115,7 +98,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_16@output_0"
+                    "name_": "OpenCvVideoDecode_24@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -131,7 +114,7 @@
             "providers_": [
                 "CUDAExecutionProvider"
             ],
-            "is_one_face_": true,
+            "is_one_face_": false,
             "ctx_id": 0,
             "node_repository_": []
         },
@@ -155,7 +138,7 @@
                 {
                     "desc_": "input_2",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_16@output_0"
+                    "name_": "OpenCvVideoDecode_24@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -176,25 +159,6 @@
             "providers_": [
                 "CUDAExecutionProvider"
             ],
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_21",
-            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "InsightFaceSwapper_19@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [],
-            "node_type_": "Output",
-            "path_": "resources/images/result.face_swap.png",
             "node_repository_": []
         },
         {
@@ -226,10 +190,44 @@
             "node_repository_": []
         },
         {
-            "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_23",
-            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "key_": "nndeploy::codec::OpenCvVideoDecode",
+            "name_": "OpenCvVideoDecode_24",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode video using OpenCV, from video file to cv::Mat frames, default color space is BGR",
             "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvVideoDecode_24@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Video",
+            "path_": "resources/videos/video.mp4",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvVideoEncode",
+            "name_": "OpenCvVideoEncode_25",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode video using OpenCV, from cv::Mat frames to video file, supports common video formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
             "is_dynamic_input_": false,
             "inputs_": [
                 {
@@ -241,43 +239,42 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "path_": "resources/images/result.face_swap_gan.png",
+            "io_type_": "Video",
+            "path_": "resources/videos/video.result.mp4",
+            "ref_path_": "resources/videos/video.mp4",
+            "fourcc_": "avc1",
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
             "OpenCvImageDecode_15": {
-                "x": 100,
-                "y": -2.842170943040401e-14
-            },
-            "OpenCvImageDecode_16": {
-                "x": 100,
-                "y": 287.69999999999993
+                "x": -1109.9748213631765,
+                "y": -465.3406799316406
             },
             "InsightFaceAnalysis_17": {
-                "x": 400,
-                "y": -2.842170943040401e-14
+                "x": -809.9748213631765,
+                "y": -465.3406799316406
             },
             "nndeploy.face.InsightFaceAnalysis_18": {
-                "x": 400,
-                "y": 287.69999999999993
+                "x": -809.9748213631765,
+                "y": -177.64067993164065
             },
             "InsightFaceSwapper_19": {
-                "x": 692,
-                "y": 0
-            },
-            "OpenCvImageEncode_21": {
-                "x": 1000,
-                "y": 0
+                "x": -517.9748213631765,
+                "y": -465.3406799316406
             },
             "GFPGAN_22": {
-                "x": 1000,
-                "y": 287.69999999999993
+                "x": -225.9748213631765,
+                "y": -465.3406799316406
             },
-            "OpenCvImageEncode_23": {
-                "x": 1299,
-                "y": 287.69999999999993
+            "OpenCvVideoDecode_24": {
+                "x": -1109.9748213631765,
+                "y": -177.64067993164065
+            },
+            "OpenCvVideoEncode_25": {
+                "x": -225.9748213631765,
+                "y": -177.64067993164065
             }
         },
         "groups": []
