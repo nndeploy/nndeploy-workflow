@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Detect YOLO",
+    "name_": "Detect_YOLO",
     "developer_": "Always",
     "source_": "https://github.com/ultralytics/ultralytics",
     "desc_": "YOLO-based object detection workflow for identifying and locating multiple objects in images",
@@ -37,25 +37,6 @@
     ],
     "node_repository_": [
         {
-            "key_": "nndeploy::codec::OpenCvImageDecode",
-            "name_": "OpenCvImageDecode_11",
-            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "path_": "resources/template/nndeploy-workflow/detect/input.yolo.png",
-            "node_repository_": []
-        },
-        {
             "key_": "nndeploy::preprocess::CvtResizeNormTrans",
             "name_": "CvtResizeNormTrans_17",
             "desc_": "cv::Mat to device::Tensor[cvtcolor->resize->normalize->transpose]",
@@ -65,7 +46,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
+                    "name_": "OpenCvImageDecode_22@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -105,7 +86,11 @@
                     1
                 ]
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -191,7 +176,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::detect::YoloPostProcess",
@@ -223,7 +212,11 @@
                 "model_h_": 640,
                 "model_w_": 640
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::detect::DrawBox",
@@ -235,7 +228,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
+                    "name_": "OpenCvImageDecode_22@output_0"
                 },
                 {
                     "desc_": "input_1",
@@ -252,13 +245,55 @@
                 }
             ],
             "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_22",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_22@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/template/nndeploy-workflow/detect/input.yolo.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_21",
+            "name_": "OpenCvImageEncode_23",
+            "developer_": "",
+            "source_": "",
             "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
             "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
             "is_dynamic_input_": false,
             "inputs_": [
                 {
@@ -270,35 +305,40 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
+            "io_type_": "Image",
             "path_": "resources/images/result.yolo.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
-            "OpenCvImageDecode_11": {
-                "x": 100,
-                "y": -1.4210854715202004e-14
-            },
             "CvtResizeNormTrans_17": {
                 "x": 400,
-                "y": 104.04999999999998
+                "y": 100.94999999999999
             },
             "Infer_18": {
                 "x": 700,
-                "y": 104.04999999999998
+                "y": 100.94999999999999
             },
             "YoloPostProcess_19": {
                 "x": 1000,
-                "y": 104.04999999999998
+                "y": 100.94999999999999
             },
             "DrawBox_20": {
                 "x": 1300,
-                "y": 41.24999999999998
+                "y": 40.94999999999999
             },
-            "OpenCvImageEncode_21": {
-                "x": 1600,
+            "OpenCvImageDecode_22": {
+                "x": 100,
                 "y": -1.4210854715202004e-14
+            },
+            "OpenCvImageEncode_23": {
+                "x": 1292,
+                "y": 233.97499999999997
             }
         },
         "groups": []

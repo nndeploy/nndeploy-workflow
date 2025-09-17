@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Segment Anything",
+    "name_": "Segment_Anything",
     "developer_": "acsars520",
     "source_": "https://github.com/facebookresearch/segment-anything",
     "desc_": "Segment Anything workflow that segments images using Segment Anything model",
@@ -38,25 +38,6 @@
     ],
     "node_repository_": [
         {
-            "key_": "nndeploy::codec::OpenCvImageDecode",
-            "name_": "OpenCvImageDecode_1",
-            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "path_": "resources/template/nndeploy-workflow/segment/input.rmbg.png",
-            "node_repository_": []
-        },
-        {
             "key_": "nndeploy::preprocess::CvtResizePadNormTrans",
             "name_": "CvtResizePadNormTrans_2",
             "desc_": "cv::Mat to device::Tensor[resize->pad->normalize->transpose]",
@@ -66,7 +47,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_10@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -117,7 +98,11 @@
                     0
                 ]
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -203,7 +188,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::segment::SelectPointNode",
@@ -215,7 +204,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_10@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -239,7 +228,11 @@
                 "ori_height": 0,
                 "version": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::segment::SAMPointNode",
@@ -273,7 +266,11 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::segment::SAMPostProcess",
@@ -307,7 +304,11 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::segment::SAMMaskNode",
@@ -330,26 +331,11 @@
                 }
             ],
             "node_type_": "Input",
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_9",
-            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "SAMPostProcess_7@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [],
-            "node_type_": "Output",
-            "path_": "resources/images/result.sam.jpg",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -477,46 +463,112 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_10",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_10@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/template/nndeploy-workflow/segment/input.rmbg.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_11",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "ndarray",
+                    "desc_": "input_0",
+                    "name_": "SAMPostProcess_7@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/result.sam.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
-            "OpenCvImageDecode_1": {
-                "x": -1218.0529479980469,
-                "y": -193.3906799316406
-            },
             "CvtResizePadNormTrans_2": {
-                "x": -918.0529479980469,
-                "y": -282.3906799316406
+                "x": 400,
+                "y": 198
             },
             "Infer_3": {
-                "x": -618.0529479980469,
-                "y": -282.3906799316406
+                "x": 700,
+                "y": 198
             },
             "SelectPointNode_5": {
-                "x": -918.0529479980469,
-                "y": -77.1906799316406
+                "x": 400,
+                "y": 396
             },
             "SAMPointNode_6": {
-                "x": -618.0529479980469,
-                "y": -103.1906799316406
+                "x": 700,
+                "y": 374
             },
             "SAMPostProcess_7": {
-                "x": -18.052947998046875,
-                "y": -215.79067993164062
+                "x": 1300,
+                "y": 265
             },
             "SAMMaskNode_8": {
-                "x": -618.0529479980469,
-                "y": -487.5906799316406
-            },
-            "OpenCvImageEncode_9": {
-                "x": 281.9470520019531,
-                "y": -189.79067993164062
+                "x": 700,
+                "y": 0
             },
             "Infer_4": {
-                "x": -318.0529479980469,
-                "y": -254.7906799316406
+                "x": 1000,
+                "y": 232
+            },
+            "OpenCvImageDecode_10": {
+                "x": 129.4858611825193,
+                "y": 246.43444730077124
+            },
+            "OpenCvImageEncode_11": {
+                "x": 1369.7429305912597,
+                "y": 472
             }
         },
         "groups": []

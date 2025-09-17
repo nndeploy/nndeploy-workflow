@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "LLM Qwen2_0.5B",
+    "name_": "LLM_Qwen2_0.5B.5B",
     "developer_": "zuiren",
     "source_": "https://modelscope.cn/models/qwen/Qwen2-0.5B-Instruct/summary",
     "desc_": "Qwen2/0.5B is a compact LLM with 0.5 billion parameters",
@@ -61,7 +61,11 @@
                 "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
                 "user_content_": "谁是李白"
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::qwen::QwenPrefill",
@@ -327,7 +331,11 @@
                     "node_type_": "Intermediate",
                     "id": "nodetshrf6y93"
                 }
-            ]
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::qwen::QwenDecode",
@@ -600,7 +608,11 @@
                     },
                     "id": "noderq0bt3hrj"
                 }
-            ]
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::qwen::PrintNode",
@@ -618,7 +630,11 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         }
     ],
     "nndeploy_ui_layout": {

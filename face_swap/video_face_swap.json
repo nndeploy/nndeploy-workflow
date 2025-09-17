@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "VideoFaceSwap",
+    "name_": "video_face_swap",
     "developer_": "",
     "source_": "",
     "desc_": "Graph: Graph for nndeploy in python",

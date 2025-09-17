@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Text 2 Image: stable_diffusion_1.5_fp16",
+    "name_": "Text_2_Image stable_diffusion_1.5_fp32",
     "developer_": "zuiren",
     "source_": "https://github.com/CompVis/stable-diffusion",
-    "desc_": "Stable Diffusion is a text-to-image model that generates high-quality images from textual descriptions using the stable_diffusion_1.5 model. It requires ONNX Runtime version 1.18.0 or higher (GPU version) for optimal performance.",
+    "desc_": "Stable Diffusion is a text-to-image model that generates high-quality images from textual descriptions using the stable_diffusion_1.5 model.",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "version_": "1.0.0",
     "required_params_": [],
@@ -32,63 +32,16 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/tokenizer/tokenizer.json",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/text_encoder/model.onnx",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/vae_decoder/model.onnx",
-        "modelscope@nndeploy/nndeploy:stable_diffusion/fp16/unet/model.onnx"
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/tokenizer/tokenizer.json",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/text_encoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/vae_decoder/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/model.onnx",
+        "modelscope@nndeploy/nndeploy:stable_diffusion/fp32/unet/weights.pb"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
     ],
     "node_repository_": [
-        {
-            "key_": "nndeploy::stable_diffusion::InitTokenText",
-            "name_": "InitTokenText_1",
-            "developer_": "",
-            "source_": "",
-            "desc_": "Create TokenizerText from input prompt string.",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "version_": "1.0.0",
-            "required_params_": [],
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "TokenizerText",
-                    "name_": "InitTokenText_1@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "prompt_": "A cat holding a sign that says hello world",
-            "size_": 1,
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy::stable_diffusion::InitTokenText",
-            "name_": "InitTokenText_2",
-            "developer_": "",
-            "source_": "",
-            "desc_": "Create TokenizerText from input prompt string.",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "version_": "1.0.0",
-            "required_params_": [],
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "TokenizerText",
-                    "name_": "InitTokenText_2@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "prompt_": "",
-            "size_": 1,
-            "node_repository_": []
-        },
         {
             "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
             "name_": "TokenizerEncodeCpp_3",
@@ -103,7 +56,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "TokenizerText",
-                    "name_": "InitTokenText_1@output_0"
+                    "name_": "InitTokenText_16@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -121,14 +74,18 @@
                 ],
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp32/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
                 "added_tokens_": "",
                 "max_length_": 77
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -144,7 +101,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "TokenizerText",
-                    "name_": "InitTokenText_2@output_0"
+                    "name_": "InitTokenText_17@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -162,14 +119,18 @@
                 ],
                 "is_path_": true,
                 "tokenizer_type_": "kTokenizerTypeHF",
-                "json_blob_": "resources/models/stable_diffusion/fp16/tokenizer/tokenizer.json",
+                "json_blob_": "resources/models/stable_diffusion/fp32/tokenizer/tokenizer.json",
                 "model_blob_": "",
                 "vocab_blob_": "",
                 "merges_blob_": "",
                 "added_tokens_": "",
                 "max_length_": 77
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
@@ -197,7 +158,11 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
@@ -225,7 +190,11 @@
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -264,12 +233,12 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/stable_diffusion/fp16/text_encoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
-                "device_type_": "kDeviceTypeCodeCuda:0",
+                "device_type_": "kDeviceTypeCodeCpu:0",
                 "num_thread_": 4,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
@@ -321,7 +290,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -360,12 +333,12 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/stable_diffusion/fp16/text_encoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/text_encoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
-                "device_type_": "kDeviceTypeCodeCuda:0",
+                "device_type_": "kDeviceTypeCodeCpu:0",
                 "num_thread_": 4,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
@@ -417,7 +390,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::ConcatEmbedding",
@@ -451,7 +428,11 @@
             ],
             "node_type_": "Intermediate",
             "guidance_": 7.5,
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::InitLatents",
@@ -491,7 +472,11 @@
                 "set_alpha_to_one_": false
             },
             "size_": 1,
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::Denoise",
@@ -576,12 +561,12 @@
                         "model_type_": "kModelTypeOnnx",
                         "is_path_": true,
                         "model_value_": [
-                            "resources/models/stable_diffusion/fp16/unet/model.onnx"
+                            "resources/models/stable_diffusion/fp32/unet/model.onnx"
                         ],
                         "external_model_data_": [
-                            ""
+                            "resources/models/stable_diffusion/fp32/unet/weights.pb"
                         ],
-                        "device_type_": "kDeviceTypeCodeCuda:0",
+                        "device_type_": "kDeviceTypeCodeCpu:0",
                         "num_thread_": 4,
                         "gpu_tune_kernel_": 1,
                         "input_num_": 1,
@@ -694,7 +679,11 @@
                     },
                     "id": "nodeylko8cel3"
                 }
-            ]
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::ScaleLatents",
@@ -725,7 +714,11 @@
             "param_": {
                 "vae_scale_factor_": 0.1821500062942505
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -764,12 +757,12 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/stable_diffusion/fp16/vae_decoder/model.onnx"
+                    "resources/models/stable_diffusion/fp32/vae_decoder/model.onnx"
                 ],
                 "external_model_data_": [
                     ""
                 ],
-                "device_type_": "kDeviceTypeCodeCuda:0",
+                "device_type_": "kDeviceTypeCodeCpu:0",
                 "num_thread_": 4,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
@@ -821,7 +814,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::stable_diffusion::TensorToMat",
@@ -849,11 +846,75 @@
                 }
             ],
             "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::InitTokenText",
+            "name_": "InitTokenText_16",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Create TokenizerText from input prompt string.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "TokenizerText",
+                    "name_": "InitTokenText_16@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Any",
+            "prompt_": "A cat holding a sign that says hello world",
+            "size_": 1,
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::stable_diffusion::InitTokenText",
+            "name_": "InitTokenText_17",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Create TokenizerText from input prompt string.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "TokenizerText",
+                    "name_": "InitTokenText_17@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Any",
+            "prompt_": "",
+            "size_": 1,
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_15",
+            "name_": "OpenCvImageEncode_18",
             "developer_": "",
             "source_": "",
             "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
@@ -862,6 +923,7 @@
             "required_params_": [
                 "path_"
             ],
+            "ui_params_": [],
             "is_dynamic_input_": false,
             "inputs_": [
                 {
@@ -873,47 +935,44 @@
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
+            "io_type_": "Image",
             "path_": "resources/images/result.sd15.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
-            "InitTokenText_1": {
-                "x": 100,
-                "y": 103
-            },
-            "InitTokenText_2": {
-                "x": 100,
-                "y": 283
-            },
             "TokenizerEncodeCpp_3": {
                 "x": 400,
-                "y": 103
+                "y": 99
             },
             "TokenizerEncodeCpp_4": {
                 "x": 400,
-                "y": 283
+                "y": 275
             },
             "CvtTokenIds2Tensor_5": {
                 "x": 700,
-                "y": 103
+                "y": 99
             },
             "CvtTokenIds2Tensor_6": {
                 "x": 700,
-                "y": 283
+                "y": 275
             },
             "Infer_7": {
                 "x": 1000,
-                "y": 103
+                "y": 99
             },
             "Infer_8": {
                 "x": 1000,
-                "y": 283
+                "y": 275
             },
             "ConcatEmbedding_9": {
                 "x": 1300,
-                "y": 180
+                "y": 176
             },
             "InitLatents_10": {
                 "x": 1300,
@@ -921,23 +980,31 @@
             },
             "Denoise_11": {
                 "x": 1600,
-                "y": 83.5
+                "y": 82.5
             },
             "ScaleLatents_12": {
                 "x": 1900,
-                "y": 96.5
+                "y": 93.5
             },
             "Infer_13": {
                 "x": 2200,
-                "y": 96.5
+                "y": 93.5
             },
             "TensorToMat_14": {
                 "x": 2500,
-                "y": 96.5
+                "y": 93.5
             },
-            "OpenCvImageEncode_15": {
-                "x": 2800,
-                "y": 96.5
+            "InitTokenText_16": {
+                "x": 100,
+                "y": 99
+            },
+            "InitTokenText_17": {
+                "x": 100,
+                "y": 275
+            },
+            "OpenCvImageEncode_18": {
+                "x": 2700,
+                "y": 364.31619537275066
             }
         },
         "groups": []

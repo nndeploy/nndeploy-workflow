@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Classification ResNet",
+    "name_": "Classification_ResNet",
     "developer_": "Always",
     "source_": "https://github.com/KaimingHe/deep-residual-networks",
     "desc_": "Image classification workflow based on ResNet network",
@@ -37,25 +37,6 @@
     ],
     "node_repository_": [
         {
-            "key_": "nndeploy::codec::OpenCvImageDecode",
-            "name_": "OpenCvImageDecode_11",
-            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "path_": "resources/template/nndeploy-workflow/classification/input.resnet.png",
-            "node_repository_": []
-        },
-        {
             "key_": "nndeploy::preprocess::CvtResizeNormTrans",
             "name_": "CvtResizeNormTrans_22",
             "desc_": "cv::Mat to device::Tensor[cvtcolor->resize->normalize->transpose]",
@@ -65,7 +46,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
+                    "name_": "OpenCvImageDecode_27@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -105,7 +86,11 @@
                     1
                 ]
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -191,7 +176,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::classification::ClassificationPostProcess",
@@ -220,7 +209,11 @@
                 "is_softmax": true,
                 "version": -1
             },
-            "node_repository_": []
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
         },
         {
             "key_": "nndeploy::classification::DrawLable",
@@ -232,7 +225,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_11@output_0"
+                    "name_": "OpenCvImageDecode_27@output_0"
                 },
                 {
                     "desc_": "input_1",
@@ -249,53 +242,100 @@
                 }
             ],
             "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_27",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "ndarray",
+                    "desc_": "output_0",
+                    "name_": "OpenCvImageDecode_27@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/template/nndeploy-workflow/classification/input.resnet.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_26",
+            "name_": "OpenCvImageEncode_28",
+            "developer_": "",
+            "source_": "",
             "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
             "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "desc_": "input_0",
                     "type_": "ndarray",
+                    "desc_": "input_0",
                     "name_": "DrawLable_25@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
+            "io_type_": "Image",
             "path_": "resources/images/result.resnet.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
-            "OpenCvImageDecode_11": {
-                "x": 100,
-                "y": -1.4210854715202004e-14
-            },
             "CvtResizeNormTrans_22": {
                 "x": 400,
-                "y": 112.79999999999998
+                "y": 60
             },
             "Infer_23": {
                 "x": 700,
-                "y": 112.79999999999998
+                "y": 60
             },
             "ClassificationPostProcess_24": {
                 "x": 1000,
-                "y": 112.79999999999998
+                "y": 60
             },
             "DrawLable_25": {
                 "x": 1300,
-                "y": 7.59999999999998
+                "y": 0
             },
-            "OpenCvImageEncode_26": {
-                "x": 1602.8670864975843,
-                "y": 7.59999999999998
+            "OpenCvImageDecode_27": {
+                "x": 110.25706940874026,
+                "y": -189.32647814910027
+            },
+            "OpenCvImageEncode_28": {
+                "x": 1569.383033419023,
+                "y": 161.31619537275066
             }
         },
         "groups": []
