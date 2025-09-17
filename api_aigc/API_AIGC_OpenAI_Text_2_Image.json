@@ -1,0 +1,158 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "API_AIGC_OpenAI_Text_2_Image",
+    "developer_": "KylinJ",
+    "source_": "",
+    "desc_": "Generate images through OpenAI's Text2Image API interface",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "unused_node_names_": [],
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy.openai.OpenAIImageNode",
+            "name_": "OpenAIImageNode_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "OpenAI图像生成节点 - 支持DALL-E图像生成",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "str",
+                    "name_": "InputStr_2@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenAIImageNode_1@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "api_key": "",
+            "base_url": "https://api.openai.com/v1",
+            "model": "dall-e-3",
+            "size": "1024x1024",
+            "quality": "standard",
+            "style": "vivid",
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "str",
+                    "name_": "InputStr_2@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "apple",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenAIImageNode_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "OpenAIImageNode_1": {
+                "x": -15.022674560546875,
+                "y": -99.69692993164062
+            },
+            "InputStr_2": {
+                "x": -331.0226745605469,
+                "y": -98.69692993164062
+            },
+            "OpenCvImageEncode_3": {
+                "x": 253.97732543945312,
+                "y": -102.69692993164062
+            }
+        },
+        "groups": []
+    }
+}

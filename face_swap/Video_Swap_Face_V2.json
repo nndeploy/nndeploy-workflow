@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "VideoSwapFaceV2",
+    "name_": "Video_Swap_Face_V2",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam",
     "desc_": "Face swap workflow integrating face swap and GAN for video face swapping, supports swapping multiple faces in a video",

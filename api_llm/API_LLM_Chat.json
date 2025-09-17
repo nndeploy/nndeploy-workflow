@@ -1,0 +1,184 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "API_LLM_Chat",
+    "developer_": "zuiren",
+    "source_": "",
+    "desc_": "Chat with LLM through API",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "unused_node_names_": [],
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy.api_llm.LLMChatNode",
+            "name_": "LLMChatNode_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "LLM chat node (OpenAI-compatible)",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "input_0",
+                    "name_": "InputStr_2@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "output_0",
+                    "name_": "LLMChatNode_1@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "frontend_params": {
+                "api_base": "https://api.openai.com",
+                "api_key_env": "OPENAI_API_KEY",
+                "api_key": "",
+                "allow_inline_api_key": true,
+                "model": "gpt-4o-mini",
+                "temperature": 0.2,
+                "max_tokens": 512,
+                "system_prompt": "You are a helpful assistant.",
+                "timeout_s": 60,
+                "retry": 2,
+                "retry_backoff_s": 1.2,
+                "stream": false,
+                "stream_print": false,
+                "response_json_mode": false,
+                "json_schema": null,
+                "emit_usage_to_log": true,
+                "verify_tls": true,
+                "http_proxy": "",
+                "https_proxy": "",
+                "has_inline_api_key": false
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "output_0",
+                    "name_": "InputStr_2@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "who is libai",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.ConsolePrintNode",
+            "name_": "ConsolePrintNode_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "将输入内容打印到屏幕，可选日志/落盘",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "input_0",
+                    "name_": "LLMChatNode_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "String",
+            "frontend_params": {
+                "prefix": "",
+                "echo_to_stdout": true,
+                "print_to_logger": false,
+                "logger_level": "INFO",
+                "save_to_file": false,
+                "file_path": "",
+                "append_newline": true
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "LLMChatNode_1": {
+                "x": -161.02267456054688,
+                "y": -141.79067993164062
+            },
+            "InputStr_2": {
+                "x": -429.0226745605469,
+                "y": -144.79067993164062
+            },
+            "ConsolePrintNode_3": {
+                "x": 106.97732543945312,
+                "y": -141.79067993164062
+            }
+        },
+        "groups": []
+    }
+}

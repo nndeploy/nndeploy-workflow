@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Face_swap_from_camera",
+    "name_": "Face_Swap_From_Camera",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam",
     "desc_": "Face swap workflow integrating face swap and GAN for face swapping, supports swapping multiple faces from camera",
@@ -229,8 +229,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_65@output_0"
                 }
             ],
@@ -260,8 +260,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_66@output_0"
                 }
             ],
@@ -291,8 +291,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_67@output_0"
                 }
             ],
@@ -318,16 +318,16 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_65@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "list[Face]",
                     "desc_": "output_0",
+                    "type_": "list[Face]",
                     "name_": "InsightFaceAnalysis_68@output_0"
                 }
             ],
@@ -358,16 +358,16 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_66@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "list[Face]",
                     "desc_": "output_0",
+                    "type_": "list[Face]",
                     "name_": "InsightFaceAnalysis_69@output_0"
                 }
             ],
@@ -398,16 +398,16 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_67@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "list[Face]",
                     "desc_": "output_0",
+                    "type_": "list[Face]",
                     "name_": "InsightFaceAnalysis_70@output_0"
                 }
             ],
@@ -440,8 +440,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "CameraInsightFaceSwapperWithMap_64@output_0"
                 }
             ],
@@ -471,8 +471,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "GFPGAN_53@output_0"
                 }
             ],
@@ -499,8 +499,8 @@
                 "y": -127.03975016722791
             },
             "GFPGAN_53": {
-                "x": 906.5575780749904,
-                "y": -21.83975016722789
+                "x": 838.6033361341327,
+                "y": 61.86024983277211
             },
             "CameraInsightFaceSwapperWithMap_64": {
                 "x": 561.4505367463371,
@@ -528,15 +528,15 @@
             },
             "InsightFaceAnalysis_70": {
                 "x": -262.7109198428045,
-                "y": 74.12082352837098
+                "y": 162.64507420851328
             },
             "OpenCvImageEncode_71": {
                 "x": 1069.2575356277778,
                 "y": -315.46983271595315
             },
             "OpenCvImageEncode_72": {
-                "x": 1222.8994928175994,
-                "y": -24.83975016722789
+                "x": 1191.0911242495383,
+                "y": 61.86024983277211
             }
         },
         "groups": []

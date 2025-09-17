@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "video_face_swap",
-    "developer_": "",
-    "source_": "",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "name_": "Video_Face_Swap",
+    "developer_": "Always",
+    "source_": "https://github.com/hacksider/Deep-Live-Cam",
+    "desc_": "Face swap workflow integrating face swap and GAN for video face swapping",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "version_": "1.0.0",
     "required_params_": [],
@@ -83,7 +83,7 @@
             "node_type_": "Intermediate",
             "insightface_name_": "buffalo_l",
             "providers_": [
-                "CUDAExecutionProvider"
+                "CPUExecutionProvider"
             ],
             "is_one_face_": true,
             "ctx_id": 0,
@@ -113,7 +113,7 @@
             "node_type_": "Intermediate",
             "insightface_name_": "buffalo_l",
             "providers_": [
-                "CUDAExecutionProvider"
+                "CPUExecutionProvider"
             ],
             "is_one_face_": false,
             "ctx_id": 0,
@@ -158,7 +158,7 @@
             "mask_size_": 1,
             "model_path_": "resources/models/face_swap/inswapper_128_fp16.onnx",
             "providers_": [
-                "CUDAExecutionProvider"
+                "CPUExecutionProvider"
             ],
             "node_repository_": []
         },

@@ -229,7 +229,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray"
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_27@output_0"
                 },
                 {
                     "desc_": "input_1",
@@ -696,8 +697,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_27@output_0"
                 }
             ],
@@ -725,8 +726,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "DrawMask_15@output_0"
                 }
             ],
@@ -756,8 +757,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "DrawBox_20@output_0"
                 }
             ],
@@ -787,8 +788,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "DrawLable_25@output_0"
                 }
             ],
@@ -819,8 +820,8 @@
                 "y": -65.34699665787979
             },
             "DrawMask_15": {
-                "x": 1097.0360842509324,
-                "y": 80.91339115375457
+                "x": 1144.5882514800605,
+                "y": 12.201306351625007
             },
             "CvtResizeNormTrans_17": {
                 "x": 365.12260049413703,

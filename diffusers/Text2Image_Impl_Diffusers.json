@@ -1,0 +1,259 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Text2Image_Impl_Diffusers",
+    "developer_": "Always",
+    "source_": "",
+    "desc_": "Text2Image implementation using Diffusers",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "unused_node_names_": [],
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy.diffusers.Text2Image",
+            "name_": "Text2Image_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Diffusers Pipeline for text-to-image generation",
+            "device_type_": "kDeviceTypeCodeCuda:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "param",
+                "num_inference_steps"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "Input text prompt",
+                    "name_": "InputStr_4@output_0"
+                },
+                {
+                    "type_": "str",
+                    "desc_": "Input negative text prompt",
+                    "name_": "InputStr_3@output_0"
+                },
+                {
+                    "type_": "Tensor",
+                    "desc_": "Input latent",
+                    "name_": "LatentNoise_2@Output latent noise tensor"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "type_": "Image",
+                    "desc_": "Output PIL image",
+                    "name_": "Text2Image_1@Output PIL image"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "num_inference_steps": 50,
+            "guidance_scale": 8,
+            "eta": 0,
+            "guidance_rescale": 0,
+            "timesteps": [
+                null
+            ],
+            "sigmas": [
+                null
+            ],
+            "param": {
+                "pretrained_model_name_or_path": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+                "torch_dtype": "float16",
+                "mirror": "https://hf-mirror.com",
+                "low_cpu_mem_usage": true
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.diffusers.LatentNoise",
+            "name_": "LatentNoise_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Generate random noise tensor for diffusion models",
+            "device_type_": "kDeviceTypeCodeCuda:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "Tensor",
+                    "desc_": "Output latent noise tensor",
+                    "name_": "LatentNoise_2@Output latent noise tensor"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "height": 512,
+            "width": 512,
+            "batch_size": 1,
+            "num_channels_latents": 4,
+            "is_random": true,
+            "generator_seed": 42,
+            "noise_scale": 1,
+            "dtype": "float16",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "output_0",
+                    "name_": "InputStr_3@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_4",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "str",
+                    "desc_": "output_0",
+                    "name_": "InputStr_4@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "man",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageEncodec",
+            "name_": "PILImageEncodec_5",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Encodec",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "Image",
+                    "desc_": "input_0",
+                    "name_": "Text2Image_1@Output PIL image"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/output.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "Text2Image_1": {
+                "x": 21.977325439453125,
+                "y": -49.790679931640625
+            },
+            "LatentNoise_2": {
+                "x": -335.0226745605469,
+                "y": 160.20932006835938
+            },
+            "InputStr_3": {
+                "x": -335.0226745605469,
+                "y": -65.79067993164062
+            },
+            "InputStr_4": {
+                "x": -335.0226745605469,
+                "y": -251.79067993164062
+            },
+            "PILImageEncodec_5": {
+                "x": 285.9773254394531,
+                "y": -49.790679931640625
+            }
+        },
+        "groups": []
+    }
+}

@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "face_swap_gan_many_face",
+    "name_": "Face_Swap_GAN_Many_Face",
     "developer_": "Always",
     "source_": "https://github.com/hacksider/Deep-Live-Cam",
     "desc_": "Face swap workflow integrating face swap and GAN(Make faces clearer), supports swapping multiple faces in a single image",
@@ -266,8 +266,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_55@output_0"
                 }
             ],
@@ -297,8 +297,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_56@output_0"
                 }
             ],
@@ -328,8 +328,8 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
+                    "type_": "ndarray",
                     "name_": "OpenCvImageDecode_57@output_0"
                 }
             ],
@@ -357,8 +357,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "InsightFaceSwapperWithMap_47@output_0"
                 }
             ],
@@ -388,8 +388,8 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
+                    "type_": "ndarray",
                     "name_": "GFPGAN_53@output_0"
                 }
             ],
