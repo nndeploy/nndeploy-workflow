@@ -1,0 +1,576 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Segment_Anything",
+    "developer_": "acsars520",
+    "source_": "https://github.com/facebookresearch/segment-anything",
+    "desc_": "Segment Anything workflow that segments images using Segment Anything model",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:segment/sam_vit_b_01ec64_encoder_name.onnx",
+        "modelscope@nndeploy/nndeploy:segment/sam_vit_b_01ec64_decoder.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::preprocess::CvtResizePadNormTrans",
+            "name_": "CvtResizePadNormTrans_2",
+            "desc_": "cv::Mat to device::Tensor[resize->pad->normalize->transpose]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_10@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "CvtResizePadNormTrans_2@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeRGB",
+                "interp_type_": "kInterpTypeLinear",
+                "data_type_": "kDataTypeCodeUint8",
+                "data_format_": "kDataFormatNCHW",
+                "h_": 1024,
+                "w_": 1024,
+                "normalize_": false,
+                "scale_": [
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "mean_": [
+                    123.675,
+                    116.28,
+                    103.53,
+                    0
+                ],
+                "std_": [
+                    58.395,
+                    57.12,
+                    57.375,
+                    1
+                ],
+                "border_type_": "kBorderTypeConstant",
+                "top_": 0,
+                "bottom_": 0,
+                "left_": 0,
+                "right_": 0,
+                "border_val_": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_3",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input",
+                    "type_": "Tensor",
+                    "name_": "CvtResizePadNormTrans_2@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "image_embeddings",
+                    "type_": "Tensor",
+                    "name_": "Infer_3@image_embeddings"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/segment/sam_vit_b_01ec64_encoder_name.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeCpu:0",
+                "num_thread_": 4,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    "input"
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    "image_embeddings"
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::segment::SelectPointNode",
+            "name_": "SelectPointNode_5",
+            "desc_": "Segment Anything Select Point Node for image segmentation tasks.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_10@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "SAMPointsParam",
+                    "name_": "SelectPointNode_5@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "points": [
+                    800,
+                    400
+                ],
+                "labels": [
+                    1
+                ],
+                "ori_width": 0,
+                "ori_height": 0,
+                "version": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::segment::SAMPointNode",
+            "name_": "SAMPointNode_6",
+            "desc_": "Segment Anything Point Node for image segmentation tasks.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "SAMPointsParam",
+                    "name_": "SelectPointNode_5@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_0"
+                },
+                {
+                    "desc_": "output_1",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_1"
+                },
+                {
+                    "desc_": "output_2",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_2"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::segment::SAMPostProcess",
+            "name_": "SAMPostProcess_7",
+            "desc_": "Segment Anything Post Process Node for image segmentation tasks.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@masks"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@iou_predictions"
+                },
+                {
+                    "desc_": "input_2",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@low_res_masks"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "SAMPostProcess_7@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::segment::SAMMaskNode",
+            "name_": "SAMMaskNode_8",
+            "desc_": "Segment Anything Mask Node for image segmentation tasks.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "SAMMaskNode_8@output_0"
+                },
+                {
+                    "desc_": "output_1",
+                    "type_": "Tensor",
+                    "name_": "SAMMaskNode_8@output_1"
+                }
+            ],
+            "node_type_": "Input",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_4",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "image_embeddings",
+                    "type_": "Tensor",
+                    "name_": "Infer_3@image_embeddings"
+                },
+                {
+                    "desc_": "point_coords",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_0"
+                },
+                {
+                    "desc_": "point_labels",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_1"
+                },
+                {
+                    "desc_": "mask_input",
+                    "type_": "Tensor",
+                    "name_": "SAMMaskNode_8@output_0"
+                },
+                {
+                    "desc_": "has_mask_input",
+                    "type_": "Tensor",
+                    "name_": "SAMMaskNode_8@output_1"
+                },
+                {
+                    "desc_": "orig_im_size",
+                    "type_": "Tensor",
+                    "name_": "SAMPointNode_6@output_2"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "masks",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@masks"
+                },
+                {
+                    "desc_": "iou_predictions",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@iou_predictions"
+                },
+                {
+                    "desc_": "low_res_masks",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@low_res_masks"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/segment/sam_vit_b_01ec64_decoder.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeCpu:0",
+                "num_thread_": 4,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 6,
+                "input_name_": [
+                    "image_embeddings",
+                    "point_coords",
+                    "point_labels",
+                    "mask_input",
+                    "has_mask_input",
+                    "orig_im_size"
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 3,
+                "output_name_": [
+                    "masks",
+                    "iou_predictions",
+                    "low_res_masks"
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_10",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_10@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/template/nndeploy-workflow/segment/input.rmbg.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_11",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "ndarray",
+                    "desc_": "input_0",
+                    "name_": "SAMPostProcess_7@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/result.sam.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "CvtResizePadNormTrans_2": {
+                "x": 400,
+                "y": 198
+            },
+            "Infer_3": {
+                "x": 700,
+                "y": 198
+            },
+            "SelectPointNode_5": {
+                "x": 400,
+                "y": 396
+            },
+            "SAMPointNode_6": {
+                "x": 700,
+                "y": 374
+            },
+            "SAMPostProcess_7": {
+                "x": 1300,
+                "y": 265
+            },
+            "SAMMaskNode_8": {
+                "x": 700,
+                "y": 0
+            },
+            "Infer_4": {
+                "x": 1000,
+                "y": 232
+            },
+            "OpenCvImageDecode_10": {
+                "x": 129.4858611825193,
+                "y": 246.43444730077124
+            },
+            "OpenCvImageEncode_11": {
+                "x": 1369.7429305912597,
+                "y": 472
+            }
+        },
+        "groups": []
+    }
+}

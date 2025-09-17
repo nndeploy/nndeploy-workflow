@@ -1,0 +1,661 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "LLM_Qwen2_0.5B.5B",
+    "developer_": "zuiren",
+    "source_": "https://modelscope.cn/models/qwen/Qwen2-0.5B-Instruct/summary",
+    "desc_": "Qwen2/0.5B is a compact LLM with 0.5 billion parameters",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/llm_config.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/embeddings_bf16.bin",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.json"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::qwen::PromptNode",
+            "name_": "PromptNode_1",
+            "desc_": "llm prompt node [{} -> TokenizerText]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "TokenizerText",
+                    "name_": "PromptNode_1@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "param_": {
+                "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
+                "user_content_": "谁是李白"
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::qwen::QwenPrefill",
+            "name_": "QwenPrefill_2",
+            "desc_": "llm prefill stage [TokenizerText -> {token_ids, kv_}]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "TokenizerText",
+                    "name_": "PromptNode_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "TokenizerIds",
+                    "name_": "QwenPrefill_2@output_0"
+                },
+                {
+                    "desc_": "output_1",
+                    "type_": "Tensor",
+                    "name_": "QwenPrefill_2@output_1"
+                },
+                {
+                    "desc_": "output_2",
+                    "type_": "TokenizerIds",
+                    "name_": "QwenPrefill_2@output_2"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
+            "node_repository_": [
+                {
+                    "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
+                    "name_": "token_node",
+                    "desc_": "A tokenizer encode node that uses the C++ tokenizers library to encode text into token IDs. Supports HuggingFace and BPE tokenizers. Can encode single strings or batches of text. Provides vocabulary lookup and token-to-ID conversion.",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "prefill_input",
+                            "type_": "TokenizerText",
+                            "desc_": "input_0",
+                            "id": "portydnvt6pqd"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "prefill_token_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "output_0",
+                            "id": "portovkk4j8f6"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "is_path_": true,
+                        "tokenizer_type_": "kTokenizerTypeNotSupport",
+                        "json_blob_": "",
+                        "model_blob_": "",
+                        "vocab_blob_": "",
+                        "merges_blob_": "",
+                        "added_tokens_": "",
+                        "max_length_": 77
+                    },
+                    "id": "nodehgsp71u1b"
+                },
+                {
+                    "key_": "nndeploy::qwen::PrefillEmbeddingNode",
+                    "name_": "embedding_node",
+                    "desc_": "PrefillEmbeddingNode generates model input embeddings including:\n1. Token embedding vectors\n2. Attention mask matrix\n3. Position ids vector\n4. Past key values cache\n\nInputs:\n- inputs[0]: TokenizerIds containing input token sequence\nOutputs:\n- outputs[0]: Input token embedding tensor\n- outputs[1]: Attention mask tensor\n- outputs[2]: Position ids tensor\n- outputs[3]: Past key values cache tensor",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "prefill_token_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_0",
+                            "id": "portqfb3va9ww"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "prefill_input_ids",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "portg0sb64ic0"
+                        },
+                        {
+                            "name_": "prefill_attention_mask",
+                            "type_": "Tensor",
+                            "desc_": "output_1",
+                            "id": "portm35r6bt8g"
+                        },
+                        {
+                            "name_": "prefill_position_ids",
+                            "type_": "Tensor",
+                            "desc_": "output_2",
+                            "id": "porth8hxbeset"
+                        },
+                        {
+                            "name_": "prefill_past_key_values",
+                            "type_": "Tensor",
+                            "desc_": "output_3",
+                            "id": "portlyc3jx0or"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "hidden_size_": 0,
+                        "all_seq_len_": 0,
+                        "gen_seq_len_": 0,
+                        "embedding_file_": ""
+                    },
+                    "id": "nodelk9hgjoq4"
+                },
+                {
+                    "key_": "nndeploy::infer::Infer",
+                    "name_": "prefill_infer",
+                    "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": true,
+                    "inputs_": [
+                        {
+                            "name_": "prefill_input_ids",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "port5qb9hwvd6"
+                        },
+                        {
+                            "name_": "prefill_attention_mask",
+                            "type_": "NotSet",
+                            "desc_": "input_1",
+                            "id": "portfja0zxlpg"
+                        },
+                        {
+                            "name_": "prefill_position_ids",
+                            "type_": "NotSet",
+                            "desc_": "input_2",
+                            "id": "portwev8khsxg"
+                        },
+                        {
+                            "name_": "prefill_past_key_values",
+                            "type_": "NotSet",
+                            "desc_": "input_3",
+                            "id": "portnm1udqd20"
+                        }
+                    ],
+                    "is_dynamic_output_": true,
+                    "outputs_": [
+                        {
+                            "name_": "prefill_logits",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "portu7o7st4qz"
+                        },
+                        {
+                            "name_": "prefill_presents",
+                            "type_": "NotSet",
+                            "desc_": "output_1",
+                            "id": "portngmr6w1d5"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "type_": "kInferenceTypeOnnxRuntime",
+                    "param_": {
+                        "model_type_": "kModelTypeOnnx",
+                        "is_path_": true,
+                        "model_value_": [
+                            ""
+                        ],
+                        "external_model_data_": [
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
+                        ],
+                        "device_type_": "kDeviceTypeCodeCpu:0",
+                        "num_thread_": 8,
+                        "gpu_tune_kernel_": 1,
+                        "input_num_": 1,
+                        "input_name_": [
+                            ""
+                        ],
+                        "input_shape_": [
+                            [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        ],
+                        "output_num_": 1,
+                        "output_name_": [
+                            ""
+                        ],
+                        "encrypt_type_": "kEncryptTypeNone",
+                        "license_": "",
+                        "share_memory_mode_": "kShareMemoryTypeNoShare",
+                        "precision_type_": "kPrecisionTypeFp32",
+                        "power_type_": "kPowerTypeNormal",
+                        "is_dynamic_shape_": false,
+                        "min_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "opt_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "max_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "parallel_type_": "kParallelTypeNone",
+                        "worker_num_": 1
+                    },
+                    "id": "node5xg961rdx"
+                },
+                {
+                    "key_": "nndeploy::qwen::PrefillSampleNode",
+                    "name_": "prefill_sample_node",
+                    "desc_": "llm sample node [logits -> token_ids]",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "prefill_logits",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "port8zeidw992"
+                        },
+                        {
+                            "name_": "prefill_token_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_1",
+                            "id": "portncnva1kmw"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "prefill_out_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "output_0",
+                            "id": "portrlryayjq3"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "id": "nodetshrf6y93"
+                }
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::qwen::QwenDecode",
+            "name_": "QwenDecode_3",
+            "desc_": "llm decode stage [token_ids -> TokenizerText]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "TokenizerIds",
+                    "name_": "QwenPrefill_2@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "QwenPrefill_2@output_1"
+                },
+                {
+                    "desc_": "input_2",
+                    "type_": "TokenizerIds",
+                    "name_": "QwenPrefill_2@output_2"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "TokenizerText",
+                    "name_": "QwenDecode_3@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
+            "node_repository_": [
+                {
+                    "key_": "nndeploy::qwen::DecodeEmbeddingNode",
+                    "name_": "embedding_node",
+                    "desc_": "DecodeEmbeddingNode generates model input embeddings including:\n1. Token embedding vectors\n2. Attention mask matrix\n3. Position ids vector\n4. Past key values cache\n\nInputs:\n- inputs[0]: TokenizerIds containing input token sequence\n- inputs[1]: past kv values\n- inputs[2]: history input token sequence\nOutputs:\n- outputs[0]: Input token embedding tensor\n- outputs[1]: Attention mask tensor\n- outputs[2]: Position ids tensor\n- outputs[3]: Past key values cache tensor",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "decode_prefill_token_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_0",
+                            "id": "port3omkvu6fe"
+                        },
+                        {
+                            "name_": "decode_prefill_presents",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_1",
+                            "id": "portqh55reugy"
+                        },
+                        {
+                            "name_": "decode_prefill_history_ids",
+                            "type_": "Tensor",
+                            "desc_": "input_2",
+                            "id": "port1gw8niqgm"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "decode_input_ids",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "portd0735r0gi"
+                        },
+                        {
+                            "name_": "decode_attention_mask",
+                            "type_": "Tensor",
+                            "desc_": "output_1",
+                            "id": "port7gv1hbd4h"
+                        },
+                        {
+                            "name_": "decode_position_ids",
+                            "type_": "Tensor",
+                            "desc_": "output_2",
+                            "id": "portft8ihldu7"
+                        },
+                        {
+                            "name_": "decode_past_key_values",
+                            "type_": "Tensor",
+                            "desc_": "output_3",
+                            "id": "port5fg9dig9q"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "hidden_size_": 0,
+                        "all_seq_len_": 0,
+                        "gen_seq_len_": 0,
+                        "embedding_file_": ""
+                    },
+                    "id": "node84faxfdxk"
+                },
+                {
+                    "key_": "nndeploy::infer::Infer",
+                    "name_": "decode_infer",
+                    "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": true,
+                    "inputs_": [
+                        {
+                            "name_": "decode_input_ids",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "porthaoofemjx"
+                        },
+                        {
+                            "name_": "decode_attention_mask",
+                            "type_": "NotSet",
+                            "desc_": "input_1",
+                            "id": "portufszjf9ap"
+                        },
+                        {
+                            "name_": "decode_position_ids",
+                            "type_": "NotSet",
+                            "desc_": "input_2",
+                            "id": "portlcsptcd4v"
+                        },
+                        {
+                            "name_": "decode_past_key_values",
+                            "type_": "NotSet",
+                            "desc_": "input_3",
+                            "id": "portac4kcpof7"
+                        }
+                    ],
+                    "is_dynamic_output_": true,
+                    "outputs_": [
+                        {
+                            "name_": "decode_logits",
+                            "type_": "Tensor",
+                            "desc_": "output_0",
+                            "id": "portlvovg0cye"
+                        },
+                        {
+                            "name_": "decode_presents",
+                            "type_": "NotSet",
+                            "desc_": "output_1",
+                            "id": "portp7sstznx0"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "type_": "kInferenceTypeOnnxRuntime",
+                    "param_": {
+                        "model_type_": "kModelTypeOnnx",
+                        "is_path_": true,
+                        "model_value_": [
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx"
+                        ],
+                        "external_model_data_": [
+                            "resources/models/qwen/Qwen2-0.5B-Instruct/onnx/llm.onnx.data"
+                        ],
+                        "device_type_": "kDeviceTypeCodeCpu:0",
+                        "num_thread_": 8,
+                        "gpu_tune_kernel_": 1,
+                        "input_num_": 1,
+                        "input_name_": [
+                            ""
+                        ],
+                        "input_shape_": [
+                            [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        ],
+                        "output_num_": 1,
+                        "output_name_": [
+                            ""
+                        ],
+                        "encrypt_type_": "kEncryptTypeNone",
+                        "license_": "",
+                        "share_memory_mode_": "kShareMemoryTypeNoShare",
+                        "precision_type_": "kPrecisionTypeFp32",
+                        "power_type_": "kPowerTypeNormal",
+                        "is_dynamic_shape_": false,
+                        "min_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "opt_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "max_shape_": {
+                            "input_0": [
+                                -1,
+                                -1,
+                                -1,
+                                -1
+                            ]
+                        },
+                        "parallel_type_": "kParallelTypeNone",
+                        "worker_num_": 1
+                    },
+                    "id": "nodehb7h72enq"
+                },
+                {
+                    "key_": "nndeploy::qwen::DecodeSampleNode",
+                    "name_": "sample_node",
+                    "desc_": "llm sample node [logits -> token_ids]",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "decode_logits",
+                            "type_": "Tensor",
+                            "desc_": "input_0",
+                            "id": "port4ueamxdli"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "decode_out_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "output_0",
+                            "id": "port2v5t8f7ha"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {},
+                    "id": "node0qb73fqrr"
+                },
+                {
+                    "key_": "nndeploy::tokenizer::TokenizerDecodeCpp",
+                    "name_": "decode_node",
+                    "desc_": "A tokenizer decode node that uses the C++ tokenizers library to decode token IDs into text. Supports HuggingFace and BPE tokenizers. Can decode single token IDs or batches of token IDs. Provides token-to-text conversion.",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "decode_out_ids",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_0",
+                            "id": "portcinv94diq"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "decode_out",
+                            "type_": "TokenizerText",
+                            "desc_": "output_0",
+                            "id": "port2yof1i8lt"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "is_path_": true,
+                        "tokenizer_type_": "kTokenizerTypeNotSupport",
+                        "json_blob_": "",
+                        "model_blob_": "",
+                        "vocab_blob_": "",
+                        "merges_blob_": "",
+                        "added_tokens_": "",
+                        "max_length_": 77
+                    },
+                    "id": "noderq0bt3hrj"
+                }
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::qwen::PrintNode",
+            "name_": "PrintNode_4",
+            "desc_": "Print TokenizerText",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "TokenizerText",
+                    "name_": "QwenDecode_3@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "PromptNode_1": {
+                "x": -760.5529479980469,
+                "y": -354.9906799316406
+            },
+            "QwenPrefill_2": {
+                "x": -449.5529479980469,
+                "y": -354.9906799316406
+            },
+            "QwenDecode_3": {
+                "x": -149.55294799804688,
+                "y": -354.9906799316406
+            },
+            "PrintNode_4": {
+                "x": 150.44705200195312,
+                "y": -354.9906799316406
+            }
+        },
+        "groups": []
+    }
+}

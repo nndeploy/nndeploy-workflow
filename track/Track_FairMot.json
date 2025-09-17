@@ -1,0 +1,375 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Track_FairMot",
+    "developer_": "zuiren",
+    "source_": "https://github.com/ifzhang/FairMOT",
+    "desc_": "Track workflow that tracks objects in videos using fairmot models",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "modelscope@nndeploy/nndeploy:track/fairmot.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::track::FairMotPreProcess",
+            "name_": "FairMotPreProcess_1",
+            "desc_": "FairMot preprocess[cv::Mat->device::Tensor]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvVideoDecode_7@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_0"
+                },
+                {
+                    "desc_": "output_1",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_1"
+                },
+                {
+                    "desc_": "output_2",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_2"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeRGB",
+                "interp_type_": "kInterpTypeLinear",
+                "h_": 320,
+                "w_": 576,
+                "data_type_": "kDataTypeCodeFp32",
+                "data_format_": "kDataFormatNCHW",
+                "normalize_": true,
+                "scale_": [
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563
+                ],
+                "mean_": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "std_": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::track::FairMotPostProcess",
+            "name_": "FairMotPostProcess_2",
+            "desc_": "FairMot postprocess[device::Tensor->MOTResult]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@output_1"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "MOTResult",
+                    "name_": "FairMotPostProcess_2@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "conf_thresh_": 0.4000000059604645,
+                "tracked_thresh_": 0.4000000059604645,
+                "min_box_area_": 200
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::track::VisMOT",
+            "name_": "VisMOT_3",
+            "desc_": "Draw MOT result on input cv::Mat image based on MOT results[cv::Mat->cv::Mat]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvVideoDecode_7@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "MOTResult",
+                    "name_": "FairMotPostProcess_2@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "VisMOT_3@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_4",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_1"
+                },
+                {
+                    "desc_": "input_2",
+                    "type_": "Tensor",
+                    "name_": "FairMotPreProcess_1@output_2"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@output_0"
+                },
+                {
+                    "desc_": "output_1",
+                    "type_": "Tensor",
+                    "name_": "Infer_4@output_1"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/track/fairmot.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeCpu:0",
+                "num_thread_": 8,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeNone",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvVideoDecode",
+            "name_": "OpenCvVideoDecode_7",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode video using OpenCV, from video file to cv::Mat frames, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvVideoDecode_7@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Video",
+            "path_": "resources/template/nndeploy-workflow/track/person.mp4",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvVideoEncode",
+            "name_": "OpenCvVideoEncode_8",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode video using OpenCV, from cv::Mat frames to video file, supports common video formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "VisMOT_3@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Video",
+            "path_": "resources/videos/result.track.mp4",
+            "ref_path_": "resources/template/nndeploy-workflow/track/person.mp4",
+            "fourcc_": "avc1",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "FairMotPreProcess_1": {
+                "x": 400,
+                "y": 101.9
+            },
+            "FairMotPostProcess_2": {
+                "x": 1000,
+                "y": 114.9
+            },
+            "VisMOT_3": {
+                "x": 1300,
+                "y": 42.1
+            },
+            "Infer_4": {
+                "x": 700,
+                "y": 101.9
+            },
+            "OpenCvVideoDecode_7": {
+                "x": 134,
+                "y": -70.89999999999998
+            },
+            "OpenCvVideoEncode_8": {
+                "x": 1340,
+                "y": 235.60000000000002
+            }
+        },
+        "groups": []
+    }
+}
