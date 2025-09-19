@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "LLM_Qwen2_0.5B.5B",
+    "name_": "LLM_Qwen2_0.5B",
     "developer_": "zuiren",
     "source_": "https://modelscope.cn/models/qwen/Qwen2-0.5B-Instruct/summary",
     "desc_": "Qwen2/0.5B is a compact LLM with 0.5 billion parameters",
@@ -42,32 +42,6 @@
     ],
     "node_repository_": [
         {
-            "key_": "nndeploy::qwen::PromptNode",
-            "name_": "PromptNode_1",
-            "desc_": "llm prompt node [{} -> TokenizerText]",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "TokenizerText",
-                    "name_": "PromptNode_1@output_0"
-                }
-            ],
-            "node_type_": "Input",
-            "param_": {
-                "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
-                "user_content_": "谁是李白"
-            },
-            "node_repository_": [],
-            "size": {
-                "width": 200,
-                "height": 80
-            }
-        },
-        {
             "key_": "nndeploy::qwen::QwenPrefill",
             "name_": "QwenPrefill_2",
             "desc_": "llm prefill stage [TokenizerText -> {token_ids, kv_}]",
@@ -77,7 +51,7 @@
                 {
                     "desc_": "input_0",
                     "type_": "TokenizerText",
-                    "name_": "PromptNode_1@output_0"
+                    "name_": "PromptNode_8@output_0"
                 }
             ],
             "is_dynamic_output_": false,
@@ -616,44 +590,95 @@
         },
         {
             "key_": "nndeploy::qwen::PrintNode",
-            "name_": "PrintNode_4",
-            "desc_": "Print TokenizerText",
+            "name_": "PrintNode_7",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Print TokenizerText content and save to temporary output file.",
             "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "desc_": "input_0",
                     "type_": "TokenizerText",
+                    "desc_": "input_0",
                     "name_": "QwenDecode_3@output_0"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [],
             "node_type_": "Output",
-            "node_repository_": [],
+            "io_type_": "Text",
+            "path_": "resources/others/qwen.txt",
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::qwen::PromptNode",
+            "name_": "PromptNode_8",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Generate TokenizerText from prompt string using optional template.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "TokenizerText",
+                    "desc_": "output_0",
+                    "name_": "PromptNode_8@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "param_": {
+                "required_params_": [
+                    "user_content_"
+                ],
+                "ui_params_": [],
+                "io_params_": [],
+                "dropdown_params_": {},
+                "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
+                "user_content_": "谁是李白"
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
-            "PromptNode_1": {
-                "x": -760.5529479980469,
-                "y": -354.9906799316406
-            },
             "QwenPrefill_2": {
-                "x": -449.5529479980469,
-                "y": -354.9906799316406
+                "x": 400,
+                "y": 11
             },
             "QwenDecode_3": {
-                "x": -149.55294799804688,
-                "y": -354.9906799316406
+                "x": 700,
+                "y": 11
             },
-            "PrintNode_4": {
-                "x": 150.44705200195312,
-                "y": -354.9906799316406
+            "PrintNode_7": {
+                "x": 1000,
+                "y": 0
+            },
+            "PromptNode_8": {
+                "x": 100,
+                "y": 7
             }
         },
         "groups": []

@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "Text_2_Image stable_diffusion_1.5_fp32",
+    "name_": "Text_2_Image_stable_diffusion_1.5_fp32",
     "developer_": "zuiren",
     "source_": "https://github.com/CompVis/stable-diffusion",
     "desc_": "Stable Diffusion is a text-to-image model that generates high-quality images from textual descriptions using the stable_diffusion_1.5 model.",
@@ -474,8 +474,8 @@
             "size_": 1,
             "node_repository_": [],
             "size": {
-                "width": 200,
-                "height": 80
+                "width": 171.33802816901408,
+                "height": 98.2394366197183
             }
         },
         {
@@ -853,6 +853,39 @@
             }
         },
         {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_15",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "ndarray",
+                    "desc_": "input_0",
+                    "name_": "TensorToMat_14@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/apple_fp32.png",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
             "key_": "nndeploy::stable_diffusion::InitTokenText",
             "name_": "InitTokenText_16",
             "developer_": "",
@@ -860,22 +893,25 @@
             "desc_": "Create TokenizerText from input prompt string.",
             "device_type_": "kDeviceTypeCodeCpu:0",
             "version_": "1.0.0",
-            "required_params_": [],
+            "required_params_": [
+                "prompt_"
+            ],
             "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
             "is_dynamic_input_": false,
             "inputs_": [],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "desc_": "output_0",
                     "type_": "TokenizerText",
+                    "desc_": "output_0",
                     "name_": "InitTokenText_16@output_0"
                 }
             ],
             "node_type_": "Input",
-            "io_type_": "Any",
-            "prompt_": "A cat holding a sign that says hello world",
-            "size_": 1,
+            "io_type_": "String",
+            "prompt_": "a red apple",
             "size": {
                 "width": 200,
                 "height": 80
@@ -890,53 +926,25 @@
             "desc_": "Create TokenizerText from input prompt string.",
             "device_type_": "kDeviceTypeCodeCpu:0",
             "version_": "1.0.0",
-            "required_params_": [],
+            "required_params_": [
+                "prompt_"
+            ],
             "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
             "is_dynamic_input_": false,
             "inputs_": [],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "desc_": "output_0",
                     "type_": "TokenizerText",
+                    "desc_": "output_0",
                     "name_": "InitTokenText_17@output_0"
                 }
             ],
             "node_type_": "Input",
-            "io_type_": "Any",
+            "io_type_": "String",
             "prompt_": "",
-            "size_": 1,
-            "size": {
-                "width": 200,
-                "height": 80
-            },
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy::codec::OpenCvImageEncode",
-            "name_": "OpenCvImageEncode_18",
-            "developer_": "",
-            "source_": "",
-            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "version_": "1.0.0",
-            "required_params_": [
-                "path_"
-            ],
-            "ui_params_": [],
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "TensorToMat_14@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [],
-            "node_type_": "Output",
-            "io_type_": "Image",
-            "path_": "resources/images/result.sd15.jpg",
             "size": {
                 "width": 200,
                 "height": 80
@@ -948,63 +956,63 @@
         "layout": {
             "TokenizerEncodeCpp_3": {
                 "x": 400,
-                "y": 99
+                "y": 97.20000000000005
             },
             "TokenizerEncodeCpp_4": {
                 "x": 400,
-                "y": 275
+                "y": 319.20000000000005
             },
             "CvtTokenIds2Tensor_5": {
                 "x": 700,
-                "y": 99
+                "y": 97.20000000000005
             },
             "CvtTokenIds2Tensor_6": {
                 "x": 700,
-                "y": 275
+                "y": 319.20000000000005
             },
             "Infer_7": {
                 "x": 1000,
-                "y": 99
+                "y": 97.20000000000005
             },
             "Infer_8": {
                 "x": 1000,
-                "y": 275
+                "y": 319.20000000000005
             },
             "ConcatEmbedding_9": {
                 "x": 1300,
-                "y": 176
+                "y": 198.20000000000005
             },
             "InitLatents_10": {
                 "x": 1300,
-                "y": 0
+                "y": 2.1316282072803006e-14
             },
             "Denoise_11": {
                 "x": 1600,
-                "y": 82.5
+                "y": 100.15000000000003
             },
             "ScaleLatents_12": {
                 "x": 1900,
-                "y": 93.5
+                "y": 110.15000000000003
             },
             "Infer_13": {
                 "x": 2200,
-                "y": 93.5
+                "y": 110.15000000000003
             },
             "TensorToMat_14": {
                 "x": 2500,
-                "y": 93.5
+                "y": 110.15000000000003
+            },
+            "OpenCvImageEncode_15": {
+                "x": 2800,
+                "y": 107.15000000000003
             },
             "InitTokenText_16": {
                 "x": 100,
-                "y": 99
+                "y": 73.20000000000005
             },
             "InitTokenText_17": {
                 "x": 100,
-                "y": 275
-            },
-            "OpenCvImageEncode_18": {
-                "x": 2700,
-                "y": 364.31619537275066
+                "y": 295.20000000000005
             }
         },
         "groups": []
