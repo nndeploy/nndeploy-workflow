@@ -1,0 +1,969 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "demo",
+    "developer_": "",
+    "source_": "",
+    "desc_": "Graph: Graph for nndeploy in python",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::codec::OpenCvImageDecode",
+            "name_": "OpenCvImageDecode_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode image using OpenCV, from image path to cv::Mat, default color space is BGR",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_1@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/images/12.jpg",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::DetectorPreProcess",
+            "name_": "DetectorPreProcess_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "ocr detectorpreprocess cv::Mat to device::Tensor[resize->pad->normalize->transpose]",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "DetectorPreProcess_2@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeBGR",
+                "interp_type_": "kInterpTypeLinear",
+                "data_type_": "kDataTypeCodeFp32",
+                "data_format_": "kDataFormatNCHW",
+                "h_": -1,
+                "w_": -1,
+                "max_side_len_": 960,
+                "normalize_": true,
+                "scale_": [
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563
+                ],
+                "mean_": [
+                    0.48500001430511475,
+                    0.4560000002384186,
+                    0.4059999883174896
+                ],
+                "std_": [
+                    0.2290000021457672,
+                    0.2240000069141388,
+                    0.22499999403953552
+                ],
+                "border_type_": "kBorderTypeConstant",
+                "top_": 0,
+                "bottom_": 0,
+                "left_": 0,
+                "right_": 0,
+                "border_val_": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "x",
+                    "type_": "Tensor",
+                    "name_": "DetectorPreProcess_2@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "fetch_name_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_3@fetch_name_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "required_params_": [
+                    "inference_type_",
+                    "model_type_",
+                    "model_value_",
+                    "device_type_"
+                ],
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/detector.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeX86:0",
+                "num_thread_": 4,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeSequential",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::DetectorPostProcess",
+            "name_": "DetectorPostProcess_4",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PPOcrDetv3/v4/v5 postprocess[device::Tensor->OcrResult]",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_3@fetch_name_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "OCRResult",
+                    "name_": "DetectorPostProcess_4@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "version_": 3,
+                "det_db_thresh_": 0.3,
+                "det_db_box_thresh_": 0.6,
+                "det_db_unclip_ratio_": 1.5,
+                "det_db_score_mode_": "slow",
+                "use_dilation_": false
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::codec::OpenCvImageEncode",
+            "name_": "OpenCvImageEncode_6",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Encode image using OpenCV, from cv::Mat to image file, supports common image formats",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "DrawDetectorBox_8@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/22.jpg",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::DrawDetectorBox",
+            "name_": "DrawDetectorBox_8",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Draw ocr boxes on input cv::Mat image based on detection results[cv::Mat->cv::Mat]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_1@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "OCRResult",
+                    "name_": "DetectorPostProcess_4@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "ndarray",
+                    "name_": "DrawDetectorBox_8@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::RotateCropImage",
+            "name_": "RotateCropImage1111",
+            "developer_": "",
+            "source_": "",
+            "desc_": "RotateCropImage",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "OCRResult",
+                    "name_": "DetectorPostProcess_4@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "ndarray",
+                    "name_": "OpenCvImageDecode_1@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "OCRResult",
+                    "name_": "RotateCropImage1111@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::RecognizerPreProcess",
+            "name_": "RecognizerPreProcess_20",
+            "developer_": "",
+            "source_": "",
+            "desc_": "ocr recognizer preprocess cv::Mat to device::Tensor[resize->pad->normalize->transpose]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "OCRResult",
+                    "name_": "RotateImage180_25@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "RecognizerPreProcess_20@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeBGR",
+                "interp_type_": "kInterpTypeLinear",
+                "data_type_": "kDataTypeCodeFp32",
+                "data_format_": "kDataFormatNCHW",
+                "h_": -1,
+                "w_": -1,
+                "rec_batch_size_": 6,
+                "rec_image_shape_": [
+                    3,
+                    48,
+                    320
+                ],
+                "normalize_": true,
+                "scale_": [
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563
+                ],
+                "mean_": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "std_": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "border_type_": "kBorderTypeConstant",
+                "top_": 0,
+                "bottom_": 0,
+                "left_": 0,
+                "right_": 0,
+                "border_val_": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_21",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "x",
+                    "type_": "Tensor",
+                    "name_": "RecognizerPreProcess_20@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "fetch_name_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_21@fetch_name_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "required_params_": [
+                    "inference_type_",
+                    "model_type_",
+                    "model_value_",
+                    "device_type_"
+                ],
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/recognizer.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeX86:0",
+                "num_thread_": 4,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeSequential",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::ClassifierPreProcess",
+            "name_": "ClassifierPreProcess_23",
+            "developer_": "",
+            "source_": "",
+            "desc_": "ocr classify preprocess cv::Mat to device::Tensor[resize->pad->normalize->transpose]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "OCRResult",
+                    "name_": "RotateCropImage1111@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Tensor",
+                    "name_": "ClassifierPreProcess_23@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "src_pixel_type_": "kPixelTypeBGR",
+                "dst_pixel_type_": "kPixelTypeBGR",
+                "interp_type_": "kInterpTypeLinear",
+                "data_type_": "kDataTypeCodeFp32",
+                "data_format_": "kDataFormatNCHW",
+                "h_": -1,
+                "w_": -1,
+                "normalize_": true,
+                "cls_image_shape_": [
+                    3,
+                    48,
+                    192
+                ],
+                "scale_": [
+                    0.003921568859368563,
+                    0.003921568859368563,
+                    0.003921568859368563
+                ],
+                "mean_": [
+                    0,
+                    0,
+                    0
+                ],
+                "std_": [
+                    1,
+                    1,
+                    1
+                ],
+                "border_type_": "kBorderTypeConstant",
+                "top_": 0,
+                "bottom_": 0,
+                "left_": 0,
+                "right_": 0,
+                "border_val_": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::ClassifierPostProcess",
+            "name_": "ClassifierPostProcess_24",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PPOcrClsv2 postprocess[device::Tensor->OcrResult]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_26@softmax_0.tmp_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "OCRResult",
+                    "name_": "ClassifierPostProcess_24@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "version_": 2,
+                "cls_thresh_": 0.8999999761581421
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::RotateImage180",
+            "name_": "RotateImage180_25",
+            "developer_": "",
+            "source_": "",
+            "desc_": "RotateImage180",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "OCRResult",
+                    "name_": "ClassifierPostProcess_24@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "OCRResult",
+                    "name_": "RotateCropImage1111@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "OCRResult",
+                    "name_": "RotateImage180_25@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::infer::Infer",
+            "name_": "Infer_26",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Universal Inference Node - Enables cross-platform model deployment with multiple inference backends while maintaining native performance",
+            "device_type_": "kDeviceTypeCodeX86:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "x",
+                    "type_": "Tensor",
+                    "name_": "ClassifierPreProcess_23@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "softmax_0.tmp_0",
+                    "type_": "Tensor",
+                    "name_": "Infer_26@softmax_0.tmp_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "type_": "kInferenceTypeOnnxRuntime",
+            "param_": {
+                "required_params_": [
+                    "inference_type_",
+                    "model_type_",
+                    "model_value_",
+                    "device_type_"
+                ],
+                "model_type_": "kModelTypeOnnx",
+                "is_path_": true,
+                "model_value_": [
+                    "resources/models/classifier.onnx"
+                ],
+                "external_model_data_": [
+                    ""
+                ],
+                "device_type_": "kDeviceTypeCodeX86:0",
+                "num_thread_": 4,
+                "gpu_tune_kernel_": 1,
+                "input_num_": 1,
+                "input_name_": [
+                    ""
+                ],
+                "input_shape_": [
+                    [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                ],
+                "output_num_": 1,
+                "output_name_": [
+                    ""
+                ],
+                "encrypt_type_": "kEncryptTypeNone",
+                "license_": "",
+                "share_memory_mode_": "kShareMemoryTypeNoShare",
+                "precision_type_": "kPrecisionTypeFp32",
+                "power_type_": "kPowerTypeNormal",
+                "is_dynamic_shape_": false,
+                "min_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "opt_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "max_shape_": {
+                    "input_0": [
+                        -1,
+                        -1,
+                        -1,
+                        -1
+                    ]
+                },
+                "parallel_type_": "kParallelTypeSequential",
+                "worker_num_": 1
+            },
+            "node_repository_": [],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::ocr::RecognizerPostProcess",
+            "name_": "RecognizerPostProcess_27",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PPOcrRecv3/v4/v5 postprocess[device::Tensor->DetectResult]",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "Tensor",
+                    "desc_": "input_0",
+                    "name_": "Infer_21@fetch_name_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "OCRResult",
+                    "desc_": "output_0",
+                    "name_": "RecognizerPostProcess_27@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "param_": {
+                "required_params_": [
+                    "character_path_"
+                ],
+                "ui_params_": [],
+                "io_params_": [],
+                "dropdown_params_": {},
+                "character_path_": "resources/others/config.json",
+                "version_": 5,
+                "rec_thresh_": 0.2
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::ocr::PrintOcrNode",
+            "name_": "PrintOcrNode_28",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Print Text",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "OCRResult",
+                    "desc_": "input_0",
+                    "name_": "RecognizerPostProcess_27@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Text",
+            "param_": {
+                "required_params_": [
+                    "path_"
+                ],
+                "ui_params_": [],
+                "io_params_": [],
+                "dropdown_params_": {},
+                "path_": "resources/others/output.txt"
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "OpenCvImageDecode_1": {
+                "x": 112.06217841711333,
+                "y": 253.3057467593799
+            },
+            "DetectorPreProcess_2": {
+                "x": 400,
+                "y": 144.5
+            },
+            "Infer_3": {
+                "x": 700,
+                "y": 144.5
+            },
+            "DetectorPostProcess_4": {
+                "x": 1000,
+                "y": 144.5
+            },
+            "OpenCvImageEncode_6": {
+                "x": 1600,
+                "y": 91.67499999999998
+            },
+            "DrawDetectorBox_8": {
+                "x": 1300,
+                "y": 78.67499999999998
+            },
+            "RotateCropImage1111": {
+                "x": 1300,
+                "y": 283.975
+            },
+            "RecognizerPreProcess_20": {
+                "x": 409.9060290146526,
+                "y": 568.9739299214991
+            },
+            "Infer_21": {
+                "x": 655.1686780197554,
+                "y": 568.9739299214991
+            },
+            "ClassifierPreProcess_23": {
+                "x": 391.3643716792599,
+                "y": 437.6069683178589
+            },
+            "ClassifierPostProcess_24": {
+                "x": 982.3643716792599,
+                "y": 397.8057467593799
+            },
+            "RotateImage180_25": {
+                "x": 1235.3643716792599,
+                "y": 450.6069683178589
+            },
+            "Infer_26": {
+                "x": 700,
+                "y": 429.6069683178589
+            },
+            "RecognizerPostProcess_27": {
+                "x": 984.3643716792599,
+                "y": 591.7569683178589
+            },
+            "PrintOcrNode_28": {
+                "x": 1248.3643716792599,
+                "y": 608.756968317859
+            }
+        },
+        "groups": []
+    }
+}
