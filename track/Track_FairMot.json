@@ -334,7 +334,7 @@
             "node_type_": "Output",
             "io_type_": "Video",
             "path_": "resources/videos/result.track.mp4",
-            "ref_path_": "resources/videos/person.mp4",
+            "ref_path_": "resources/template/nndeploy-workflow/track/person.mp4",
             "fourcc_": "avc1",
             "size": {
                 "width": 200,
