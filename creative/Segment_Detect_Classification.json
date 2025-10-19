@@ -342,7 +342,7 @@
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 8,
+                "num_thread_": 2,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -557,7 +557,7 @@
                     ""
                 ],
                 "device_type_": "kDeviceTypeCodeCpu:0",
-                "num_thread_": 8,
+                "num_thread_": 1,
                 "gpu_tune_kernel_": 1,
                 "input_num_": 1,
                 "input_name_": [
@@ -704,7 +704,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/template/nndeploy-workflow/creative/input.rmbg.png",
+            "path_": "resources/template/nndeploy-workflow/detect/zidane.jpg",
             "size": {
                 "width": 200,
                 "height": 80

@@ -272,7 +272,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/template/nndeploy-workflow/classification/input.resnet.png",
+            "path_": "resources/template/nndeploy-workflow/detect/zidane.jpg",
             "size": {
                 "width": 200,
                 "height": 80

@@ -493,7 +493,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/template/nndeploy-workflow/segment/input.rmbg.png",
+            "path_": "resources/template/nndeploy-workflow/detect/zidane.jpg",
             "size": {
                 "width": 200,
                 "height": 80

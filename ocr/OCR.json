@@ -1,9 +1,9 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "demo",
-    "developer_": "",
-    "source_": "",
-    "desc_": "Graph: Graph for nndeploy in python",
+    "name_": "Paddle_OCR",
+    "developer_": "SpringSan",
+    "source_": "https://github.com/PaddlePaddle/PaddleOCR",
+    "desc_": "Paddle OCR v3/v4/v5 workflow",
     "device_type_": "kDeviceTypeCodeCpu:0",
     "version_": "1.0.0",
     "required_params_": [],
@@ -33,7 +33,12 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "template[http,modelscope]@https://template.cn/template.onnx"
+        "modelscope@nndeploy/nndeploy:ocr/ch_ppocr_mobile_v2.0_cls_infer/inference.onnx",
+        "modelscope@nndeploy/nndeploy:ocr/OCRv5_mobile_det/inference.onnx",
+        "modelscope@nndeploy/nndeploy:ocr/OCRv5_mobile_det/inference.yml",
+        "modelscope@nndeploy/nndeploy:ocr/OCRv5_mobile_rec/config.json",
+        "modelscope@nndeploy/nndeploy:ocr/OCRv5_mobile_rec/inference.onnx",
+        "modelscope@nndeploy/nndeploy:ocr/OCRv5_mobile_rec/inference.yml"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
@@ -63,7 +68,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/images/12.jpg",
+            "path_": "resources/template/nndeploy-workflow/ocr/ocr_input.jpg",
             "node_repository_": [],
             "size": {
                 "width": 200,
@@ -306,7 +311,7 @@
             "outputs_": [],
             "node_type_": "Output",
             "io_type_": "Image",
-            "path_": "resources/images/22.jpg",
+            "path_": "resources/images/ocr.result.jpg",
             "node_repository_": [],
             "size": {
                 "width": 200,
