@@ -1,0 +1,612 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "LlmQwen",
+    "developer_": "",
+    "source_": "",
+    "desc_": "Graph: Graph for nndeploy in python",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "io_params_": [],
+    "dropdown_params_": {},
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "unused_node_names_": [],
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy::llm::Decode",
+            "name_": "Decode_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Decode: Decode pipeline",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "name_": "Prefill_2@output_tokens",
+                    "type_": "TokenizerIds",
+                    "desc_": "input_tokens"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "name_": "Decode_1@output_text",
+                    "type_": "TokenizerText",
+                    "desc_": "output_text"
+                }
+            ],
+            "is_graph_": true,
+            "parallel_type_": "kParallelTypeNone",
+            "is_inner_": true,
+            "is_loop_": true,
+            "node_type_": "Intermediate",
+            "image_url_": [
+                "template[http,modelscope]@https://template.cn/template.jpg"
+            ],
+            "video_url_": [
+                "template[http,modelscope]@https://template.cn/template.mp4"
+            ],
+            "audio_url_": [
+                "template[http,modelscope]@https://template.cn/template.mp3"
+            ],
+            "model_url_": [
+                "template[http,modelscope]@https://template.cn/template.onnx"
+            ],
+            "other_url_": [
+                "template[http,modelscope]@https://template.cn/template.txt"
+            ],
+            "tokenizer_txt_": "",
+            "node_repository_": [
+                {
+                    "key_": "nndeploy::llm::LlmInfer",
+                    "name_": "decode_infer",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "LlmInfer: LLM inference CompositeNode",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": true,
+                    "inputs_": [
+                        {
+                            "name_": "Prefill_2@output_tokens",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_tokens"
+                        },
+                        {
+                            "name_": "sampled_token",
+                            "type_": "NotSet",
+                            "desc_": "input_1"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "output_logits",
+                            "type_": "Tensor",
+                            "desc_": "output_logits"
+                        }
+                    ],
+                    "is_composite_node_": true,
+                    "node_type_": "Intermediate",
+                    "is_prefill": true,
+                    "model_key": "Qwen",
+                    "infer_key": "DefaultLlmInfer",
+                    "config_path": [],
+                    "model_inputs": [
+                        "input_ids",
+                        "attention_mask",
+                        "position_ids",
+                        "past_key_values"
+                    ],
+                    "model_outputs": [
+                        "logits",
+                        "presents"
+                    ]
+                },
+                {
+                    "key_": "nndeploy::llm::Sampler",
+                    "name_": "decode_sampler_node",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "Sample generates next token from model logits using various sampling strategies:\n1. Greedy sampling - select token with highest probability\n2. Temperature sampling - sample from temperature-scaled distribution\n3. Top-K sampling - sample from top K most likely tokens\n4. Top-P (nucleus) sampling - sample from tokens with cumulative probability <= P\n5. Min-P sampling - filter tokens below minimum probability threshold\n6. Repetition penalty - penalize repeated tokens/n-grams\n\nInputs:\n- inputs[0]: Tensor containing model logits for next token prediction\nOutputs:\n- outputs[0]: TokenizerIds containing sampled token ID\n",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "output_logits",
+                            "type_": "Tensor",
+                            "desc_": "logits"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "sampled_token",
+                            "type_": "TokenizerIds",
+                            "desc_": "sampled_token"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "required_params_": [],
+                        "ui_params_": [],
+                        "io_params_": [],
+                        "dropdown_params_": {
+                            "sampler": [
+                                "greedy",
+                                "temperature",
+                                "topK",
+                                "topP",
+                                "minP",
+                                "tfs",
+                                "typical",
+                                "penalty",
+                                "ngram"
+                            ]
+                        },
+                        "sampler": "temperature",
+                        "temperature": 0.800000011920929,
+                        "topK": 40,
+                        "topP": 0.8999999761581421,
+                        "minP": 0.05000000074505806,
+                        "tfsZ": 1,
+                        "typical": 0.949999988079071,
+                        "penalty": 1.0499999523162842,
+                        "ngram": 8,
+                        "ngram_factor": 1.0199999809265137,
+                        "max_penalty": 10,
+                        "mixed_samplers": [
+                            "topK",
+                            "tfs",
+                            "typical",
+                            "topP",
+                            "minP",
+                            "temperature"
+                        ]
+                    }
+                },
+                {
+                    "key_": "nndeploy::tokenizer::TokenizerDecodeCpp",
+                    "name_": "token_node",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "A tokenizer decode node that uses the C++ tokenizers library to decode token IDs into text. Supports HuggingFace and BPE tokenizers. Can decode single token IDs or batches of token IDs. Provides token-to-text conversion.",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "sampled_token",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_0"
+                        },
+                        {
+                            "name_": "Prefill_2@output_tokens",
+                            "type_": "NotSet",
+                            "desc_": "input_1"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "token_node_output_0_TokenizerText",
+                            "type_": "TokenizerText",
+                            "desc_": "output_0"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "required_params_": [
+                            "tokenizer_type_"
+                        ],
+                        "ui_params_": [],
+                        "io_params_": [],
+                        "dropdown_params_": {},
+                        "is_path_": true,
+                        "tokenizer_type_": "kTokenizerTypeHF",
+                        "json_blob_": "",
+                        "model_blob_": "",
+                        "vocab_blob_": "",
+                        "merges_blob_": "",
+                        "added_tokens_": "",
+                        "max_length_": 77
+                    }
+                },
+                {
+                    "key_": "nndeploy::llm::StreamOut",
+                    "name_": "stream_out_node",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "StreamOut: Stream output node",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "token_node_output_0_TokenizerText",
+                            "type_": "TokenizerText",
+                            "desc_": "input_text"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "Decode_1@output_text",
+                            "type_": "TokenizerText",
+                            "desc_": "output_text"
+                        },
+                        {
+                            "name_": "stream_output",
+                            "type_": "basic_string<char>",
+                            "desc_": "stream_output"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "enable_stream_": true
+                }
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::llm::Prefill",
+            "name_": "Prefill_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Prefill: Prefill pipeline",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "name_": "PromptNode_3@output_0",
+                    "type_": "TokenizerText",
+                    "desc_": "input_text"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "name_": "Prefill_2@output_tokens",
+                    "type_": "TokenizerIds",
+                    "desc_": "output_tokens"
+                }
+            ],
+            "is_graph_": true,
+            "parallel_type_": "kParallelTypeNone",
+            "is_inner_": true,
+            "node_type_": "Intermediate",
+            "image_url_": [
+                "template[http,modelscope]@https://template.cn/template.jpg"
+            ],
+            "video_url_": [
+                "template[http,modelscope]@https://template.cn/template.mp4"
+            ],
+            "audio_url_": [
+                "template[http,modelscope]@https://template.cn/template.mp3"
+            ],
+            "model_url_": [
+                "template[http,modelscope]@https://template.cn/template.onnx"
+            ],
+            "other_url_": [
+                "template[http,modelscope]@https://template.cn/template.txt"
+            ],
+            "node_repository_": [
+                {
+                    "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
+                    "name_": "token_node",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "A tokenizer encode node that uses the C++ tokenizers library to encode text into token IDs. Supports HuggingFace and BPE tokenizers. Can encode single strings or batches of text. Provides vocabulary lookup and token-to-ID conversion.",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "PromptNode_3@output_0",
+                            "type_": "TokenizerText",
+                            "desc_": "input_0"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "token_node_output_0_TokenizerIds",
+                            "type_": "TokenizerIds",
+                            "desc_": "output_0"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "required_params_": [
+                            "tokenizer_type_"
+                        ],
+                        "ui_params_": [],
+                        "io_params_": [],
+                        "dropdown_params_": {},
+                        "is_path_": true,
+                        "tokenizer_type_": "kTokenizerTypeHF",
+                        "json_blob_": "",
+                        "model_blob_": "",
+                        "vocab_blob_": "",
+                        "merges_blob_": "",
+                        "added_tokens_": "",
+                        "max_length_": 77
+                    }
+                },
+                {
+                    "key_": "nndeploy::llm::LlmInfer",
+                    "name_": "prefill_infer",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "LlmInfer: LLM inference CompositeNode",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": true,
+                    "inputs_": [
+                        {
+                            "name_": "token_node_output_0_TokenizerIds",
+                            "type_": "TokenizerIds",
+                            "desc_": "input_tokens"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "output_logits",
+                            "type_": "Tensor",
+                            "desc_": "output_logits"
+                        }
+                    ],
+                    "is_composite_node_": true,
+                    "node_type_": "Intermediate",
+                    "is_prefill": true,
+                    "model_key": "Qwen",
+                    "infer_key": "DefaultLlmInfer",
+                    "config_path": [],
+                    "model_inputs": [
+                        "input_ids",
+                        "attention_mask",
+                        "position_ids",
+                        "past_key_values"
+                    ],
+                    "model_outputs": [
+                        "logits",
+                        "presents"
+                    ]
+                },
+                {
+                    "key_": "nndeploy::llm::Sampler",
+                    "name_": "prefill_sampler_node",
+                    "developer_": "",
+                    "source_": "",
+                    "desc_": "Sample generates next token from model logits using various sampling strategies:\n1. Greedy sampling - select token with highest probability\n2. Temperature sampling - sample from temperature-scaled distribution\n3. Top-K sampling - sample from top K most likely tokens\n4. Top-P (nucleus) sampling - sample from tokens with cumulative probability <= P\n5. Min-P sampling - filter tokens below minimum probability threshold\n6. Repetition penalty - penalize repeated tokens/n-grams\n\nInputs:\n- inputs[0]: Tensor containing model logits for next token prediction\nOutputs:\n- outputs[0]: TokenizerIds containing sampled token ID\n",
+                    "device_type_": "kDeviceTypeCodeCpu:0",
+                    "version_": "1.0.0",
+                    "required_params_": [],
+                    "ui_params_": [],
+                    "io_params_": [],
+                    "dropdown_params_": {},
+                    "is_dynamic_input_": false,
+                    "inputs_": [
+                        {
+                            "name_": "output_logits",
+                            "type_": "Tensor",
+                            "desc_": "logits"
+                        }
+                    ],
+                    "is_dynamic_output_": false,
+                    "outputs_": [
+                        {
+                            "name_": "Prefill_2@output_tokens",
+                            "type_": "TokenizerIds",
+                            "desc_": "sampled_token"
+                        }
+                    ],
+                    "node_type_": "Intermediate",
+                    "param_": {
+                        "required_params_": [],
+                        "ui_params_": [],
+                        "io_params_": [],
+                        "dropdown_params_": {
+                            "sampler": [
+                                "greedy",
+                                "temperature",
+                                "topK",
+                                "topP",
+                                "minP",
+                                "tfs",
+                                "typical",
+                                "penalty",
+                                "ngram"
+                            ]
+                        },
+                        "sampler": "temperature",
+                        "temperature": 0.800000011920929,
+                        "topK": 40,
+                        "topP": 0.8999999761581421,
+                        "minP": 0.05000000074505806,
+                        "tfsZ": 1,
+                        "typical": 0.949999988079071,
+                        "penalty": 1.0499999523162842,
+                        "ngram": 8,
+                        "ngram_factor": 1.0199999809265137,
+                        "max_penalty": 10,
+                        "mixed_samplers": [
+                            "topK",
+                            "tfs",
+                            "typical",
+                            "topP",
+                            "minP",
+                            "temperature"
+                        ]
+                    }
+                }
+            ],
+            "size": {
+                "width": 200,
+                "height": 80
+            }
+        },
+        {
+            "key_": "nndeploy::qwen::PromptNode",
+            "name_": "PromptNode_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Generate TokenizerText from prompt string using optional template.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "type_": "TokenizerText",
+                    "desc_": "output_0",
+                    "name_": "PromptNode_3@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "param_": {
+                "required_params_": [
+                    "user_content_"
+                ],
+                "ui_params_": [],
+                "io_params_": [],
+                "dropdown_params_": {},
+                "prompt_template_": "<|im_start|>user\n%s<|im_end|>\n<|im_start|>assistant\n",
+                "user_content_": ""
+            },
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy::qwen::PrintNode",
+            "name_": "PrintNode_4",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Print TokenizerText content and save to temporary output file.",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "type_": "TokenizerText",
+                    "desc_": "input_0",
+                    "name_": "Decode_1@output_text"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Text",
+            "path_": "",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "Decode_1": {
+                "x": 66.97732543945312,
+                "y": -93.79067993164062
+            },
+            "Prefill_2": {
+                "x": -198.02267456054688,
+                "y": -93.79067993164062
+            },
+            "PromptNode_3": {
+                "x": -447.0226745605469,
+                "y": -93.79067993164062
+            },
+            "PrintNode_4": {
+                "x": 315.9773254394531,
+                "y": -93.79067993164062
+            }
+        },
+        "groups": []
+    }
+}

@@ -2,38 +2,26 @@
 
 ## User Guide
 
-### 1. Obtain Workflow Files
-Download the required workflow JSON configuration files from the corresponding algorithm directories:
-- Object Detection: `detect/yolo.json`
-- Image Classification: `classification/resnet.json`
-- Object Tracking: `track/track.json`
-- Object Segmentation: `segment/rmbg.json`
-- Text-to-Image: `stable_diffusion/stable_diffusion_1.5.json`
+### 1. Download Workflow Files
+Download JSON configuration files from the corresponding algorithm directories
 
-### 2. Prepare Model Resources
-Visit the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to obtain corresponding models:
-- Model files are systematically organized by algorithm type
-- Please ensure complete download of model weight files and related configurations
+### 2. Get Model Resources
+Visit the [Model Repository](https://modelscope.cn/models/nndeploy/nndeploy/summary) to download required models
 
-### 3. Import Workflow Configuration
-- Upload JSON configuration files through the frontend workflow management interface
-- The system will automatically parse and visualize the node topology structure
+### 3. Import Configuration
+- Upload JSON files via the frontend workflow interface
+- System automatically parses and visualizes node topology
 
-### 4. Parameter Configuration Optimization
-Adjust key parameters according to specific application scenarios:
-- **Input Configuration**: Specify input image/video file paths
-- **Output Configuration**: Set save paths for processing results
-- **Core Parameters**:
-  - `model_type_`: Model file format type
-  - `model_value_`: Complete model file path
-  - `device_type_`: Computing device type (CPU/GPU/NPU)
-  - Other algorithm-specific parameters
+### 4. Configure Parameters
+Adjust settings for your use case:
+- **Input**: Specify image/video file paths
+- **Output**: Set result save paths
+- **Parameters**: Configure workflow settings
 
-### 5. Execute Workflow
-- Verify the correctness of all parameter configurations
-- Start the workflow for automated processing
-- The system executes in order according to predefined node dependencies
-- View processing results at the specified path upon completion
+### 5. Run Workflow
+- Verify all configurations
+- Execute workflow for automated processing
+- View results at the specified output path
 
 ## Complete List
 

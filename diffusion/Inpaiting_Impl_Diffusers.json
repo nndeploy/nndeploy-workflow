@@ -1,0 +1,437 @@
+{
+    "key_": "nndeploy.dag.Graph",
+    "name_": "Inpaiting_Impl_Diffusers",
+    "developer_": "Always",
+    "source_": "https://github.com/huggingface/diffusers",
+    "desc_": "Image inpainting workflow based on Diffusers, supporting Stable Diffusion 1.5, Stable Diffusion XL, Stable Diffusion 3, HunyuanDiT and other diffusion models for intelligent image restoration and content filling",
+    "device_type_": "kDeviceTypeCodeCpu:0",
+    "version_": "1.0.0",
+    "required_params_": [],
+    "ui_params_": [],
+    "io_params_": [],
+    "dropdown_params_": {},
+    "is_dynamic_input_": false,
+    "inputs_": [],
+    "is_dynamic_output_": false,
+    "outputs_": [],
+    "is_graph_": true,
+    "parallel_type_": "kParallelTypeNone",
+    "is_inner_": false,
+    "node_type_": "Intermediate",
+    "is_time_profile_": false,
+    "is_debug_": false,
+    "is_external_stream_": false,
+    "is_graph_node_share_stream_": true,
+    "queue_max_size_": 16,
+    "is_loop_max_flag_": true,
+    "loop_count_": -1,
+    "unused_node_names_": [],
+    "image_url_": [
+        "template[http,modelscope]@https://template.cn/template.jpg"
+    ],
+    "video_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp4"
+    ],
+    "audio_url_": [
+        "template[http,modelscope]@https://template.cn/template.mp3"
+    ],
+    "model_url_": [
+        "template[http,modelscope]@https://template.cn/template.onnx"
+    ],
+    "other_url_": [
+        "template[http,modelscope]@https://template.cn/template.txt"
+    ],
+    "node_repository_": [
+        {
+            "key_": "nndeploy.diffusion.Inpainting",
+            "name_": "Inpainting_1",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Diffusers Pipeline for image inpainting",
+            "device_type_": "kDeviceTypeCodeCuda:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "pretrained_model_name_or_path"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {
+                "pretrained_model_name_or_path": [
+                    "runwayml/stable-diffusion-inpainting",
+                    "stabilityai/stable-diffusion-xl-base-1.0",
+                    "DeepFloyd/IF-I-XL-v1.0",
+                    "diffusers/diffedit-model",
+                    "timbrooks/instruct-pix2pix",
+                    "stabilityai/paint-by-example",
+                    "VisualCloze/VisualCloze",
+                    "le-dits/le-dits",
+                    "See more models: https://huggingface.co/models?pipeline_tag=inpainting"
+                ]
+            },
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "Input text prompt",
+                    "type_": "str",
+                    "name_": "InputStr_2@output_0"
+                },
+                {
+                    "desc_": "Input negative text prompt",
+                    "type_": "str",
+                    "name_": "InputStr_3@output_0"
+                },
+                {
+                    "desc_": "Input source image",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_4@output_0"
+                },
+                {
+                    "desc_": "Input mask image",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_5@output_0"
+                }
+            ],
+            "is_dynamic_output_": true,
+            "outputs_": [
+                {
+                    "desc_": "Output PIL image",
+                    "type_": "Image",
+                    "name_": "Inpainting_1@Output PIL image"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "pretrained_model_name_or_path": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+            "torch_dtype": "float16",
+            "use_safetensors": true,
+            "num_inference_steps": 50,
+            "guidance_scale": 8,
+            "guidance_rescale": 0,
+            "scheduler": "default",
+            "scheduler_kwargs": {
+                "key": "value"
+            },
+            "strength": 0.8,
+            "is_random": true,
+            "generator_seed": 42,
+            "enable_model_cpu_offload": false,
+            "enable_sequential_cpu_offload": false,
+            "enable_xformers_memory_efficient_attention": false,
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_2",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "str",
+                    "name_": "InputStr_2@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "photograph of victorian woman with wings, sky clouds, meadow grass",
+            "size": {
+                "width": 317,
+                "height": 130
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.basic.InputStr",
+            "name_": "InputStr_3",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Input Str on python",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "str_"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "str",
+                    "name_": "InputStr_3@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "String",
+            "str_": "watermark, text",
+            "size": {
+                "width": 315,
+                "height": 124
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageDecodec",
+            "name_": "PILImageDecodec_4",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Decodec with Color Space Conversion",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [
+                "path_"
+            ],
+            "dropdown_params_": {
+                "color_mode_": [
+                    "RGB",
+                    "RGBA",
+                    "L",
+                    "CMYK"
+                ]
+            },
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_4@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/images/inpaint-image.png",
+            "color_mode_": "RGB",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageDecodec",
+            "name_": "PILImageDecodec_5",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Decodec with Color Space Conversion",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [
+                "path_"
+            ],
+            "dropdown_params_": {
+                "color_mode_": [
+                    "RGB",
+                    "RGBA",
+                    "L",
+                    "CMYK"
+                ]
+            },
+            "is_dynamic_input_": false,
+            "inputs_": [],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_5@output_0"
+                }
+            ],
+            "node_type_": "Input",
+            "io_type_": "Image",
+            "path_": "resources/images/inpaint_mask.png",
+            "color_mode_": "RGB",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageEncodec",
+            "name_": "PILImageEncodec_6",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Encodec",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [
+                "path_"
+            ],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Image",
+                    "name_": "Inpainting_1@Output PIL image"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/inpaiting.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.MakeImageGrid",
+            "name_": "MakeImageGrid_7",
+            "developer_": "",
+            "source_": "",
+            "desc_": "Concatenate multiple PIL images into a grid",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "rows",
+                "cols"
+            ],
+            "ui_params_": [],
+            "io_params_": [],
+            "dropdown_params_": {},
+            "is_dynamic_input_": true,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_4@output_0"
+                },
+                {
+                    "desc_": "input_1",
+                    "type_": "Image",
+                    "name_": "PILImageDecodec_5@output_0"
+                },
+                {
+                    "desc_": "input_2",
+                    "type_": "Image",
+                    "name_": "Inpainting_1@Output PIL image"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "type_": "Image",
+                    "name_": "MakeImageGrid_7@output_0"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "rows": 1,
+            "cols": 3,
+            "resize_h": -1,
+            "resize_w": -1,
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageEncodec",
+            "name_": "PILImageEncodec_8",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Encodec",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [
+                "path_"
+            ],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "type_": "Image",
+                    "name_": "MakeImageGrid_7@output_0"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/inpainting_grid_3.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
+        }
+    ],
+    "nndeploy_ui_layout": {
+        "layout": {
+            "Inpainting_1": {
+                "x": -40.272674560546875,
+                "y": -332.1906799316406
+            },
+            "InputStr_2": {
+                "x": -516.5226745605469,
+                "y": -513.5906799316406
+            },
+            "InputStr_3": {
+                "x": -515.5226745605469,
+                "y": -324.0906799316406
+            },
+            "PILImageDecodec_4": {
+                "x": -548.2364034109225,
+                "y": -140.59067993164058
+            },
+            "PILImageDecodec_5": {
+                "x": -282.77830286522413,
+                "y": -116.91568158527339
+            },
+            "PILImageEncodec_6": {
+                "x": 242.20465087890602,
+                "y": -332.1906799316406
+            },
+            "MakeImageGrid_7": {
+                "x": 242.20465087890602,
+                "y": -125.81715178248143
+            },
+            "PILImageEncodec_8": {
+                "x": 504.98196775448486,
+                "y": -167.81715178248143
+            }
+        },
+        "groups": []
+    }
+}
