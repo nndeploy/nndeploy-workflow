@@ -39,7 +39,11 @@ Adjust settings for your use case:
 + **Qwen Dialogue** - Qwen2 Intelligent Dialogue System - [qwen/LLM_Qwen2_0.5B.json](qwen/LLM_Qwen2_0.5B.json)
 
 ### 🎨 AI Content Generation
-+ **Text-to-Image** - Stable Diffusion Text-to-Image Generation - [fp16 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp16.json), [fp32 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp32.json)
++ **Text-to-Image** - Stable Diffusion Text-to-Image Generation impl C++ - [fp16 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp16.json), [fp32 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp32.json)
++ **Text-to-Image** - Text-to-Image Generation impl diffusers - [diffusion/Text2Image_Impl_Diffusers.json](diffusion/Text2Image_Impl_Diffusers.json)
++ **Text-to-Image** - Text-to-Image Generation impl diffusers - [diffusion/Text2Image_CogView4_Impl_Diffusers.json](diffusion/Text2Image_CogView4_Impl_Diffusers.json)
++ **Inpaiting** - Image inpainting workflow based on Diffusers - [diffusion/Inpaiting_Impl_Diffusers.json](diffusion/Inpaiting_Impl_Diffusers.json)
++ **Image-to-image** - Image-to-image generation workflow based on Diffusers - [diffusion/Image2Image_Impl_Diffusers.json](diffusion/Image2Image_Impl_Diffusers.json)
 
 ### 👤 Face Processing Technology
 + **Basic Face Swap** - High-Quality Face Replacement - [face_swap/Face_Swap.json](face_swap/Face_Swap.json)
