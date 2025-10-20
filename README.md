@@ -36,7 +36,10 @@ Adjust settings for your use case:
 + **OCR Recognition** - High-Precision Optical Character Recognition - [ocr/OCR.json](ocr/OCR.json)
 
 ### 🤖 Large Language Model Applications
-+ **Qwen Dialogue** - Qwen2 Intelligent Dialogue System - [qwen/LLM_Qwen2_0.5B.json](qwen/LLM_Qwen2_0.5B.json)
++ **LLM_Qwen** - Qwen Serial LLM - [qwen/LLM_Qwen.json](qwen/LLM_Qwen.json)
++ **LLM_Qwen_MNN** - Qwen Serial LLM IMPL MNN - [qwen/LLM_Qwen_MNN.json](qwen/LLM_Qwen_MNN.json)
++ **Qwen** - Qwen2 Intelligent Dialogue System - [qwen/LLM_Qwen2_0.5B.json](qwen/LLM_Qwen2_0.5B.json)
+
 
 ### 🎨 AI Content Generation
 + **Text-to-Image** - Stable Diffusion Text-to-Image Generation impl C++ - [fp16 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp16.json), [fp32 precision](stable_diffusion/Text_2_Image_stable_diffusion_1.5_fp32.json)

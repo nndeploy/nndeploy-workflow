@@ -36,7 +36,14 @@
         "template[http,modelscope]@https://template.cn/template.mp3"
     ],
     "model_url_": [
-        "template[http,modelscope]@https://template.cn/template.onnx"
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/llm.mnn",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/llm.mnn.weight",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/llm.mnn.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/config.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/llm_config.json",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/mnn/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.txt",
+        "modelscope@nndeploy/nndeploy:qwen/Qwen2-0.5B-Instruct/tokenizer.json"
     ],
     "other_url_": [
         "template[http,modelscope]@https://template.cn/template.txt"
