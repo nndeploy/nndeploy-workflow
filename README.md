@@ -36,7 +36,7 @@ Adjust settings for your use case:
 + **OCR Recognition** - High-Precision Optical Character Recognition - [ocr/OCR.json](ocr/OCR.json)
 
 ### 🤖 Large Language Model Applications
-+ **LLM_Qwen** - Qwen Serial LLM - [qwen/LLM_Qwen.json](qwen/LLM_Qwen.json)
++ **LLM_Qwen** - Qwen Serial LLM - [qwen/LlmQwen.json](qwen/LlmQwen.json)
 + **LLM_Qwen_MNN** - Qwen Serial LLM IMPL MNN - [qwen/LLM_Qwen_MNN.json](qwen/LLM_Qwen_MNN.json)
 + **Qwen** - Qwen2 Intelligent Dialogue System - [qwen/LLM_Qwen2_0.5B.json](qwen/LLM_Qwen2_0.5B.json)
 
