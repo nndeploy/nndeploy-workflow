@@ -1,23 +1,7 @@
-# Usage
 
-## Execution Methods
+# API Integration
 
-### Command Line Execution
-
-**Use Cases**: Workflow debugging, batch processing, script automation
-
-```bash
-# Python
-nndeploy-run-json --json_file path/to/workflow.json
-
-# C++
-cd path/to/nndeploy
-./build/nndeploy_demo_run_json --json_file path/to/workflow.json
-```
-
-### API Integration
-
-#### 🔧 Custom Input/Output Mode
+## 🔧 Custom Input/Output Mode
 
 **Use Cases**: Dynamic input data setting in code, or custom output result processing
 
@@ -85,7 +69,7 @@ tokenizer::TokenizerText* result = output->getGraphOutput<tokenizer::TokenizerTe
 status = graph->deinit();
 ```
 
-#### 🎯 Complete Workflow Mode
+## 🎯 Complete Workflow Mode
 
 **Use Cases**: Workflow contains complete input/output processing logic, no additional data setup required
 
