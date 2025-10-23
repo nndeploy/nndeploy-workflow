@@ -1,17 +1,16 @@
 
 # API Integration
 
-## 🔧 Custom Input/Output Mode
+- Development Phase: Design and debug workflows using the visual interface. **Develop custom nodes when necessary**
+- Deployment Phase: Export JSON configuration and load via API
 
-**Use Cases**: Dynamic input data setting in code, or custom output result processing
+Whether through visual interface or API calls, all workflows execute in the unified high-performance C++ compute engine, ensuring consistency between development and deployment environments.
 
-**Core Steps**:
+## Custom Input/Output Mode
 
-1. Remove input/output nodes from the workflow
-2. Set input data through code
-3. Retrieve and process output results
+**Use Cases**: Dynamic input data setting in code and custom output result processing
 
-**Python Example**:
+**Python LLM Example**:
 
 ```python
 import nndeploy
@@ -39,7 +38,7 @@ result = output_edge.get_graph_output()
 graph.deinit()
 ```
 
-**C++ Example**:
+**C++ LLM Example**:
 
 ```cpp
 #include "nndeploy/dag/graph.h"
@@ -69,7 +68,7 @@ tokenizer::TokenizerText* result = output->getGraphOutput<tokenizer::TokenizerTe
 status = graph->deinit();
 ```
 
-## 🎯 Complete Workflow Mode
+## Complete Workflow Mode
 
 **Use Cases**: Workflow contains complete input/output processing logic, no additional data setup required
 
@@ -99,16 +98,11 @@ status = graph->deinit();
 
 ---
 
-## 📚 Example Code
+## Example Code
 
 | Algorithm Type | Python Example | C++ Example |
 | -------------- | -------------- | ----------- |
 | **Large Language Model** | [Python LLM](https://github.com/nndeploy/nndeploy/blob/main/demo/llm/demo.py) | [C++ LLM](https://github.com/nndeploy/nndeploy/blob/main/demo/llm/demo.cc) |
 | **Object Detection** | [Python Detection](https://github.com/nndeploy/nndeploy/blob/main/demo/detect/demo.py) | [C++ Detection](https://github.com/nndeploy/nndeploy/blob/main/demo/detect/demo.cc) |
 
-## 🚀 Recommended Development Workflow
 
-- Development Phase: Design and debug workflows using the visual interface. **Develop custom nodes when necessary**
-- Deployment Phase: Export JSON configuration and load via API
-
-Whether through visual interface or API calls, all workflows execute in the unified high-performance C++ compute engine, ensuring consistency between development and deployment environments.

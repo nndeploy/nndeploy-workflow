@@ -22,7 +22,7 @@ Adjust settings for your use case:
 - Verify all configurations
 - Execute workflow for automated processing
 - View results at the specified output path
-- [API Loading and Execution](api_integration.md)
+- [API Loading and Execution](deploy.md)
 
 
 ## Complete List
