@@ -62,18 +62,18 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_1@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
             "io_type_": "Image",
             "path_": "resources/template/nndeploy-workflow/ocr/ocr_input.jpg",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::DetectorPreProcess",
@@ -89,16 +89,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_1@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "DetectorPreProcess_2@output_0"
+                    "name_": "DetectorPreProcess_2@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -139,11 +139,11 @@
                     0
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -159,16 +159,16 @@
             "inputs_": [
                 {
                     "desc_": "x",
-                    "type_": "Tensor",
-                    "name_": "DetectorPreProcess_2@output_0"
+                    "name_": "DetectorPreProcess_2@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "fetch_name_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_3@fetch_name_0"
+                    "name_": "Infer_3@fetch_name_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -240,11 +240,11 @@
                 "parallel_type_": "kParallelTypeSequential",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::DetectorPostProcess",
@@ -260,16 +260,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_3@fetch_name_0"
+                    "name_": "Infer_3@fetch_name_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "OCRResult",
-                    "name_": "DetectorPostProcess_4@output_0"
+                    "name_": "DetectorPostProcess_4@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "node_type_": "Intermediate",
@@ -281,11 +281,11 @@
                 "det_db_score_mode_": "slow",
                 "use_dilation_": false
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageEncode",
@@ -303,8 +303,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "DrawDetectorBox_8@output_0"
+                    "name_": "DrawDetectorBox_8@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -312,11 +312,11 @@
             "node_type_": "Output",
             "io_type_": "Image",
             "path_": "resources/images/ocr.result.jpg",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::DrawDetectorBox",
@@ -332,29 +332,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_1@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "OCRResult",
-                    "name_": "DetectorPostProcess_4@output_0"
+                    "name_": "DetectorPostProcess_4@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "DrawDetectorBox_8@output_0"
+                    "name_": "DrawDetectorBox_8@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::RotateCropImage",
@@ -370,29 +370,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "OCRResult",
-                    "name_": "DetectorPostProcess_4@output_0"
+                    "name_": "DetectorPostProcess_4@output_0",
+                    "type_": "OCRResult"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_1@output_0"
+                    "name_": "OpenCvImageDecode_1@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "OCRResult",
-                    "name_": "RotateCropImage1111@output_0"
+                    "name_": "RotateCropImage1111@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::RecognizerPreProcess",
@@ -408,16 +408,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "OCRResult",
-                    "name_": "RotateImage180_25@output_0"
+                    "name_": "RotateImage180_25@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "RecognizerPreProcess_20@output_0"
+                    "name_": "RecognizerPreProcess_20@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -463,11 +463,11 @@
                     0
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -483,16 +483,16 @@
             "inputs_": [
                 {
                     "desc_": "x",
-                    "type_": "Tensor",
-                    "name_": "RecognizerPreProcess_20@output_0"
+                    "name_": "RecognizerPreProcess_20@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "fetch_name_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_21@fetch_name_0"
+                    "name_": "Infer_21@fetch_name_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -564,11 +564,11 @@
                 "parallel_type_": "kParallelTypeSequential",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::ClassifierPreProcess",
@@ -584,16 +584,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "OCRResult",
-                    "name_": "RotateCropImage1111@output_0"
+                    "name_": "RotateCropImage1111@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "ClassifierPreProcess_23@output_0"
+                    "name_": "ClassifierPreProcess_23@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -638,11 +638,11 @@
                     0
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::ClassifierPostProcess",
@@ -658,16 +658,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_26@softmax_0.tmp_0"
+                    "name_": "Infer_26@softmax_0.tmp_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "OCRResult",
-                    "name_": "ClassifierPostProcess_24@output_0"
+                    "name_": "ClassifierPostProcess_24@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "node_type_": "Intermediate",
@@ -675,11 +675,11 @@
                 "version_": 2,
                 "cls_thresh_": 0.8999999761581421
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::RotateImage180",
@@ -695,29 +695,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "OCRResult",
-                    "name_": "ClassifierPostProcess_24@output_0"
+                    "name_": "ClassifierPostProcess_24@output_0",
+                    "type_": "OCRResult"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "OCRResult",
-                    "name_": "RotateCropImage1111@output_0"
+                    "name_": "RotateCropImage1111@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "OCRResult",
-                    "name_": "RotateImage180_25@output_0"
+                    "name_": "RotateImage180_25@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -733,16 +733,16 @@
             "inputs_": [
                 {
                     "desc_": "x",
-                    "type_": "Tensor",
-                    "name_": "ClassifierPreProcess_23@output_0"
+                    "name_": "ClassifierPreProcess_23@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "softmax_0.tmp_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_26@softmax_0.tmp_0"
+                    "name_": "Infer_26@softmax_0.tmp_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -814,11 +814,11 @@
                 "parallel_type_": "kParallelTypeSequential",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::ocr::RecognizerPostProcess",
@@ -835,17 +835,17 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "Tensor",
                     "desc_": "input_0",
-                    "name_": "Infer_21@fetch_name_0"
+                    "name_": "Infer_21@fetch_name_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "OCRResult",
                     "desc_": "output_0",
-                    "name_": "RecognizerPostProcess_27@output_0"
+                    "name_": "RecognizerPostProcess_27@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "node_type_": "Intermediate",
@@ -881,9 +881,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "OCRResult",
                     "desc_": "input_0",
-                    "name_": "RecognizerPostProcess_27@output_0"
+                    "name_": "RecognizerPostProcess_27@output_0",
+                    "type_": "OCRResult"
                 }
             ],
             "is_dynamic_output_": false,
@@ -909,64 +909,169 @@
     "nndeploy_ui_layout": {
         "layout": {
             "OpenCvImageDecode_1": {
-                "x": 112.06217841711333,
-                "y": 253.3057467593799
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "DetectorPreProcess_2": {
-                "x": 400,
-                "y": 144.5
+                "position": {
+                    "x": 400,
+                    "y": 142.60000000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_3": {
-                "x": 700,
-                "y": 144.5
+                "position": {
+                    "x": 700,
+                    "y": 142.60000000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "DetectorPostProcess_4": {
-                "x": 1000,
-                "y": 144.5
+                "position": {
+                    "x": 1000,
+                    "y": 142.60000000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_6": {
-                "x": 1600,
-                "y": 91.67499999999998
+                "position": {
+                    "x": 1600,
+                    "y": 70.93131553088917
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "DrawDetectorBox_8": {
-                "x": 1300,
-                "y": 78.67499999999998
+                "position": {
+                    "x": 1300,
+                    "y": 79.57500000000005
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "RotateCropImage1111": {
-                "x": 1300,
-                "y": 283.975
+                "position": {
+                    "x": 1300,
+                    "y": 276.275
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "RecognizerPreProcess_20": {
-                "x": 409.9060290146526,
-                "y": 568.9739299214991
+                "position": {
+                    "x": 2800,
+                    "y": 287.175
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_21": {
-                "x": 655.1686780197554,
-                "y": 568.9739299214991
+                "position": {
+                    "x": 3100,
+                    "y": 287.175
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "ClassifierPreProcess_23": {
-                "x": 391.3643716792599,
-                "y": 437.6069683178589
+                "position": {
+                    "x": 1600,
+                    "y": 333.4
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "ClassifierPostProcess_24": {
-                "x": 982.3643716792599,
-                "y": 397.8057467593799
+                "position": {
+                    "x": 2200,
+                    "y": 333.4
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "RotateImage180_25": {
-                "x": 1235.3643716792599,
-                "y": 450.6069683178589
+                "position": {
+                    "x": 2500,
+                    "y": 276.275
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_26": {
-                "x": 700,
-                "y": 429.6069683178589
+                "position": {
+                    "x": 1900,
+                    "y": 333.4000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "RecognizerPostProcess_27": {
-                "x": 984.3643716792599,
-                "y": 591.7569683178589
+                "position": {
+                    "x": 3400,
+                    "y": 287.17499999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "PrintOcrNode_28": {
-                "x": 1248.3643716792599,
-                "y": 608.756968317859
+                "position": {
+                    "x": 3700,
+                    "y": 284.17499999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

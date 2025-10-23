@@ -50,30 +50,35 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerText",
-                    "name_": "PromptNode_8@output_0"
+                    "name_": "PromptNode_8@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "TokenizerIds",
-                    "name_": "QwenPrefill_2@output_0"
+                    "name_": "QwenPrefill_2@output_0",
+                    "type_": "TokenizerIds"
                 },
                 {
                     "desc_": "output_1",
-                    "type_": "Tensor",
-                    "name_": "QwenPrefill_2@output_1"
+                    "name_": "QwenPrefill_2@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_2",
-                    "type_": "TokenizerIds",
-                    "name_": "QwenPrefill_2@output_2"
+                    "name_": "QwenPrefill_2@output_2",
+                    "type_": "TokenizerIds"
                 }
             ],
+            "is_composite_node_": true,
             "node_type_": "Intermediate",
             "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": [
                 {
                     "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -83,19 +88,15 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "prefill_input",
-                            "type_": "TokenizerText",
                             "desc_": "input_0",
-                            "id": "portydnvt6pqd"
+                            "type_": "TokenizerText"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "prefill_token_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "output_0",
-                            "id": "portovkk4j8f6"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -109,7 +110,7 @@
                         "added_tokens_": "",
                         "max_length_": 77
                     },
-                    "id": "nodehgsp71u1b"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::qwen::PrefillEmbeddingNode",
@@ -119,37 +120,27 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "prefill_token_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "input_0",
-                            "id": "portqfb3va9ww"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "prefill_input_ids",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "portg0sb64ic0"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_attention_mask",
-                            "type_": "Tensor",
                             "desc_": "output_1",
-                            "id": "portm35r6bt8g"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_position_ids",
-                            "type_": "Tensor",
                             "desc_": "output_2",
-                            "id": "porth8hxbeset"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_past_key_values",
-                            "type_": "Tensor",
                             "desc_": "output_3",
-                            "id": "portlyc3jx0or"
+                            "type_": "Tensor"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -159,7 +150,7 @@
                         "gen_seq_len_": 0,
                         "embedding_file_": ""
                     },
-                    "id": "nodelk9hgjoq4"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::infer::Infer",
@@ -169,43 +160,31 @@
                     "is_dynamic_input_": true,
                     "inputs_": [
                         {
-                            "name_": "prefill_input_ids",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "port5qb9hwvd6"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_attention_mask",
-                            "type_": "NotSet",
                             "desc_": "input_1",
-                            "id": "portfja0zxlpg"
+                            "type_": "NotSet"
                         },
                         {
-                            "name_": "prefill_position_ids",
-                            "type_": "NotSet",
                             "desc_": "input_2",
-                            "id": "portwev8khsxg"
+                            "type_": "NotSet"
                         },
                         {
-                            "name_": "prefill_past_key_values",
-                            "type_": "NotSet",
                             "desc_": "input_3",
-                            "id": "portnm1udqd20"
+                            "type_": "NotSet"
                         }
                     ],
                     "is_dynamic_output_": true,
                     "outputs_": [
                         {
-                            "name_": "prefill_logits",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "portu7o7st4qz"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_presents",
-                            "type_": "NotSet",
                             "desc_": "output_1",
-                            "id": "portngmr6w1d5"
+                            "type_": "NotSet"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -271,7 +250,7 @@
                         "parallel_type_": "kParallelTypeNone",
                         "worker_num_": 1
                     },
-                    "id": "node5xg961rdx"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::qwen::PrefillSampleNode",
@@ -281,35 +260,25 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "prefill_logits",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "port8zeidw992"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prefill_token_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "input_1",
-                            "id": "portncnva1kmw"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "prefill_out_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "output_0",
-                            "id": "portrlryayjq3"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "node_type_": "Intermediate",
-                    "id": "nodetshrf6y93"
+                    "node_repository_": []
                 }
-            ],
-            "size": {
-                "width": 200,
-                "height": 80
-            }
+            ]
         },
         {
             "key_": "nndeploy::qwen::QwenDecode",
@@ -320,30 +289,35 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerIds",
-                    "name_": "QwenPrefill_2@output_0"
+                    "name_": "QwenPrefill_2@output_0",
+                    "type_": "TokenizerIds"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "QwenPrefill_2@output_1"
+                    "name_": "QwenPrefill_2@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_2",
-                    "type_": "TokenizerIds",
-                    "name_": "QwenPrefill_2@output_2"
+                    "name_": "QwenPrefill_2@output_2",
+                    "type_": "TokenizerIds"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "TokenizerText",
-                    "name_": "QwenDecode_3@output_0"
+                    "name_": "QwenDecode_3@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
+            "is_composite_node_": true,
             "node_type_": "Intermediate",
             "config_path_": "resources/models/qwen/Qwen2-0.5B-Instruct/llm_config.json",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": [
                 {
                     "key_": "nndeploy::qwen::DecodeEmbeddingNode",
@@ -353,49 +327,35 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "decode_prefill_token_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "input_0",
-                            "id": "port3omkvu6fe"
+                            "type_": "TokenizerIds"
                         },
                         {
-                            "name_": "decode_prefill_presents",
-                            "type_": "TokenizerIds",
                             "desc_": "input_1",
-                            "id": "portqh55reugy"
+                            "type_": "TokenizerIds"
                         },
                         {
-                            "name_": "decode_prefill_history_ids",
-                            "type_": "Tensor",
                             "desc_": "input_2",
-                            "id": "port1gw8niqgm"
+                            "type_": "Tensor"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "decode_input_ids",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "portd0735r0gi"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "decode_attention_mask",
-                            "type_": "Tensor",
                             "desc_": "output_1",
-                            "id": "port7gv1hbd4h"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "decode_position_ids",
-                            "type_": "Tensor",
                             "desc_": "output_2",
-                            "id": "portft8ihldu7"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "decode_past_key_values",
-                            "type_": "Tensor",
                             "desc_": "output_3",
-                            "id": "port5fg9dig9q"
+                            "type_": "Tensor"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -405,7 +365,7 @@
                         "gen_seq_len_": 0,
                         "embedding_file_": ""
                     },
-                    "id": "node84faxfdxk"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::infer::Infer",
@@ -415,43 +375,31 @@
                     "is_dynamic_input_": true,
                     "inputs_": [
                         {
-                            "name_": "decode_input_ids",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "porthaoofemjx"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "decode_attention_mask",
-                            "type_": "NotSet",
                             "desc_": "input_1",
-                            "id": "portufszjf9ap"
+                            "type_": "NotSet"
                         },
                         {
-                            "name_": "decode_position_ids",
-                            "type_": "NotSet",
                             "desc_": "input_2",
-                            "id": "portlcsptcd4v"
+                            "type_": "NotSet"
                         },
                         {
-                            "name_": "decode_past_key_values",
-                            "type_": "NotSet",
                             "desc_": "input_3",
-                            "id": "portac4kcpof7"
+                            "type_": "NotSet"
                         }
                     ],
                     "is_dynamic_output_": true,
                     "outputs_": [
                         {
-                            "name_": "decode_logits",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "portlvovg0cye"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "decode_presents",
-                            "type_": "NotSet",
                             "desc_": "output_1",
-                            "id": "portp7sstznx0"
+                            "type_": "NotSet"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -517,7 +465,7 @@
                         "parallel_type_": "kParallelTypeNone",
                         "worker_num_": 1
                     },
-                    "id": "nodehb7h72enq"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::qwen::DecodeSampleNode",
@@ -527,24 +475,20 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "decode_logits",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "port4ueamxdli"
+                            "type_": "Tensor"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "decode_out_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "output_0",
-                            "id": "port2v5t8f7ha"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "node_type_": "Intermediate",
                     "param_": {},
-                    "id": "node0qb73fqrr"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::tokenizer::TokenizerDecodeCpp",
@@ -554,19 +498,15 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "decode_out_ids",
-                            "type_": "TokenizerIds",
                             "desc_": "input_0",
-                            "id": "portcinv94diq"
+                            "type_": "TokenizerIds"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "decode_out",
-                            "type_": "TokenizerText",
                             "desc_": "output_0",
-                            "id": "port2yof1i8lt"
+                            "type_": "TokenizerText"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -580,13 +520,9 @@
                         "added_tokens_": "",
                         "max_length_": 77
                     },
-                    "id": "noderq0bt3hrj"
+                    "node_repository_": []
                 }
-            ],
-            "size": {
-                "width": 200,
-                "height": 80
-            }
+            ]
         },
         {
             "key_": "nndeploy::qwen::PrintNode",
@@ -605,9 +541,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "TokenizerText",
                     "desc_": "input_0",
-                    "name_": "QwenDecode_3@output_0"
+                    "name_": "QwenDecode_3@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "is_dynamic_output_": false,
@@ -638,9 +574,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "TokenizerText",
                     "desc_": "output_0",
-                    "name_": "PromptNode_8@output_0"
+                    "name_": "PromptNode_8@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "node_type_": "Input",
@@ -665,20 +601,140 @@
     "nndeploy_ui_layout": {
         "layout": {
             "QwenPrefill_2": {
-                "x": 400,
-                "y": 11
+                "position": {
+                    "x": 330,
+                    "y": 55.900000000000006
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true,
+                "children": {
+                    "token_node": {
+                        "position": {
+                            "x": 100,
+                            "y": 47.167547246773374
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "embedding_node": {
+                        "position": {
+                            "x": 342.9291322909654,
+                            "y": 0
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "prefill_infer": {
+                        "position": {
+                            "x": 585.8582645819308,
+                            "y": 0
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "prefill_sample_node": {
+                        "position": {
+                            "x": 816.5579252209602,
+                            "y": 36.267547246773375
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    }
+                }
             },
             "QwenDecode_3": {
-                "x": 700,
-                "y": 11
+                "position": {
+                    "x": 1560,
+                    "y": 67.89999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true,
+                "children": {
+                    "embedding_node": {
+                        "position": {
+                            "x": 100,
+                            "y": 0
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "decode_infer": {
+                        "position": {
+                            "x": 400,
+                            "y": 0
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "sample_node": {
+                        "position": {
+                            "x": 700,
+                            "y": 32.64999999999999
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "decode_node": {
+                        "position": {
+                            "x": 1000,
+                            "y": 32.64999999999999
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    }
+                }
             },
             "PrintNode_7": {
-                "x": 1000,
-                "y": 0
+                "position": {
+                    "x": 2860,
+                    "y": 87.55000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "PromptNode_8": {
-                "x": 100,
-                "y": 7
+                "position": {
+                    "x": 100,
+                    "y": 66.75
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

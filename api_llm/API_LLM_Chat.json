@@ -53,17 +53,17 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "str",
                     "desc_": "input_0",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "str",
                     "desc_": "output_0",
-                    "name_": "LLMChatNode_1@output_0"
+                    "name_": "LLMChatNode_1@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Intermediate",
@@ -112,9 +112,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "str",
                     "desc_": "output_0",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -139,9 +139,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "str",
                     "desc_": "input_0",
-                    "name_": "LLMChatNode_1@output_0"
+                    "name_": "LLMChatNode_1@output_0",
+                    "type_": "str"
                 }
             ],
             "is_dynamic_output_": false,
@@ -167,16 +167,37 @@
     "nndeploy_ui_layout": {
         "layout": {
             "LLMChatNode_1": {
-                "x": -161.02267456054688,
-                "y": -141.79067993164062
+                "position": {
+                    "x": 400,
+                    "y": 23.80000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InputStr_2": {
-                "x": -429.0226745605469,
-                "y": -144.79067993164062
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "ConsolePrintNode_3": {
-                "x": 106.97732543945312,
-                "y": -141.79067993164062
+                "position": {
+                    "x": 700,
+                    "y": 20.799999999999955
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

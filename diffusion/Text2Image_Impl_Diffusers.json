@@ -103,26 +103,26 @@
             "inputs_": [
                 {
                     "desc_": "Input text prompt",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 },
                 {
                     "desc_": "Input negative text prompt",
-                    "type_": "str",
-                    "name_": "InputStr_3@output_0"
+                    "name_": "InputStr_3@output_0",
+                    "type_": "str"
                 },
                 {
                     "desc_": "Input latent",
-                    "type_": "Tensor",
-                    "name_": "LatentNoise_4@Output latent noise tensor"
+                    "name_": "LatentNoise_4@Output latent noise tensor",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "Output PIL image",
-                    "type_": "Image",
-                    "name_": "Text2Image_1@Output PIL image"
+                    "name_": "Text2Image_1@Output PIL image",
+                    "type_": "Image"
                 }
             ],
             "node_type_": "Intermediate",
@@ -165,8 +165,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -198,8 +198,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "str",
-                    "name_": "InputStr_3@output_0"
+                    "name_": "InputStr_3@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -229,8 +229,8 @@
             "outputs_": [
                 {
                     "desc_": "Output latent noise tensor",
-                    "type_": "Tensor",
-                    "name_": "LatentNoise_4@Output latent noise tensor"
+                    "name_": "LatentNoise_4@Output latent noise tensor",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -268,8 +268,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Image",
-                    "name_": "Text2Image_1@Output PIL image"
+                    "name_": "Text2Image_1@Output PIL image",
+                    "type_": "Image"
                 }
             ],
             "is_dynamic_output_": false,
@@ -287,24 +287,59 @@
     "nndeploy_ui_layout": {
         "layout": {
             "Text2Image_1": {
-                "x": -507.30800346151756,
-                "y": -426.62629567466206
+                "position": {
+                    "x": 400,
+                    "y": 224.55
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InputStr_2": {
-                "x": -939.737399065338,
-                "y": -454.80506418861916
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InputStr_3": {
-                "x": -882.3373990653381,
-                "y": -231.64067993164062
+                "position": {
+                    "x": 100,
+                    "y": 222.5
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "LatentNoise_4": {
-                "x": -882.3373990653381,
-                "y": -45.676295674662086
+                "position": {
+                    "x": 100,
+                    "y": 445
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "PILImageEncodec_5": {
-                "x": -220.30800346151756,
-                "y": -426.62629567466206
+                "position": {
+                    "x": 700,
+                    "y": 243.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

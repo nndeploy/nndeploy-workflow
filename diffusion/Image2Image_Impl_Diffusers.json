@@ -62,8 +62,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "str",
-                    "name_": "InputStr_1@output_0"
+                    "name_": "InputStr_1@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -95,8 +95,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -140,26 +140,26 @@
             "inputs_": [
                 {
                     "desc_": "Input text prompt",
-                    "type_": "str",
-                    "name_": "InputStr_1@output_0"
+                    "name_": "InputStr_1@output_0",
+                    "type_": "str"
                 },
                 {
                     "desc_": "Input negative text prompt",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 },
                 {
                     "desc_": "Input source image",
-                    "type_": "Image",
-                    "name_": "PILImageDecodec_4@output_0"
+                    "name_": "PILImageDecodec_4@output_0",
+                    "type_": "Image"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "Output PIL image",
-                    "type_": "Image",
-                    "name_": "Image2Image_3@Output PIL image"
+                    "name_": "Image2Image_3@Output PIL image",
+                    "type_": "Image"
                 }
             ],
             "node_type_": "Intermediate",
@@ -214,8 +214,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Image",
-                    "name_": "PILImageDecodec_4@output_0"
+                    "name_": "PILImageDecodec_4@output_0",
+                    "type_": "Image"
                 }
             ],
             "node_type_": "Input",
@@ -247,21 +247,21 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Image",
-                    "name_": "Image2Image_3@Output PIL image"
+                    "name_": "Image2Image_3@Output PIL image",
+                    "type_": "Image"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Image",
-                    "name_": "PILImageDecodec_4@output_0"
+                    "name_": "PILImageDecodec_4@output_0",
+                    "type_": "Image"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Image",
-                    "name_": "MakeImageGrid_5@output_0"
+                    "name_": "MakeImageGrid_5@output_0",
+                    "type_": "Image"
                 }
             ],
             "node_type_": "Intermediate",
@@ -269,41 +269,6 @@
             "cols": 2,
             "resize_h": -1,
             "resize_w": -1,
-            "size": {
-                "width": 200,
-                "height": 80
-            },
-            "node_repository_": []
-        },
-        {
-            "key_": "nndeploy.codec.PILImageEncodec",
-            "name_": "PILImageEncodec_6",
-            "developer_": "",
-            "source_": "",
-            "desc_": "PIL Image Encodec",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "version_": "1.0.0",
-            "required_params_": [
-                "path_"
-            ],
-            "ui_params_": [],
-            "io_params_": [
-                "path_"
-            ],
-            "dropdown_params_": {},
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "Image",
-                    "name_": "MakeImageGrid_5@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [],
-            "node_type_": "Output",
-            "io_type_": "Image",
-            "path_": "resources/images/image2image_grid_2.jpg",
             "size": {
                 "width": 200,
                 "height": 80
@@ -330,8 +295,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Image",
-                    "name_": "Image2Image_3@Output PIL image"
+                    "name_": "Image2Image_3@Output PIL image",
+                    "type_": "Image"
                 }
             ],
             "is_dynamic_output_": false,
@@ -344,37 +309,121 @@
                 "height": 80
             },
             "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.codec.PILImageEncodec",
+            "name_": "PILImageEncodec_6",
+            "developer_": "",
+            "source_": "",
+            "desc_": "PIL Image Encodec",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "version_": "1.0.0",
+            "required_params_": [
+                "path_"
+            ],
+            "ui_params_": [],
+            "io_params_": [
+                "path_"
+            ],
+            "dropdown_params_": {},
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "name_": "MakeImageGrid_5@output_0",
+                    "type_": "Image"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [],
+            "node_type_": "Output",
+            "io_type_": "Image",
+            "path_": "resources/images/image2image_grid_2.jpg",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
+            "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
             "InputStr_1": {
-                "x": -251.52267456054688,
-                "y": -202.29067993164062
+                "position": {
+                    "x": 90,
+                    "y": 278.20000000000005
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InputStr_2": {
-                "x": -251.52267456054688,
-                "y": -12.790679931640625
+                "position": {
+                    "x": 90,
+                    "y": 442.50000000000006
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Image2Image_3": {
-                "x": 95.97732543945312,
-                "y": -144.87403869628906
+                "position": {
+                    "x": 400,
+                    "y": 357.7500000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "PILImageDecodec_4": {
-                "x": -194.02267456054688,
-                "y": 177.85932006835935
+                "position": {
+                    "x": 90,
+                    "y": 606.8
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "MakeImageGrid_5": {
-                "x": 384.9773254394531,
-                "y": 54.55932006835937
-            },
-            "PILImageEncodec_6": {
-                "x": 627.9773254394531,
-                "y": 54.55932006835937
+                "position": {
+                    "x": 700,
+                    "y": 624.5
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "PILImageEncodec_7": {
-                "x": 384.9773254394531,
-                "y": -218.17403869628905
+                "position": {
+                    "x": 700,
+                    "y": 357.7500000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
+            },
+            "PILImageEncodec_6": {
+                "position": {
+                    "x": 971,
+                    "y": 624.5
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

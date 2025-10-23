@@ -45,16 +45,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_17@output_0"
+                    "name_": "OpenCvImageDecode_17@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "CvtResizeNormTrans_12@output_0"
+                    "name_": "CvtResizeNormTrans_12@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -86,11 +86,11 @@
                     1
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -101,16 +101,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "CvtResizeNormTrans_12@output_0"
+                    "name_": "CvtResizeNormTrans_12@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_13@output_0"
+                    "name_": "Infer_13@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -176,11 +176,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::RMBGPostProcess",
@@ -191,32 +191,32 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_17@output_0"
+                    "name_": "OpenCvImageDecode_17@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "Infer_13@output_0"
+                    "name_": "Infer_13@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "SegmentResult",
-                    "name_": "RMBGPostProcess_14@output_0"
+                    "name_": "RMBGPostProcess_14@output_0",
+                    "type_": "SegmentResult"
                 }
             ],
             "node_type_": "Intermediate",
             "param_": {
                 "version": 14
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::DrawMask",
@@ -227,29 +227,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_17@output_0"
+                    "name_": "OpenCvImageDecode_17@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "SegmentResult",
-                    "name_": "RMBGPostProcess_14@output_0"
+                    "name_": "RMBGPostProcess_14@output_0",
+                    "type_": "SegmentResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "DrawMask_15@output_0"
+                    "name_": "DrawMask_15@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -268,9 +268,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
-                    "name_": "OpenCvImageDecode_17@output_0"
+                    "name_": "OpenCvImageDecode_17@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -297,9 +297,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
-                    "name_": "DrawMask_15@output_0"
+                    "name_": "DrawMask_15@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -317,28 +317,70 @@
     "nndeploy_ui_layout": {
         "layout": {
             "CvtResizeNormTrans_12": {
-                "x": 400,
-                "y": 155.45
+                "position": {
+                    "x": 372,
+                    "y": 159.32500000000005
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_13": {
-                "x": 700,
-                "y": 155.45
+                "position": {
+                    "x": 674,
+                    "y": 159.32500000000005
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "RMBGPostProcess_14": {
-                "x": 1000,
-                "y": 95.44999999999999
+                "position": {
+                    "x": 952,
+                    "y": 137.52500000000006
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "DrawMask_15": {
-                "x": 1300,
-                "y": 40.94999999999999
+                "position": {
+                    "x": 1289,
+                    "y": 40.700000000000045
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_17": {
-                "x": 100,
-                "y": 5.499999999999986
+                "position": {
+                    "x": 100,
+                    "y": 40.700000000000045
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_18": {
-                "x": 1600,
-                "y": -1.4210854715202004e-14
+                "position": {
+                    "x": 1289,
+                    "y": 220.00000000000006
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

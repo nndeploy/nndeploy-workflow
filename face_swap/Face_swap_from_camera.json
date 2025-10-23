@@ -54,32 +54,32 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "list[Any]",
-                    "name_": "InsightImageFaceId_59@output_0"
+                    "name_": "InsightImageFaceId_59@output_0",
+                    "type_": "list[Any]"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_70@output_0"
+                    "name_": "InsightFaceAnalysis_70@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Any]",
-                    "name_": "FaceIdMap_55@output_0"
+                    "name_": "FaceIdMap_55@output_0",
+                    "type_": "list[Any]"
                 }
             ],
             "node_type_": "Intermediate",
             "map_ids_": [
                 -1
             ],
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy.face.InsightImageFaceId",
@@ -95,30 +95,30 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_66@output_0"
+                    "name_": "OpenCvImageDecode_66@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_69@output_0"
+                    "name_": "InsightFaceAnalysis_69@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Any]",
-                    "name_": "InsightImageFaceId_59@output_0"
+                    "name_": "InsightImageFaceId_59@output_0",
+                    "type_": "list[Any]"
                 }
             ],
             "node_type_": "Intermediate",
             "faces_path_": "resources/images/",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy.gan.GFPGAN",
@@ -136,26 +136,26 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0"
+                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "GFPGAN_53@output_0"
+                    "name_": "GFPGAN_53@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
             "model_path_": "resources/models/face_swap/GFPGANv1.4.pth",
             "upscale_": 1,
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy.face.CameraInsightFaceSwapperWithMap",
@@ -173,26 +173,26 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_65@output_0"
+                    "name_": "OpenCvImageDecode_65@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_68@output_0"
+                    "name_": "InsightFaceAnalysis_68@output_0",
+                    "type_": "list[Face]"
                 },
                 {
                     "desc_": "input_2",
-                    "type_": "list[Any]",
-                    "name_": "FaceIdMap_55@output_0"
+                    "name_": "FaceIdMap_55@output_0",
+                    "type_": "list[Any]"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0"
+                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
@@ -206,11 +206,11 @@
                 "CPUExecutionProvider"
             ],
             "distance_threshold_": 0.6,
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -230,8 +230,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_65@output_0"
+                    "name_": "OpenCvImageDecode_65@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -261,8 +261,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_66@output_0"
+                    "name_": "OpenCvImageDecode_66@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -292,8 +292,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_67@output_0"
+                    "name_": "OpenCvImageDecode_67@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -319,16 +319,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_65@output_0"
+                    "name_": "OpenCvImageDecode_65@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_68@output_0"
+                    "name_": "InsightFaceAnalysis_68@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "node_type_": "Intermediate",
@@ -359,16 +359,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_66@output_0"
+                    "name_": "OpenCvImageDecode_66@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_69@output_0"
+                    "name_": "InsightFaceAnalysis_69@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "node_type_": "Intermediate",
@@ -399,16 +399,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_67@output_0"
+                    "name_": "OpenCvImageDecode_67@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_70@output_0"
+                    "name_": "InsightFaceAnalysis_70@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "node_type_": "Intermediate",
@@ -441,8 +441,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0"
+                    "name_": "CameraInsightFaceSwapperWithMap_64@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -472,8 +472,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "GFPGAN_53@output_0"
+                    "name_": "GFPGAN_53@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -491,52 +491,136 @@
     "nndeploy_ui_layout": {
         "layout": {
             "FaceIdMap_55": {
-                "x": 262.6454372552871,
-                "y": -34.83975016722789
+                "position": {
+                    "x": 1000,
+                    "y": 237.92499999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightImageFaceId_59": {
-                "x": -0.032741293758697054,
-                "y": -127.03975016722791
+                "position": {
+                    "x": 700,
+                    "y": 121.64999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "GFPGAN_53": {
-                "x": 838.6033361341327,
-                "y": 61.86024983277211
+                "position": {
+                    "x": 1600,
+                    "y": 487.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "CameraInsightFaceSwapperWithMap_64": {
-                "x": 561.4505367463371,
-                "y": -399.59054623495143
+                "position": {
+                    "x": 1300,
+                    "y": 643.4499999999999
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_65": {
-                "x": -547.6584183942475,
-                "y": -542.928977864134
+                "position": {
+                    "x": 700,
+                    "y": 586.225
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_66": {
-                "x": -547.6584183942475,
-                "y": -189.779176471629
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_67": {
-                "x": -547.6584183942475,
-                "y": 237.54507420851328
+                "position": {
+                    "x": 400,
+                    "y": 353.67499999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightFaceAnalysis_68": {
-                "x": -241.7923206355637,
-                "y": -407.4805113786079
+                "position": {
+                    "x": 1000,
+                    "y": 757.6499999999999
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightFaceAnalysis_69": {
-                "x": -262.7109198428045,
-                "y": -73.5500215732288
+                "position": {
+                    "x": 400,
+                    "y": 178.7750000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightFaceAnalysis_70": {
-                "x": -262.7109198428045,
-                "y": 162.64507420851328
+                "position": {
+                    "x": 700,
+                    "y": 411.325
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_71": {
-                "x": 1069.2575356277778,
-                "y": -315.46983271595315
+                "position": {
+                    "x": 1600,
+                    "y": 662.1999999999999
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_72": {
-                "x": 1191.0911242495383,
-                "y": 61.86024983277211
+                "position": {
+                    "x": 1900,
+                    "y": 484.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

@@ -45,26 +45,26 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_7@output_0"
+                    "name_": "OpenCvVideoDecode_7@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_0"
+                    "name_": "FairMotPreProcess_1@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_1",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_1"
+                    "name_": "FairMotPreProcess_1@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_2",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_2"
+                    "name_": "FairMotPreProcess_1@output_2",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -96,11 +96,11 @@
                     1
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::track::FairMotPostProcess",
@@ -111,21 +111,21 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@output_0"
+                    "name_": "Infer_4@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@output_1"
+                    "name_": "Infer_4@output_1",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "MOTResult",
-                    "name_": "FairMotPostProcess_2@output_0"
+                    "name_": "FairMotPostProcess_2@output_0",
+                    "type_": "MOTResult"
                 }
             ],
             "node_type_": "Intermediate",
@@ -134,11 +134,11 @@
                 "tracked_thresh_": 0.4000000059604645,
                 "min_box_area_": 200
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::track::VisMOT",
@@ -149,29 +149,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_7@output_0"
+                    "name_": "OpenCvVideoDecode_7@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "MOTResult",
-                    "name_": "FairMotPostProcess_2@output_0"
+                    "name_": "FairMotPostProcess_2@output_0",
+                    "type_": "MOTResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "VisMOT_3@output_0"
+                    "name_": "VisMOT_3@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -182,31 +182,31 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_0"
+                    "name_": "FairMotPreProcess_1@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_1"
+                    "name_": "FairMotPreProcess_1@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_2",
-                    "type_": "Tensor",
-                    "name_": "FairMotPreProcess_1@output_2"
+                    "name_": "FairMotPreProcess_1@output_2",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@output_0"
+                    "name_": "Infer_4@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_1",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@output_1"
+                    "name_": "Infer_4@output_1",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -272,11 +272,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvVideoDecode",
@@ -296,8 +296,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_7@output_0"
+                    "name_": "OpenCvVideoDecode_7@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -325,8 +325,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "VisMOT_3@output_0"
+                    "name_": "VisMOT_3@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -346,28 +346,70 @@
     "nndeploy_ui_layout": {
         "layout": {
             "FairMotPreProcess_1": {
-                "x": 400,
-                "y": 101.9
+                "position": {
+                    "x": 400,
+                    "y": 51.30000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "FairMotPostProcess_2": {
-                "x": 1000,
-                "y": 114.9
+                "position": {
+                    "x": 1000,
+                    "y": 62.14999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "VisMOT_3": {
-                "x": 1300,
-                "y": 42.1
+                "position": {
+                    "x": 1253,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_4": {
-                "x": 700,
-                "y": 101.9
+                "position": {
+                    "x": 700,
+                    "y": 51.299999999999955
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvVideoDecode_7": {
-                "x": 134,
-                "y": -70.89999999999998
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvVideoEncode_8": {
-                "x": 1340,
-                "y": 235.60000000000002
+                "position": {
+                    "x": 1253,
+                    "y": 169.69999999999996
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

@@ -51,8 +51,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_15@output_0"
+                    "name_": "OpenCvImageDecode_15@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -68,16 +68,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_15@output_0"
+                    "name_": "OpenCvImageDecode_15@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_17@output_0"
+                    "name_": "InsightFaceAnalysis_17@output_0",
+                    "type_": "list[Face]"
                 }
             ],
             "node_type_": "Intermediate",
@@ -90,36 +90,6 @@
             "node_repository_": []
         },
         {
-            "key_": "nndeploy.face.InsightFaceAnalysis",
-            "name_": "nndeploy.face.InsightFaceAnalysis_18",
-            "desc_": "InsightFace Analysis: get face analysis from image",
-            "device_type_": "kDeviceTypeCodeCpu:0",
-            "is_dynamic_input_": false,
-            "inputs_": [
-                {
-                    "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_24@output_0"
-                }
-            ],
-            "is_dynamic_output_": false,
-            "outputs_": [
-                {
-                    "desc_": "output_0",
-                    "type_": "list[Face]",
-                    "name_": "nndeploy.face.InsightFaceAnalysis_18@output_0"
-                }
-            ],
-            "node_type_": "Intermediate",
-            "insightface_name_": "buffalo_l",
-            "providers_": [
-                "CPUExecutionProvider"
-            ],
-            "is_one_face_": false,
-            "ctx_id": 0,
-            "node_repository_": []
-        },
-        {
             "key_": "nndeploy.face.InsightFaceSwapper",
             "name_": "InsightFaceSwapper_19",
             "desc_": "InsightFace Swapper: swap face from image",
@@ -128,26 +98,26 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "list[Face]",
-                    "name_": "InsightFaceAnalysis_17@output_0"
+                    "name_": "InsightFaceAnalysis_17@output_0",
+                    "type_": "list[Face]"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "list[Face]",
-                    "name_": "nndeploy.face.InsightFaceAnalysis_18@output_0"
+                    "name_": "nndeploy.face.InsightFaceAnalysis_18@output_0",
+                    "type_": "list[Face]"
                 },
                 {
                     "desc_": "input_2",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_24@output_0"
+                    "name_": "OpenCvVideoDecode_24@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "InsightFaceSwapper_19@output_0"
+                    "name_": "InsightFaceSwapper_19@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
@@ -173,16 +143,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "InsightFaceSwapper_19@output_0"
+                    "name_": "InsightFaceSwapper_19@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "GFPGAN_22@output_0"
+                    "name_": "GFPGAN_22@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
@@ -208,8 +178,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvVideoDecode_24@output_0"
+                    "name_": "OpenCvVideoDecode_24@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -233,8 +203,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "GFPGAN_22@output_0"
+                    "name_": "GFPGAN_22@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -245,37 +215,116 @@
             "ref_path_": "resources/videos/video.mp4",
             "fourcc_": "avc1",
             "node_repository_": []
+        },
+        {
+            "key_": "nndeploy.face.InsightFaceAnalysis",
+            "name_": "nndeploy.face.InsightFaceAnalysis_18",
+            "desc_": "InsightFace Analysis: get face analysis from image",
+            "device_type_": "kDeviceTypeCodeCpu:0",
+            "is_dynamic_input_": false,
+            "inputs_": [
+                {
+                    "desc_": "input_0",
+                    "name_": "OpenCvVideoDecode_24@output_0",
+                    "type_": "ndarray"
+                }
+            ],
+            "is_dynamic_output_": false,
+            "outputs_": [
+                {
+                    "desc_": "output_0",
+                    "name_": "nndeploy.face.InsightFaceAnalysis_18@output_0",
+                    "type_": "list[Face]"
+                }
+            ],
+            "node_type_": "Intermediate",
+            "insightface_name_": "buffalo_l",
+            "providers_": [
+                "CPUExecutionProvider"
+            ],
+            "is_one_face_": false,
+            "ctx_id": 0,
+            "node_repository_": []
         }
     ],
     "nndeploy_ui_layout": {
         "layout": {
             "OpenCvImageDecode_15": {
-                "x": -1109.9748213631765,
-                "y": -465.3406799316406
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightFaceAnalysis_17": {
-                "x": -809.9748213631765,
-                "y": -465.3406799316406
-            },
-            "nndeploy.face.InsightFaceAnalysis_18": {
-                "x": -809.9748213631765,
-                "y": -177.64067993164065
+                "position": {
+                    "x": 400,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InsightFaceSwapper_19": {
-                "x": -517.9748213631765,
-                "y": -465.3406799316406
+                "position": {
+                    "x": 700,
+                    "y": 220.72500000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "GFPGAN_22": {
-                "x": -225.9748213631765,
-                "y": -465.3406799316406
+                "position": {
+                    "x": 1000,
+                    "y": 242.47500000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvVideoDecode_24": {
-                "x": -1109.9748213631765,
-                "y": -177.64067993164065
+                "position": {
+                    "x": 100,
+                    "y": 174.89999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvVideoEncode_25": {
-                "x": -225.9748213631765,
-                "y": -177.64067993164065
+                "position": {
+                    "x": 1300,
+                    "y": 239.47500000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
+            },
+            "nndeploy.face.InsightFaceAnalysis_18": {
+                "position": {
+                    "x": 400,
+                    "y": 242.47500000000002
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

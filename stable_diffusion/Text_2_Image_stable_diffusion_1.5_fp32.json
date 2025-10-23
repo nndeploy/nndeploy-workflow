@@ -55,16 +55,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerText",
-                    "name_": "InitTokenText_16@output_0"
+                    "name_": "InitTokenText_16@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "TokenizerIds",
-                    "name_": "TokenizerEncodeCpp_3@output_0"
+                    "name_": "TokenizerEncodeCpp_3@output_0",
+                    "type_": "TokenizerIds"
                 }
             ],
             "node_type_": "Intermediate",
@@ -81,11 +81,11 @@
                 "added_tokens_": "",
                 "max_length_": 77
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::tokenizer::TokenizerEncodeCpp",
@@ -100,16 +100,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerText",
-                    "name_": "InitTokenText_17@output_0"
+                    "name_": "InitTokenText_17@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "TokenizerIds",
-                    "name_": "TokenizerEncodeCpp_4@output_0"
+                    "name_": "TokenizerEncodeCpp_4@output_0",
+                    "type_": "TokenizerIds"
                 }
             ],
             "node_type_": "Intermediate",
@@ -126,11 +126,11 @@
                 "added_tokens_": "",
                 "max_length_": 77
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
@@ -145,24 +145,24 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerIds",
-                    "name_": "TokenizerEncodeCpp_3@output_0"
+                    "name_": "TokenizerEncodeCpp_3@output_0",
+                    "type_": "TokenizerIds"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "CvtTokenIds2Tensor_5@output_0"
+                    "name_": "CvtTokenIds2Tensor_5@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::CvtTokenIds2Tensor",
@@ -177,24 +177,24 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "TokenizerIds",
-                    "name_": "TokenizerEncodeCpp_4@output_0"
+                    "name_": "TokenizerEncodeCpp_4@output_0",
+                    "type_": "TokenizerIds"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "CvtTokenIds2Tensor_6@output_0"
+                    "name_": "CvtTokenIds2Tensor_6@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -209,16 +209,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "CvtTokenIds2Tensor_5@output_0"
+                    "name_": "CvtTokenIds2Tensor_5@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_7@output_0"
+                    "name_": "Infer_7@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -290,11 +290,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -309,16 +309,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "CvtTokenIds2Tensor_6@output_0"
+                    "name_": "CvtTokenIds2Tensor_6@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_8@output_0"
+                    "name_": "Infer_8@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -390,11 +390,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::ConcatEmbedding",
@@ -409,30 +409,30 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_7@output_0"
+                    "name_": "Infer_7@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "Infer_8@output_0"
+                    "name_": "Infer_8@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "ConcatEmbedding_9@output_0"
+                    "name_": "ConcatEmbedding_9@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
             "guidance_": 7.5,
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::InitLatents",
@@ -449,8 +449,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "InitLatents_10@output_0"
+                    "name_": "InitLatents_10@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Input",
@@ -472,11 +472,11 @@
                 "set_alpha_to_one_": false
             },
             "size_": 1,
-            "node_repository_": [],
             "size": {
                 "width": 171.33802816901408,
                 "height": 98.2394366197183
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::Denoise",
@@ -491,24 +491,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "InitLatents_10@output_0"
+                    "name_": "InitLatents_10@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "ConcatEmbedding_9@output_0"
+                    "name_": "ConcatEmbedding_9@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Denoise_11@output_0"
+                    "name_": "Denoise_11@output_0",
+                    "type_": "Tensor"
                 }
             ],
+            "is_composite_node_": true,
             "node_type_": "Intermediate",
+            "size": {
+                "width": 200,
+                "height": 80
+            },
             "node_repository_": [
                 {
                     "key_": "nndeploy::infer::Infer",
@@ -522,31 +527,23 @@
                     "is_dynamic_input_": true,
                     "inputs_": [
                         {
-                            "name_": "embeddings",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "portzr511ovri"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "cfg_latents",
-                            "type_": "NotSet",
                             "desc_": "input_1",
-                            "id": "porteqfj0rcbt"
+                            "type_": "NotSet"
                         },
                         {
-                            "name_": "timestep",
-                            "type_": "NotSet",
                             "desc_": "input_2",
-                            "id": "port27gq9x68c"
+                            "type_": "NotSet"
                         }
                     ],
                     "is_dynamic_output_": true,
                     "outputs_": [
                         {
-                            "name_": "unet_output",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "portagg3p5vv8"
+                            "type_": "Tensor"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -618,7 +615,7 @@
                         "parallel_type_": "kParallelTypeNone",
                         "worker_num_": 1
                     },
-                    "id": "nodescf5vssk5"
+                    "node_repository_": []
                 },
                 {
                     "key_": "nndeploy::stable_diffusion::DDIMSchedule",
@@ -632,31 +629,23 @@
                     "is_dynamic_input_": false,
                     "inputs_": [
                         {
-                            "name_": "unet_output",
-                            "type_": "Tensor",
                             "desc_": "input_0",
-                            "id": "port7zzjv2ry9"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "prev_latents",
-                            "type_": "Tensor",
                             "desc_": "input_1",
-                            "id": "portf0wb68vw4"
+                            "type_": "Tensor"
                         },
                         {
-                            "name_": "timestep",
-                            "type_": "Tensor",
                             "desc_": "input_2",
-                            "id": "portr9z6we9p3"
+                            "type_": "Tensor"
                         }
                     ],
                     "is_dynamic_output_": false,
                     "outputs_": [
                         {
-                            "name_": "latents",
-                            "type_": "Tensor",
                             "desc_": "output_0",
-                            "id": "port48dxw1wzc"
+                            "type_": "Tensor"
                         }
                     ],
                     "node_type_": "Intermediate",
@@ -677,13 +666,9 @@
                         "eta_": 0,
                         "set_alpha_to_one_": false
                     },
-                    "id": "nodeylko8cel3"
+                    "node_repository_": []
                 }
-            ],
-            "size": {
-                "width": 200,
-                "height": 80
-            }
+            ]
         },
         {
             "key_": "nndeploy::stable_diffusion::ScaleLatents",
@@ -698,27 +683,27 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Denoise_11@output_0"
+                    "name_": "Denoise_11@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "ScaleLatents_12@output_0"
+                    "name_": "ScaleLatents_12@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
             "param_": {
                 "vae_scale_factor_": 0.1821500062942505
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -733,16 +718,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "ScaleLatents_12@output_0"
+                    "name_": "ScaleLatents_12@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_13@output_0"
+                    "name_": "Infer_13@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -814,11 +799,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::stable_diffusion::TensorToMat",
@@ -833,24 +818,24 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_13@output_0"
+                    "name_": "Infer_13@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "TensorToMat_14@output_0"
+                    "name_": "TensorToMat_14@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageEncode",
@@ -869,9 +854,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
-                    "name_": "TensorToMat_14@output_0"
+                    "name_": "TensorToMat_14@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -904,9 +889,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "TokenizerText",
                     "desc_": "output_0",
-                    "name_": "InitTokenText_16@output_0"
+                    "name_": "InitTokenText_16@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "node_type_": "Input",
@@ -937,9 +922,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "TokenizerText",
                     "desc_": "output_0",
-                    "name_": "InitTokenText_17@output_0"
+                    "name_": "InitTokenText_17@output_0",
+                    "type_": "TokenizerText"
                 }
             ],
             "node_type_": "Input",
@@ -955,64 +940,193 @@
     "nndeploy_ui_layout": {
         "layout": {
             "TokenizerEncodeCpp_3": {
-                "x": 400,
-                "y": 97.20000000000005
+                "position": {
+                    "x": 400,
+                    "y": 23.80000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "TokenizerEncodeCpp_4": {
-                "x": 400,
-                "y": 319.20000000000005
+                "position": {
+                    "x": 400,
+                    "y": 246.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "CvtTokenIds2Tensor_5": {
-                "x": 700,
-                "y": 97.20000000000005
+                "position": {
+                    "x": 700,
+                    "y": 23.80000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "CvtTokenIds2Tensor_6": {
-                "x": 700,
-                "y": 319.20000000000005
+                "position": {
+                    "x": 700,
+                    "y": 246.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_7": {
-                "x": 1000,
-                "y": 97.20000000000005
+                "position": {
+                    "x": 1000,
+                    "y": 23.80000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_8": {
-                "x": 1000,
-                "y": 319.20000000000005
+                "position": {
+                    "x": 1000,
+                    "y": 246.3
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "ConcatEmbedding_9": {
-                "x": 1300,
-                "y": 198.20000000000005
+                "position": {
+                    "x": 1300,
+                    "y": 124.14999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InitLatents_10": {
-                "x": 1300,
-                "y": 2.1316282072803006e-14
+                "position": {
+                    "x": 1300,
+                    "y": 320.84999999999997
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Denoise_11": {
-                "x": 1600,
-                "y": 100.15000000000003
+                "position": {
+                    "x": 1515,
+                    "y": 62
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true,
+                "children": {
+                    "unet_infer": {
+                        "position": {
+                            "x": 100,
+                            "y": 0
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    },
+                    "ddim_schedule": {
+                        "position": {
+                            "x": 100,
+                            "y": 218.39999999999998
+                        },
+                        "size": {
+                            "width": 200,
+                            "height": 80
+                        },
+                        "expanded": true
+                    }
+                }
             },
             "ScaleLatents_12": {
-                "x": 1900,
-                "y": 110.15000000000003
+                "position": {
+                    "x": 1930,
+                    "y": 227.95
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_13": {
-                "x": 2200,
-                "y": 110.15000000000003
+                "position": {
+                    "x": 2230,
+                    "y": 227.95
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "TensorToMat_14": {
-                "x": 2500,
-                "y": 110.15000000000003
+                "position": {
+                    "x": 2530,
+                    "y": 227.95
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_15": {
-                "x": 2800,
-                "y": 107.15000000000003
+                "position": {
+                    "x": 2830,
+                    "y": 224.95
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InitTokenText_16": {
-                "x": 100,
-                "y": 73.20000000000005
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InitTokenText_17": {
-                "x": 100,
-                "y": 295.20000000000005
+                "position": {
+                    "x": 100,
+                    "y": 222.5
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

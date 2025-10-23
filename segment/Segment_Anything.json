@@ -46,16 +46,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_10@output_0"
+                    "name_": "OpenCvImageDecode_10@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "CvtResizePadNormTrans_2@output_0"
+                    "name_": "CvtResizePadNormTrans_2@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -98,11 +98,11 @@
                     0
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -113,16 +113,16 @@
             "inputs_": [
                 {
                     "desc_": "input",
-                    "type_": "Tensor",
-                    "name_": "CvtResizePadNormTrans_2@output_0"
+                    "name_": "CvtResizePadNormTrans_2@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "image_embeddings",
-                    "type_": "Tensor",
-                    "name_": "Infer_3@image_embeddings"
+                    "name_": "Infer_3@image_embeddings",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -188,11 +188,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::SelectPointNode",
@@ -203,16 +203,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_10@output_0"
+                    "name_": "OpenCvImageDecode_10@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "SAMPointsParam",
-                    "name_": "SelectPointNode_5@output_0"
+                    "name_": "SelectPointNode_5@output_0",
+                    "type_": "SAMPointsParam"
                 }
             ],
             "node_type_": "Intermediate",
@@ -228,11 +228,11 @@
                 "ori_height": 0,
                 "version": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::SAMPointNode",
@@ -243,34 +243,34 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "SAMPointsParam",
-                    "name_": "SelectPointNode_5@output_0"
+                    "name_": "SelectPointNode_5@output_0",
+                    "type_": "SAMPointsParam"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_0"
+                    "name_": "SAMPointNode_6@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_1",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_1"
+                    "name_": "SAMPointNode_6@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_2",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_2"
+                    "name_": "SAMPointNode_6@output_2",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::SAMPostProcess",
@@ -281,34 +281,34 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@masks"
+                    "name_": "Infer_4@masks",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@iou_predictions"
+                    "name_": "Infer_4@iou_predictions",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "input_2",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@low_res_masks"
+                    "name_": "Infer_4@low_res_masks",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "SAMPostProcess_7@output_0"
+                    "name_": "SAMPostProcess_7@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::segment::SAMMaskNode",
@@ -321,21 +321,21 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "SAMMaskNode_8@output_0"
+                    "name_": "SAMMaskNode_8@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "output_1",
-                    "type_": "Tensor",
-                    "name_": "SAMMaskNode_8@output_1"
+                    "name_": "SAMMaskNode_8@output_1",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Input",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -346,51 +346,51 @@
             "inputs_": [
                 {
                     "desc_": "image_embeddings",
-                    "type_": "Tensor",
-                    "name_": "Infer_3@image_embeddings"
+                    "name_": "Infer_3@image_embeddings",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "point_coords",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_0"
+                    "name_": "SAMPointNode_6@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "point_labels",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_1"
+                    "name_": "SAMPointNode_6@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "mask_input",
-                    "type_": "Tensor",
-                    "name_": "SAMMaskNode_8@output_0"
+                    "name_": "SAMMaskNode_8@output_0",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "has_mask_input",
-                    "type_": "Tensor",
-                    "name_": "SAMMaskNode_8@output_1"
+                    "name_": "SAMMaskNode_8@output_1",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "orig_im_size",
-                    "type_": "Tensor",
-                    "name_": "SAMPointNode_6@output_2"
+                    "name_": "SAMPointNode_6@output_2",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "masks",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@masks"
+                    "name_": "Infer_4@masks",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "iou_predictions",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@iou_predictions"
+                    "name_": "Infer_4@iou_predictions",
+                    "type_": "Tensor"
                 },
                 {
                     "desc_": "low_res_masks",
-                    "type_": "Tensor",
-                    "name_": "Infer_4@low_res_masks"
+                    "name_": "Infer_4@low_res_masks",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -463,11 +463,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -487,8 +487,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_10@output_0"
+                    "name_": "OpenCvImageDecode_10@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -515,9 +515,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
-                    "name_": "SAMPostProcess_7@output_0"
+                    "name_": "SAMPostProcess_7@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -535,40 +535,103 @@
     "nndeploy_ui_layout": {
         "layout": {
             "CvtResizePadNormTrans_2": {
-                "x": 400,
-                "y": 198
+                "position": {
+                    "x": 400,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_3": {
-                "x": 700,
-                "y": 198
+                "position": {
+                    "x": 700,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "SelectPointNode_5": {
-                "x": 400,
-                "y": 396
+                "position": {
+                    "x": 400,
+                    "y": 196.64999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "SAMPointNode_6": {
-                "x": 700,
-                "y": 374
+                "position": {
+                    "x": 700,
+                    "y": 174.89999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "SAMPostProcess_7": {
-                "x": 1300,
-                "y": 265
+                "position": {
+                    "x": 1300,
+                    "y": 179.89999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "SAMMaskNode_8": {
-                "x": 700,
-                "y": 0
+                "position": {
+                    "x": 700,
+                    "y": 393.29999999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_4": {
-                "x": 1000,
-                "y": 232
+                "position": {
+                    "x": 1000,
+                    "y": 147.25
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_10": {
-                "x": 129.4858611825193,
-                "y": 246.43444730077124
+                "position": {
+                    "x": 100,
+                    "y": 46.125
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_11": {
-                "x": 1369.7429305912597,
-                "y": 472
+                "position": {
+                    "x": 1600,
+                    "y": 198.64999999999998
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

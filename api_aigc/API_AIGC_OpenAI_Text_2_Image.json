@@ -54,16 +54,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "OpenAIImageNode_1@output_0"
+                    "name_": "OpenAIImageNode_1@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
@@ -93,8 +93,8 @@
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "str",
-                    "name_": "InputStr_2@output_0"
+                    "name_": "InputStr_2@output_0",
+                    "type_": "str"
                 }
             ],
             "node_type_": "Input",
@@ -122,8 +122,8 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenAIImageNode_1@output_0"
+                    "name_": "OpenAIImageNode_1@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -141,16 +141,37 @@
     "nndeploy_ui_layout": {
         "layout": {
             "OpenAIImageNode_1": {
-                "x": -15.022674560546875,
-                "y": -99.69692993164062
+                "position": {
+                    "x": 400,
+                    "y": 23.80000000000001
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "InputStr_2": {
-                "x": -331.0226745605469,
-                "y": -98.69692993164062
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_3": {
-                "x": 253.97732543945312,
-                "y": -102.69692993164062
+                "position": {
+                    "x": 700,
+                    "y": 20.799999999999955
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []

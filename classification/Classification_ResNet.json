@@ -45,16 +45,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_27@output_0"
+                    "name_": "OpenCvImageDecode_27@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "CvtResizeNormTrans_22@output_0"
+                    "name_": "CvtResizeNormTrans_22@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -86,11 +86,11 @@
                     1
                 ]
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::infer::Infer",
@@ -101,16 +101,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "CvtResizeNormTrans_22@output_0"
+                    "name_": "CvtResizeNormTrans_22@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": true,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_23@output_0"
+                    "name_": "Infer_23@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "node_type_": "Intermediate",
@@ -176,11 +176,11 @@
                 "parallel_type_": "kParallelTypeNone",
                 "worker_num_": 1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::classification::ClassificationPostProcess",
@@ -191,16 +191,16 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "Tensor",
-                    "name_": "Infer_23@output_0"
+                    "name_": "Infer_23@output_0",
+                    "type_": "Tensor"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ClassificationResult",
-                    "name_": "ClassificationPostProcess_24@output_0"
+                    "name_": "ClassificationPostProcess_24@output_0",
+                    "type_": "ClassificationResult"
                 }
             ],
             "node_type_": "Intermediate",
@@ -209,11 +209,11 @@
                 "is_softmax": true,
                 "version": -1
             },
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::classification::DrawLable",
@@ -224,29 +224,29 @@
             "inputs_": [
                 {
                     "desc_": "input_0",
-                    "type_": "ndarray",
-                    "name_": "OpenCvImageDecode_27@output_0"
+                    "name_": "OpenCvImageDecode_27@output_0",
+                    "type_": "ndarray"
                 },
                 {
                     "desc_": "input_1",
-                    "type_": "ClassificationResult",
-                    "name_": "ClassificationPostProcess_24@output_0"
+                    "name_": "ClassificationPostProcess_24@output_0",
+                    "type_": "ClassificationResult"
                 }
             ],
             "is_dynamic_output_": false,
             "outputs_": [
                 {
                     "desc_": "output_0",
-                    "type_": "ndarray",
-                    "name_": "DrawLable_25@output_0"
+                    "name_": "DrawLable_25@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Intermediate",
-            "node_repository_": [],
             "size": {
                 "width": 200,
                 "height": 80
-            }
+            },
+            "node_repository_": []
         },
         {
             "key_": "nndeploy::codec::OpenCvImageDecode",
@@ -265,9 +265,9 @@
             "is_dynamic_output_": false,
             "outputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "output_0",
-                    "name_": "OpenCvImageDecode_27@output_0"
+                    "name_": "OpenCvImageDecode_27@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "node_type_": "Input",
@@ -294,9 +294,9 @@
             "is_dynamic_input_": false,
             "inputs_": [
                 {
-                    "type_": "ndarray",
                     "desc_": "input_0",
-                    "name_": "DrawLable_25@output_0"
+                    "name_": "DrawLable_25@output_0",
+                    "type_": "ndarray"
                 }
             ],
             "is_dynamic_output_": false,
@@ -314,28 +314,70 @@
     "nndeploy_ui_layout": {
         "layout": {
             "CvtResizeNormTrans_22": {
-                "x": 400,
-                "y": 60
+                "position": {
+                    "x": 400,
+                    "y": 5.975000000000023
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "Infer_23": {
-                "x": 700,
-                "y": 60
+                "position": {
+                    "x": 700,
+                    "y": 5.975000000000023
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "ClassificationPostProcess_24": {
-                "x": 1000,
-                "y": 60
+                "position": {
+                    "x": 1000,
+                    "y": 5.975000000000023
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "DrawLable_25": {
-                "x": 1300,
-                "y": 0
+                "position": {
+                    "x": 1293,
+                    "y": 93.29999999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageDecode_27": {
-                "x": 110.25706940874026,
-                "y": -189.32647814910027
+                "position": {
+                    "x": 100,
+                    "y": 0
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             },
             "OpenCvImageEncode_28": {
-                "x": 1569.383033419023,
-                "y": 161.31619537275066
+                "position": {
+                    "x": 1586,
+                    "y": 93.29999999999995
+                },
+                "size": {
+                    "width": 200,
+                    "height": 80
+                },
+                "expanded": true
             }
         },
         "groups": []
