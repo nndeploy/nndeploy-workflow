@@ -223,7 +223,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/images/inpaint-image.png",
+            "path_": "resources/template/nndeploy-workflow/diffusion/inpaint-image.png",
             "color_mode_": "RGB",
             "size": {
                 "width": 200,
@@ -266,7 +266,7 @@
             ],
             "node_type_": "Input",
             "io_type_": "Image",
-            "path_": "resources/images/inpaint_mask.png",
+            "path_": "resources/template/nndeploy-workflow/diffusion/inpaint_mask.png",
             "color_mode_": "RGB",
             "size": {
                 "width": 200,
@@ -435,7 +435,7 @@
             "PILImageDecodec_4": {
                 "position": {
                     "x": 100,
-                    "y": 445
+                    "y": 454
                 },
                 "size": {
                     "width": 200,

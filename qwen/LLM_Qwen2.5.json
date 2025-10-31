@@ -1,6 +1,6 @@
 {
     "key_": "nndeploy.dag.Graph",
-    "name_": "LLM_Qwen",
+    "name_": "LLM_Qwen2.5",
     "developer_": "always",
     "source_": "https://github.com/QwenLM/Qwen",
     "desc_": "Qwen Serial LLM Workflow",

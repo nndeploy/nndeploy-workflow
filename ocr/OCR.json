@@ -183,7 +183,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/detector.onnx"
+                    "resources/models/ocr/OCRv5_mobile_det/inference.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -507,7 +507,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/recognizer.onnx"
+                    "resources/models/ocr/OCRv5_mobile_rec/inference.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -757,7 +757,7 @@
                 "model_type_": "kModelTypeOnnx",
                 "is_path_": true,
                 "model_value_": [
-                    "resources/models/classifier.onnx"
+                    "resources/models/ocr/ch_ppocr_mobile_v2.0_cls_infer/inference.onnx"
                 ],
                 "external_model_data_": [
                     ""
@@ -856,7 +856,7 @@
                 "ui_params_": [],
                 "io_params_": [],
                 "dropdown_params_": {},
-                "character_path_": "resources/others/config.json",
+                "character_path_": "resources/models/ocr/OCRv5_mobile_rec/config.json",
                 "version_": 5,
                 "rec_thresh_": 0.2
             },
@@ -954,8 +954,8 @@
             },
             "OpenCvImageEncode_6": {
                 "position": {
-                    "x": 1600,
-                    "y": 70.93131553088917
+                    "x": 1609,
+                    "y": -127.06868446911083
                 },
                 "size": {
                     "width": 200,
@@ -1064,8 +1064,8 @@
             },
             "PrintOcrNode_28": {
                 "position": {
-                    "x": 3700,
-                    "y": 284.17499999999995
+                    "x": 3679,
+                    "y": 303.17499999999995
                 },
                 "size": {
                     "width": 200,
