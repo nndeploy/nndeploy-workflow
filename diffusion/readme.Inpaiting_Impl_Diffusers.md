@@ -5,7 +5,11 @@ This manual provides a concise introduction to deploying and using text2image, i
 
 ---
 
-## 0. pip install -r [requirements.txt](https://github.com/nndeploy/nndeploy/blob/main/requirements.txt)
+## 0. Installing Python dependencies is required to execute this algorithm
+
+```bash
+pip install -r [requirements.txt](https://github.com/nndeploy/nndeploy/blob/main/requirements.txt)
+```
 
 ## 1. Model Download and Environment Configuration
 
